@@ -13,13 +13,13 @@
 </head>
 <body>
 <div class="hrader" id="header">
-  <a href="login.html" style="color:#FD7306;margin-left:20px;">请登录</a> 
-  <a href="reg.html">注册</a>
+  <a href="/login/" style="color:#FD7306;margin-left:20px;">请登录</a> 
+  <a href="/reg/">注册</a>
   <div class="topNav">
    <a href="index.html" style="color:#FD7306;">首页</a>
    <a href="buy.html">买家</a>
    <a href="sell.html">卖家</a>
-   <a href="vip.html">会员中心</a>
+   <a href="vip.jsp">会员中心</a>
    <a href="xuanshang.html">悬赏榜</a>
    <a href="luntan.html" class="luntan">论坛</a>
    <a href="help.html">帮助</a>

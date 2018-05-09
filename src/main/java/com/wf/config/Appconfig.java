@@ -14,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.MultipartResolver;
@@ -28,7 +29,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @PropertySource("classpath:jdbc.properties")
 @EnableWebMvc//启用MVC
 @EnableTransactionManagement // 启用spring-tx支持   加事务帮忙回滚
-@MapperScan("wf.com.dao.maybaties")	
+@MapperScan("com.wf.dao.mabaties.mappers")	
 public class Appconfig extends WebMvcConfigurerAdapter{
 	//路径的拼接
 	@Override
@@ -85,6 +86,12 @@ public class Appconfig extends WebMvcConfigurerAdapter{
 		sf.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
 		sf.setDataSource(dataSource);
 		return sf;
+	}
+	
+	//密码
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }
 
