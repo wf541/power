@@ -32,4 +32,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+	@Override
+	public Reg findSearch(Reg reg) {
+		return userDao.findSearch(reg);
+	}
+
+
 }

@@ -15,7 +15,7 @@ public class Reg {
 	private Long id;
 	private String userName;
 	private String mail;
-	private int phone;
+	private Long phone;
 	private String password;
 	private String encode;
 	private Boolean readagain;
@@ -38,11 +38,12 @@ public class Reg {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public int getPhone() {
-		return phone;
-	}
-	public void setPhone(int phone) {
+	public void setPhone(Long phone) {
 		this.phone = phone;
+	}
+	
+	public Long getPhone() {
+		return phone;
 	}
 	public String getPassword() {
 		return password;

@@ -7,5 +7,7 @@ public interface UserService {
 
 
 	void register(Reg reg);
+
+	Reg findSearch(Reg reg);
 	
 }

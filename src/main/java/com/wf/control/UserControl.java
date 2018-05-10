@@ -36,13 +36,38 @@ public class UserControl {
 	public  String regPhone(Model model) {
 		return "reg";
 	}
-	
+	//注册
 	@RequestMapping(method = RequestMethod.POST, value = "/reg/")
 	public  String RegPhone(@ModelAttribute Reg reg) {
-		System.out.println("---" + reg.toString());
+		String userName = reg.getUserName();
+		//查看是否存在
+		Reg flag = userService.findSearch(reg);
 		
-		userService.register(reg);
-		
-		return "login";
+		if(flag==null){
+			//对象传参
+			userService.register(reg);
+			return "login";
+		}else{
+			return "reg";
+		}
 	}
+	
+	
+	//登录
+		@RequestMapping(method = RequestMethod.POST, value = "/login/")
+		public  String LoginPhone(@ModelAttribute Reg reg) {
+			//查看是否存在   返回对象
+			Reg flag = userService.findSearch(reg);
+			if(flag==null){
+				return "reg";
+			}else{
+				return "buy";
+			}
+		}
+		
+		//
+		@RequestMapping(method = RequestMethod.GET, value = "/buy/")
+		public  String buyPhone(Model model) {
+			return "buy";
+		}
 }

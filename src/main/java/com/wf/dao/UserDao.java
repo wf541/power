@@ -6,4 +6,6 @@ public interface UserDao {
 
 	void create(Reg reg);
 
+	Reg findSearch(Reg reg);
+
 }

@@ -20,6 +20,12 @@ public class UserDaoImpl implements UserDao {
 		userMapper.create(reg);
 	}
 
+	@Override
+	public Reg findSearch(Reg reg) {
+		// TODO Auto-generated method stub
+		return userMapper.findSearch(reg);
+	}
+
 
 
 }

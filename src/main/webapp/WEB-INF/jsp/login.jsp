@@ -37,11 +37,12 @@
     <img src="${ contextPath}/assets/images/login.jpg" width="567" height="348" />
    </div><!--loginLeft/-->
    <div class="loginRight">
-    <form class="login" action="#" method="get">
+    <form class="login" action="/login/" method="post">
      <label>邮箱/用户名/已验证手机</label>
-     <input type="text" class="loginName" />
+     <!-- name传值方式 -->
+     <input type="text" class="loginName" name="userName"/>
      <label>密码</label>
-     <input type="password" class="loginPwd" />
+     <input type="password" class="loginPwd" name="encode"/>
      <div class="jizhu">
       <input type="checkbox" /> 一周内免登陆 <a href="#">忘记密码</a>
      </div><!--jizhu/-->

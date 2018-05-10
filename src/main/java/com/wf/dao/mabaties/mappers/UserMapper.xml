@@ -9,4 +9,8 @@
   	insert into power_reg(id,user_name, mail, phone, encode) 
   	  values(power_reg_seq.nextval,#{userName}, #{mail}, #{phone},#{encode})
   </insert>
+  
+  <select id="findSearch" resultType="com.wf.entity.Reg">
+  	select user_name,encode from power_reg where user_name=#{userName}
+  </select>
 </mapper>
