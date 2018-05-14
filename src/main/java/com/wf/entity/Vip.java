@@ -46,6 +46,21 @@ public class Vip {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+	
+	
+	public Vip() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Vip(Long id, String relname, char sex, String mail, String idencity, String infor) {
+		super();
+		this.id = id;
+		this.relname = relname;
+		this.sex = sex;
+		this.mail = mail;
+		this.idencity = idencity;
+		this.infor = infor;
+	}
 	@Override
 	public String toString() {
 		return "Vip [id=" + id + ", relname=" + relname + ", sex=" + sex + ", mail=" + mail + ", idencity=" + idencity

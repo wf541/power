@@ -15,4 +15,6 @@ public interface UserDao {
 
 	Login findSearch(Login login);
 
+	Vip findSearch(Vip vip);
+
 }

@@ -155,6 +155,8 @@ $(function(){
 		var bdy2Index=$(this).index();
 		$(".buydlList").eq(bdy2Index).fadeIn().siblings(".buydlList").hide();
 		})
+		
+	
 	})
 	
 	

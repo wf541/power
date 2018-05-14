@@ -14,5 +14,7 @@ public interface UserMapper {
 
 
 	void creatVip(Vip vip);
+
+	Vip findSearch2(Long id);
 	
 }

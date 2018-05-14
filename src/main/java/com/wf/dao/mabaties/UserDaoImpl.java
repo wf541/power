@@ -44,6 +44,12 @@ public class UserDaoImpl implements UserDao {
 		return userMapper.findSearch1(login.getUserName());
 	}
 
+	@Override
+	public Vip findSearch(Vip vip) {
+		// TODO Auto-generated method stub
+		return userMapper.findSearch2(vip.getId());
+	}
+
 
 
 }

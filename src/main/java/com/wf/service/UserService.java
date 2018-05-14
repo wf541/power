@@ -16,5 +16,7 @@ public interface UserService {
 	void creatVip(Vip vip);
 
 	Login findSearch(Login login);
+
+	Vip findSearch(Vip vip);
 	
 }

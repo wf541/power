@@ -92,7 +92,7 @@
       <table class="grzx" width="705" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="90"><span>*</span>真实姓名：</td>
-          <td width="430"><input name="relname" type="text" class="text inputxt" /></td>
+          <td width="430"><input name="relname" type="text" class="text inputxt" value="${vip.relname }"/></td>
           <td rowspan="8" valign="top"><div id="tx"><img src="${ contextPath}/assets/images/vipImg.jpg" /></div>
             <span class="file"><input name="" type="file" class="file1" /></span></td>
         </tr>
@@ -113,18 +113,23 @@
         </tr>
         <tr>
           <td>&nbsp;性别：</td>
-          <td><input type="radio" name="sex" value="0" id="person" class="pr1" datatype="*" nullmsg="请选择性别！"  />
+          <td>
+          <input type="radio" name="sex" value="0" id="person" class="pr1" datatype="*" nullmsg="请选择性别！"  checked=${vip.sex== '0'?'checked':''}/>
+         
             男　
-            <input type="radio" name="sex" value="1" id="company" class="pr1" />
+            <input type="radio" name="sex" value="1" id="company" class="pr1" checked=${vip.sex== '1'?'checked':''}
+          />
+           
             女</td>
         </tr>
         <tr>
           <td>&nbsp;EMAIL:</td>
-          <td><input type="text" class="text1" datatype="e"  /></td>
+          <td><input type="text" class="text1" datatype="e"  value="${vip.mail }"/></td>
         </tr>
         <tr>
           <td>&nbsp;身份证:</td>
-          <td><input name="idencity" type="text" class="text1 inputxt" datatype="idcard" nullmsg="请填写身份证号码！" errormsg="您填写的身份证号码不对！必须位数字且不低于18位" /></td>
+          <td><input name="idencity" type="text" class="text1 inputxt" datatype="idcard" nullmsg="请填写身份证号码！" errormsg="您填写的身份证号码不对！必须位数字且不低于18位" 
+          value="${vip.idencity }"/></td>
         </tr>
         <tr>
           <td>&nbsp;&nbsp;类别：</td>
@@ -132,7 +137,7 @@
         </tr>
         <tr>
           <td>&nbsp;个人简介：</td>
-          <td><textarea tip="请在这里输入您的简介。" altercss="gray" class="gray" name="infor"  datatype="*"value="">请在这里输入您的简介。</textarea></td>
+          <td><textarea tip="请在这里输入您的简介。" altercss="gray" class="gray" name="infor"  datatype="*" value="">请在这里输入您的简介。${vip.infor }</textarea></td>
         </tr>
         <tr>
           <td>&nbsp;</td>

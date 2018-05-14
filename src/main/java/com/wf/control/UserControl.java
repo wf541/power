@@ -4,6 +4,9 @@ package com.wf.control;
 import java.io.Console;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -80,10 +83,14 @@ public class UserControl {
 		
 		//vip会员中心--个人信息
 		@RequestMapping(method = RequestMethod.GET, value = "/login/vip/{id}")
-		public String vipPhone(@ModelAttribute Reg reg,Model model,@PathVariable Long id) {
-					model.addAttribute("reg", reg);
-					System.out.println(reg);
-					return "vip";
+		public String vipPhone(@ModelAttribute Reg reg,Model model,@PathVariable Long id,@ModelAttribute Vip vip) {
+//						model.addAttribute("reg",reg);
+					Vip flag = userService.findSearch(vip);
+					if(flag!=null)
+						model.addAttribute("vip", flag);
+					System.out.println(flag);
+						return "vip";
+					
 		}
 		
 		
@@ -91,14 +98,15 @@ public class UserControl {
 				@RequestMapping(method = RequestMethod.POST, value = "/login/vip/{id}")
 				public  String VipPhone(@ModelAttribute Vip vip,@PathVariable Long id) {
 					vip.setId(id);
-					//查看是否存在   返回对象
-					//不存在的情况下
-					 /*userService.findSearch(reg)
-					if(flag!=null){
+					
+					Vip flag = userService.findSearch(vip);
+					System.out.println(flag);
+					if(flag.getRelname()==null)
+						{
+						userService.creatVip(vip);
+						}
+						return "redirect:/login/vip/{id}";
 						
-					}*/
-					userService.creatVip(vip);
-						return "vip";
 					
 				}
 		

@@ -18,6 +18,9 @@
   	select * from power_reg where user_name=#{userName}
   </select>
   
+  <select id="findSearch2" resultType="com.wf.entity.Vip">
+  	select relname,sex,idencity,mail,infor from power_reg where id=#{id}
+  </select>
   
   <!-- vip插入数据 ,更新同步的mail-->
   <insert id="creatVip">

@@ -54,4 +54,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.findSearch(login);
 	}
 
+
+	@Override
+	public Vip findSearch(Vip vip) {
+		// TODO Auto-generated method stub
+		return userDao.findSearch(vip);
+	}
+
 }
