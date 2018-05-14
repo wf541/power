@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>商品详情页</title>
-<link type="text/css" href="css/css.css" rel="stylesheet" />
+<link type="text/css" href="${ contextPath}/assets/css/css.css" rel="stylesheet" />
 <script type="text/javascript" src="${ contextPath}/assets/js/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="${ contextPath}/assets/js/js.js"></script>
 <script type="text/javascript" src="${ contextPath}/assets/js/payfor.js"></script>
@@ -15,11 +15,11 @@
 <body>
 <div class="hrader" id="header">
   <div class="top">
-   <a href="login.html" style="color:#C94E13;">请登录</a> 
-   <a href="reg.html">注册</a>
+   <a href="/login/" style="color:#C94E13;">请登录</a> 
+   <a href="/reg/">注册</a>
    <ul class="topNav">
-     <li><a href="order.html">我的订单 </a></li>
-    <li class="gouwuche"><a href="car.html">购物车</a> <strong style="color:#C94E13;">3</strong></li>
+     <li><a href="/order/">我的订单 </a></li>
+    <li class="gouwuche"><a href="/car/">购物车</a> <strong style="color:#C94E13;">3</strong></li>
     <li class="shoucangjia"><a href="shoucang.html">收藏夹</a></li>
     <li class="kefus"><a href="#">联系客服</a></li>
     <li><a href="#" class="lan">中文</a></li>
@@ -47,10 +47,10 @@
   </form><!--subBox/-->
   <div class="ding-gou">
    <div class="ding">
-    <a href="order.html"><img src="${ contextPath}/assets/images/dingdan.jpg" width="106" height="32" /></a>
+    <a href="/order/"><img src="${ contextPath}/assets/images/dingdan.jpg" width="106" height="32" /></a>
    </div><!--ding/-->
    <div class="gou">
-    <a href="car.html"><img src="${ contextPath}/assets/images/gouwuche.jpg" width="126" height="32" /></a>
+    <a href="/car/"><img src="${ contextPath}/assets/images/gouwuche.jpg" width="126" height="32" /></a>
    </div><!--gou/-->
    <div class="clears"></div>
   </div><!--ding-gou/-->
@@ -60,7 +60,7 @@
    <li><a href="index.html">首页</a></li>
    <li><a href="buy.html">买家</a></li>
    <li><a href="sell.html">卖家</a></li>
-   <li><a href="vip.html">会员中心</a></li>
+   <li><a href="/login/vip/${reg.id}">会员中心</a></li>
    <li><a href="xuanshang.html">悬赏榜</a></li>
    <li><a href="luntan.html" class="luntan">论坛</a></li>
    <li><a href="help.html">帮助</a></li>
@@ -146,7 +146,7 @@
      </tr>
     </table><!--buyTable/-->
     <div class="goumai">
-     <a href="car.html" class="buy-gou">立即购买</a>
+     <a href="/car/" class="buy-gou">立即购买</a>
      <a href="#" class="buy-mai">加入购物车</a>
     </div><!--goumai/-->
    </div><!--buyDtlRight/-->

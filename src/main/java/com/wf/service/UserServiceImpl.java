@@ -6,7 +6,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.wf.dao.UserDao;
+import com.wf.entity.Login;
 import com.wf.entity.Reg;
+import com.wf.entity.Vip;
 @Service
 public class UserServiceImpl implements UserService {
 	
@@ -34,8 +36,22 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Reg findSearch(Reg reg) {
-		return userDao.findSearch(reg);
+		Reg test = userDao.findSearch(reg);
+		System.out.println("service:"+test);
+		return test;
 	}
 
+
+	@Override
+	public void creatVip(Vip vip) {
+		userDao.creatVip(vip);		
+	}
+
+
+	@Override
+	public Login findSearch(Login login) {
+		// TODO Auto-generated method stub
+		return userDao.findSearch(login);
+	}
 
 }

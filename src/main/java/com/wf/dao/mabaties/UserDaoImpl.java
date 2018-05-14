@@ -5,7 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.wf.dao.UserDao;
 import com.wf.dao.mabaties.mappers.UserMapper;
+import com.wf.entity.Login;
 import com.wf.entity.Reg;
+import com.wf.entity.Vip;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
 @Repository
 public class UserDaoImpl implements UserDao {
 	private UserMapper userMapper;
@@ -23,7 +27,21 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public Reg findSearch(Reg reg) {
 		// TODO Auto-generated method stub
-		return userMapper.findSearch(reg);
+		Reg test = userMapper.findSearch(reg.getUserName());
+		System.out.println(test);
+		return test;
+	}
+
+
+	@Override
+	public void creatVip(Vip vip) {
+		userMapper.creatVip(vip);		
+	}
+
+	@Override
+	public Login findSearch(Login login) {
+		// TODO Auto-generated method stub
+		return userMapper.findSearch1(login.getUserName());
 	}
 
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wf.dao.mabaties.mappers.UserMapper">
+
+
+	<insert id="create">
+  	insert into power_reg(id,user_name, mail, phone, encode) 
+  	  values(power_reg_seq.nextval,#{userName}, #{mail}, #{phone},#{encode})
+  </insert>
+  
+  <select id="findSearch" resultType="com.wf.entity.Reg">
+  	select * from power_reg where user_name=#{userName}
+  </select>
+  
+  <select id="findSearch1" resultType="com.wf.entity.Login">
+  	select * from power_reg where user_name=#{userName}
+  </select>
+  
+  
+  <!-- vip插入数据 ,更新同步的mail-->
+  <insert id="creatVip">
+  		update power_reg set relname=#{relname},sex=#{sex},idencity=#{idencity},infor=#{infor} where id=#{id}
+  </insert>
+  
+  
+  <!-- 查询vip,有则登录时显示 -->
+  <!-- <select id="selectVip" resultType="com.wf.entity.Reg">
+  	select * from power_reg where id = power_reg_seq.currval
+  </select> -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</mapper>
