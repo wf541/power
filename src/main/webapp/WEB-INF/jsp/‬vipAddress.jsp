@@ -46,10 +46,10 @@
   </form><!--subBox/-->
   <div class="ding-gou">
    <div class="ding">
-    <a href="order.html"><img src="${ contextPath}/assets/images/dingdan.jpg" width="106" height="32" /></a>
+    <a href="/order/"><img src="${ contextPath}/assets/images/dingdan.jpg" width="106" height="32" /></a>
    </div><!--ding/-->
    <div class="gou">
-    <a href="car.html"><img src="${ contextPath}/assets/images/gouwuche.jpg" width="126" height="32" /></a>
+    <a href="/car/"><img src="${ contextPath}/assets/images/gouwuche.jpg" width="126" height="32" /></a>
    </div><!--gou/-->
    <div class="clears"></div>
   </div><!--ding-gou/-->
@@ -88,39 +88,43 @@
   <div class="vipRight">
    <h2 class="vipTitle">收货地址</h2>
    
-   <div class="address">
+ <!--   <div class="address">
     <div class="addList">
      <label><span class="red">* </span>选择地区:</label>
      <select>
-      <option>请选择省</option>
+   
+      <option >请选择省</option>
+      <option >湖南省</option>
      </select>
      <select>
       <option>请选择市</option>
+      <option>长沙市</option>
      </select>
      <select>
       <option>请选择地区</option>
+      <option>开福区</option>
      </select>
-    </div><!--addList-->
+    </div>addList
     <div class="addList">
      <label><span class="red">* </span>详细地址:</label>
-     <input type="text" />
-    </div><!--addList-->
+     <input type="text"/>
+    </div>addList
     <div class="addList">
      <label><span class="red">* </span>邮政编码:</label>
      <input type="text" />
-    </div><!--addList-->
+    </div>addList
     <div class="addList">
      <label><span class="red">* </span>收件人:</label>
-     <input type="text" />
-    </div><!--addList-->
+     <input type="text"/>
+    </div>addList
     <div class="addList">
      <label><span class="red">* </span>手机号码:</label>
-     <input type="text" /> 或者固定电话 <input type="text" />
-    </div><!--addList--> 
+     <input type="text"/> 或者固定电话 <input type="text" />
+    </div>addList 
     <div class="addList2">
      <input name="" value=" 确 认 " type="submit" class="submit" />
-    </div><!--addList2/-->
-   </div><!--address/-->
+    </div>addList2/
+   </div> --><!--address/-->
    <table class="vipAdress">
     <tr>
      <th>收货人</th>
@@ -130,54 +134,24 @@
      <th>电话/手机</th>
      <th>操作</th>
     </tr>
+    <c:forEach var="address" items="${address }">
     <tr>
-     <td>张益达</td>
-     <td>上海 上海市 普陀区</td>
-     <td>曹杨路1040弄中友大厦一号楼19楼</td>
-     <td>200000</td>
-     <td>13569888523</td>
-     <td><span class="green upd">[修改]</span> | <span class="green add">[添加]</span> </td>
+     <td>${address.relname }</td>
+     <td>${address.area }</td>
+     <td>${address.address }</td>
+     <td>${address.postCode }</td>
+     <td>${address.phone }</td>
+     <td><a class="green upd" href="/vipAddress/create/">[修改]</a> | <a class="green add" href="/vipAddress/edit/{id}">[添加]</a> </td>
     </tr>
-    <tr>
-     <td>张大炮</td>
-     <td>上海 上海市 普陀区</td>
-     <td>曹杨路1040弄中友大厦一号楼19楼</td>
-     <td>200000</td>
-     <td>13569888523</td>
-     <td><span class="green upd">[修改]</span> | <span class="green add">[添加]</span> </td>
-    </tr>
-    <tr>
-     <td>李思明</td>
-     <td>上海 上海市 普陀区</td>
-     <td>曹杨路1040弄中友大厦一号楼19楼</td>
-     <td>200000</td>
-     <td>13569888523</td>
-     <td><span class="green upd">[修改]</span> | <span class="green add">[添加]</span> </td>
-    </tr>
-    <tr>
-     <td>成吉思汗</td>
-     <td>上海 上海市 普陀区</td>
-     <td>曹杨路1040弄中友大厦一号楼19楼</td>
-     <td>200000</td>
-     <td>13569888523</td>
-     <td><span class="green upd">[修改]</span> | <span class="green add">[添加]</span> </td>
-    </tr>
-    <tr>
-     <td>忽必烈</td>
-     <td>上海 上海市 普陀区</td>
-     <td>曹杨路1040弄中友大厦一号楼19楼</td>
-     <td>200000</td>
-     <td>13569888523</td>
-     <td><span class="green upd">[修改]</span> | <span class="green add">[添加]</span> </td>
-    </tr>
-    <tr>
-     <td>乾隆</td>
-     <td>上海 上海市 普陀区</td>
-     <td>曹杨路1040弄中友大厦一号楼19楼</td>
-     <td>200000</td>
-     <td>13569888523</td>
-     <td><span class="green upd">[修改]</span> | <span class="green add">[添加]</span> </td>
-    </tr>
+    </c:forEach>
+<!--     <tr>
+     <td>rr</td>
+     <td>w</td>
+     <td>w</td>
+     <td>w</td>
+     <td>2</td>
+     <td><a class="green upd" href="/vipAddress/create/">[修改]</a> | <a class="green add" href="/vipAddress/edit/{id}">[添加]</a> </td>
+    </tr> -->
    </table><!--vipAdress/-->
   </div><!--vipRight/-->
   <div class="clears"></div>

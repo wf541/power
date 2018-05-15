@@ -28,14 +28,19 @@
   </insert>
   
   
-  <!-- 查询vip,有则登录时显示 -->
-  <!-- <select id="selectVip" resultType="com.wf.entity.Reg">
-  	select * from power_reg where id = power_reg_seq.currval
-  </select> -->
+	<!-- 修改地址 -->
+	<update id="updateAddress">
+		update power_reg set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address} where relname=#{relname}
+	</update>  
+	<!-- 添加地址 -->  
+  <insert id="creatAddress">
+  		update power_reg set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address} where relname=#{relname}
+  </insert>
   
-  
-  
-  
+  <!-- 显示地址 -->
+  <select id="findAddress" resultType="com.wf.entity.Address">
+  	select relname,phone,postCode,area,address from power_reg
+  </select>
   
   
   

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.wf.entity.Address;
 import com.wf.entity.Login;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
@@ -110,7 +111,41 @@ public class UserControl {
 					
 				}
 		
-		
+				//vip会员中心--收获地址管理
+				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress/")
+				public String vipAddressPhone(Model model) {
+					List<Address> address = userService.findAddress();
+					model.addAttribute("address", address);
+					System.out.println(address);
+							return "‬vipAddress";
+				}
+				
+				/*//vip会员中心--收获地址管理     增加
+				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress/create/")
+				public String vipAddressCreat(@ModelAttribute Address address) {
+							return "add-edit";
+				}
+				
+				//vip会员中心--收获地址管理    修改
+				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress/edit/{id}")
+				public String vipAddressEdit(@ModelAttribute Address address,@PathVariable Long id) {
+							return "add-edit";
+				}
+				
+				
+				//vip会员中心--收获地址管理     增加
+				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/create/")
+				public String AddressCreat(@ModelAttribute Address address) {
+							userService.creatAddress(address);
+							return "redirect:/vipAddress";
+				}
+				
+				//vip会员中心--收获地址管理    修改
+				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/edit/{id}")
+				public String AddressEdit(@ModelAttribute Address address,@PathVariable Long id) {
+							userService.updateAddress(address);
+							return "redirect:/vipAddress";
+				}*/
 				
 				//购物车
 				@RequestMapping(method = RequestMethod.GET, value = "/car/")
@@ -142,9 +177,5 @@ public class UserControl {
 				}
 				
 				
-		//vip会员中心--收获地址管理
-				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress/")
-				public String vipAddressPhone(Model model) {
-							return "vipAddress";
-				}
+		
 }

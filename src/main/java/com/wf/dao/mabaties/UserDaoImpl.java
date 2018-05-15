@@ -1,10 +1,13 @@
 package com.wf.dao.mabaties;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.wf.dao.UserDao;
 import com.wf.dao.mabaties.mappers.UserMapper;
+import com.wf.entity.Address;
 import com.wf.entity.Login;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
@@ -48,6 +51,25 @@ public class UserDaoImpl implements UserDao {
 	public Vip findSearch(Vip vip) {
 		// TODO Auto-generated method stub
 		return userMapper.findSearch2(vip.getId());
+	}
+
+	@Override
+	public void updateAddress(Address address) {
+		// TODO Auto-generated method stub
+		userMapper.updateAddress(address);
+	}
+
+	@Override
+	public void creatAddress(Address address) {
+		// TODO Auto-generated method stub
+		userMapper.creatAddress(address);
+	}
+
+	@Override
+	public List<Address> findAddress() {
+		// TODO Auto-generated method stub
+		
+		return userMapper.findAddress();
 	}
 
 

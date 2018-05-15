@@ -1,11 +1,14 @@
 package com.wf.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.wf.dao.UserDao;
+import com.wf.entity.Address;
 import com.wf.entity.Login;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
@@ -59,6 +62,28 @@ public class UserServiceImpl implements UserService {
 	public Vip findSearch(Vip vip) {
 		// TODO Auto-generated method stub
 		return userDao.findSearch(vip);
+	}
+
+
+	@Override
+	public void creatAddress(Address address) {
+		// TODO Auto-generated method stub
+		userDao.creatAddress(address);
+	}
+
+
+	@Override
+	public void updateAddress(Address address) {
+		// TODO Auto-generated method stub
+		userDao.updateAddress(address);
+	}
+
+
+	@Override
+	public List<Address> findAddress() {
+		// TODO Auto-generated method stub
+		
+		return userDao.findAddress();
 	}
 
 }

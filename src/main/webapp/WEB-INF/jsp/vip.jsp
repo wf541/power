@@ -77,8 +77,8 @@
     <dt class="vip_2">账户设置</dt>
      <dd class="ddCur"><a href="#">个人信息</a></dd>
      <dd><a href="vipPwd.html">密码修改</a></dd>
-     <dd><a href="vipAddress.html">收货地址</a></dd>
-     <dd><a href="vipXiaofei.html">消费记录</a></dd>
+     <dd><a href="/vipAddress/">收货地址</a></dd>
+     <dd><a href="/vipXiaofei/">消费记录</a></dd>
     <dt class="vip_3">客户服务</dt>
      <dd><a href="vipQuxiao.html">取消订单/退货</a></dd>
      
