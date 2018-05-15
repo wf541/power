@@ -82,7 +82,7 @@ public class UserControl {
 			}
 		}
 		
-		//vip会员中心--个人信息
+		//vip会员中心--个人信息   找到注入信息
 		@RequestMapping(method = RequestMethod.GET, value = "/login/vip/{id}")
 		public String vipPhone(@ModelAttribute Reg reg,Model model,@PathVariable Long id,@ModelAttribute Vip vip) {
 //						model.addAttribute("reg",reg);
@@ -101,7 +101,6 @@ public class UserControl {
 					vip.setId(id);
 					
 					Vip flag = userService.findSearch(vip);
-					System.out.println(flag);
 					if(flag.getRelname()==null)
 						{
 						userService.creatVip(vip);
@@ -116,36 +115,24 @@ public class UserControl {
 				public String vipAddressPhone(Model model) {
 					List<Address> address = userService.findAddress();
 					model.addAttribute("address", address);
-					System.out.println(address);
 							return "‬vipAddress";
 				}
-				
-				/*//vip会员中心--收获地址管理     增加
-				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress/create/")
-				public String vipAddressCreat(@ModelAttribute Address address) {
-							return "add-edit";
-				}
-				
-				//vip会员中心--收获地址管理    修改
-				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress/edit/{id}")
-				public String vipAddressEdit(@ModelAttribute Address address,@PathVariable Long id) {
-							return "add-edit";
-				}
-				
 				
 				//vip会员中心--收获地址管理     增加
 				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/create/")
 				public String AddressCreat(@ModelAttribute Address address) {
-							userService.creatAddress(address);
+							userService.creatAddress();
 							return "redirect:/vipAddress";
 				}
 				
 				//vip会员中心--收获地址管理    修改
 				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/edit/{id}")
 				public String AddressEdit(@ModelAttribute Address address,@PathVariable Long id) {
+					address.setId(id);
+					System.out.println(id);
 							userService.updateAddress(address);
 							return "redirect:/vipAddress";
-				}*/
+				}
 				
 				//购物车
 				@RequestMapping(method = RequestMethod.GET, value = "/car/")

@@ -66,9 +66,9 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public void creatAddress(Address address) {
+	public void creatAddress() {
 		// TODO Auto-generated method stub
-		userDao.creatAddress(address);
+		userDao.creatAddress();
 	}
 
 

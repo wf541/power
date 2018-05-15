@@ -22,7 +22,7 @@ public interface UserMapper {
 
 	void updateAddress(Address address);
 
-	void creatAddress(Address address);
+	void creatAddress();
 
 	List<Address> findAddress();
 	

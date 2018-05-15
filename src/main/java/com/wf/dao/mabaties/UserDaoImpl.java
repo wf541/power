@@ -31,7 +31,6 @@ public class UserDaoImpl implements UserDao {
 	public Reg findSearch(Reg reg) {
 		// TODO Auto-generated method stub
 		Reg test = userMapper.findSearch(reg.getUserName());
-		System.out.println(test);
 		return test;
 	}
 
@@ -60,9 +59,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void creatAddress(Address address) {
+	public void creatAddress() {
 		// TODO Auto-generated method stub
-		userMapper.creatAddress(address);
+		userMapper.creatAddress();
 	}
 
 	@Override

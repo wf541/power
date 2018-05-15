@@ -4,12 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wf.dao.mabaties.mappers.UserMapper">
 
-
+<!-- 注册 -->
 	<insert id="create">
   	insert into power_reg(id,user_name, mail, phone, encode) 
   	  values(power_reg_seq.nextval,#{userName}, #{mail}, #{phone},#{encode})
   </insert>
-  
+  <!--查询是否存在  -->
   <select id="findSearch" resultType="com.wf.entity.Reg">
   	select * from power_reg where user_name=#{userName}
   </select>
@@ -19,30 +19,30 @@
   </select>
   
   <select id="findSearch2" resultType="com.wf.entity.Vip">
-  	select relname,sex,idencity,mail,infor from power_reg where id=#{id}
+  	select id,relname,sex,idencity,mail,infor from power_reg where id=#{id}
   </select>
   
-  <!-- vip插入数据 ,更新同步的mail-->
+ <!--  vip插入数据  -->
   <insert id="creatVip">
   		update power_reg set relname=#{relname},sex=#{sex},idencity=#{idencity},infor=#{infor} where id=#{id}
   </insert>
   
-  
-	<!-- 修改地址 -->
+   <!--
+	修改地址
 	<update id="updateAddress">
 		update power_reg set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address} where relname=#{relname}
 	</update>  
-	<!-- 添加地址 -->  
-  <insert id="creatAddress">
-  		update power_reg set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address} where relname=#{relname}
-  </insert>
-  
+	添加地址  
+  <update id="creatAddress">
+  		update power_reg set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address}
+  </update>
+  -->
   <!-- 显示地址 -->
   <select id="findAddress" resultType="com.wf.entity.Address">
-  	select relname,phone,postCode,area,address from power_reg
+  	select relname,phone,postCode,area,address from power_address,power_reg where power_address.reg_id=power_reg.id
   </select>
   
-  
+   
   
   
   

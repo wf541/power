@@ -22,7 +22,7 @@ public interface UserService {
 
 	Vip findSearch(Vip vip);
 
-	void creatAddress(Address address);
+	void creatAddress();
 
 	void updateAddress(Address address);
 

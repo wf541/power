@@ -51,7 +51,7 @@ $(function(){
 		var zhi=$(this).index();
 		$(".zhifufangshi").eq(zhi).show().siblings(".zhifufangshi").hide();
 		})
-	//.upd,.add
+	//.upd,.add   下拉列表
 	$(".upd,.add,.vipUp").click(function(){
 		$(".address").stop(true,true).slideDown();
 		})
@@ -159,6 +159,25 @@ $(function(){
 	
 	})
 	
+	
+	//post的提交页面
+	/*
+	 * 	//.upd,.add   下拉列表
+	$(".upd,.add,.vipUp").click(function(){
+		$(".address").stop(true,true).slideDown();
+		})
+	 */
+	/*$(function action1(){
+		$(".upd").click(function(){
+			document.myform.action="/vipAddress/edit/{id}";//路径
+			document.myform.submit();
+		})
+		$(".add").click(function(){
+			document.myform.action="/vipAddress/create/";//路径
+			document.myform.submit();
+		})
+	})
+	*/
 	
 	
 	

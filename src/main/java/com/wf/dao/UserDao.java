@@ -22,7 +22,7 @@ public interface UserDao {
 
 	void updateAddress(Address address);
 
-	void creatAddress(Address address);
+	void creatAddress();
 
 	List<Address> findAddress();
 

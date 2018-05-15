@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+       <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>    
 <c:set var="contextPath" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -88,15 +89,15 @@
   <div class="vipRight">
    <h2 class="vipTitle">个人中心</h2>
    
-   <form action="/login/vip/${reg.id }" method="post" class="registerform">
+   <form:form action="/login/vip/${reg.id }" method="post" class="registerform" commandName="vip" enctype="multipart/form-data">
       <table class="grzx" width="705" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="90"><span>*</span>真实姓名：</td>
-          <td width="430"><input name="relname" type="text" class="text inputxt" value="${vip.relname }"/></td>
+          <td width="430"><form:input path="relname" type="text" class="text inputxt"/></td>
           <td rowspan="8" valign="top"><div id="tx"><img src="${ contextPath}/assets/images/vipImg.jpg" /></div>
             <span class="file"><input name="" type="file" class="file1" /></span></td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td><span>*</span>所在城市：</td>
           <td><select name="">
               <option>省</option>
@@ -110,26 +111,21 @@
               <option>区</option>
               <option>宝山</option>
             </select></td>
-        </tr>
+        </tr> -->
         <tr>
           <td>&nbsp;性别：</td>
           <td>
-          <input type="radio" name="sex" value="0" id="person" class="pr1" datatype="*" nullmsg="请选择性别！"  checked=${vip.sex== '0'?'checked':''}/>
-         
-            男　
-            <input type="radio" name="sex" value="1" id="company" class="pr1" checked=${vip.sex== '1'?'checked':''}
-          />
-           
-            女</td>
+          <form:radiobutton path="sex" value="0" id="person" class="pr1"/>男　
+          <form:radiobutton path="sex" value="1" id="company" class="pr1"/>女
+            </td>
         </tr>
         <tr>
           <td>&nbsp;EMAIL:</td>
-          <td><input type="text" class="text1" datatype="e"  value="${vip.mail }"/></td>
+          <td><form:input type="text" class="text1" datatype="e" path="mail"/></td>
         </tr>
         <tr>
           <td>&nbsp;身份证:</td>
-          <td><input name="idencity" type="text" class="text1 inputxt" datatype="idcard" nullmsg="请填写身份证号码！" errormsg="您填写的身份证号码不对！必须位数字且不低于18位" 
-          value="${vip.idencity }"/></td>
+          <td><form:input path="idencity" type="text" class="text1 inputxt" datatype="idcard" nullmsg="请填写身份证号码！" errormsg="您填写的身份证号码不对！必须位数字且不低于18位" /></td>
         </tr>
         <tr>
           <td>&nbsp;&nbsp;类别：</td>
@@ -141,10 +137,10 @@
         </tr>
         <tr>
           <td>&nbsp;</td>
-          <td><input name="" value="保存资料" type="submit" class="submit" /></td>
+          <td><button value="保存资料" type="submit" class="submit"></button></td>
         </tr>
       </table>
-      </form>
+      </form:form>
   </div><!--vipRight/-->
   <div class="clears"></div>
  </div><!--vipBox/-->
