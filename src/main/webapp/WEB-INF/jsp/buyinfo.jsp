@@ -13,11 +13,10 @@
 <script type="text/javascript" src="${ contextPath}/assets/js/payfor.js"></script>
 </head>
 <body>
-<div>${login.id }</div>
 <div class="hrader" id="header">
   <div class="top">
-   <a href="/login/" style="color:#C94E13;">请登录</a> 
-   <a href="/reg/">注册</a>
+   <a href="${ contextPath}/login" style="color:#C94E13;">请登录</a> 
+   <a href="${ contextPath}/reg">注册</a>
    <ul class="topNav">
      <li><a href="/order/">我的订单 </a></li>
     <li class="gouwuche"><a href="/car/">购物车</a> <strong style="color:#C94E13;">3</strong></li>

@@ -15,8 +15,8 @@
 <body>
 <div class="hrader" id="header">
   <div class="top">
-   <a href="/login" style="color:#C94E13;">请登录</a> 
-   <a href="/reg/">注册</a>
+   <a href="${ contextPath}/login" style="color:#C94E13;">请登录</a> 
+   <a href="${ contextPath}/reg">注册</a>
    <ul class="topNav">
     <li><a href="/order/">我的订单 </a></li>
     <li class="gouwuche"><a href="/car/">购物车</a> <strong style="color:#C94E13;">3</strong></li>
@@ -60,7 +60,7 @@
    <li><a href="index.html">首页</a></li>
    <li><a href="buy.html">买家</a></li>
    <li><a href="sell.html">卖家</a></li>
-   <li class="navCur"><a href="/userinfo">会员中心</a></li>
+   <li class="navCur"><a href="${ contextPath}/userinfo">会员中心</a></li>
    <li><a href="xuanshang.html">悬赏榜</a></li>
    <li><a href="luntan.html" class="luntan">论坛</a></li>
    <li><a href="help.html">帮助</a></li>
@@ -78,8 +78,8 @@
     <dt class="vip_2">账户设置</dt>
      <dd><a href="vip.html">个人信息</a></dd>
      <dd><a href="vipPwd.html">密码修改</a></dd>
-     <dd class="ddCur"><a href="/vipAddress">收货地址</a></dd>
-     <dd><a href="/vipXiaofei/">消费记录</a></dd>
+     <dd class="ddCur"><a href="${ contextPath}/vipAddress">收货地址</a></dd>
+     <dd><a href="${ contextPath}/vipXiaofei/">消费记录</a></dd>
     <dt class="vip_3">客户服务</dt>
      <dd><a href="vipQuxiao.html">取消订单/退货</a></dd>
      
@@ -88,7 +88,8 @@
   </div><!--vipLeft/-->
   <div class="vipRight">
    <h2 class="vipTitle">收货地址</h2>
-   <form method="post" action="/vipAddress/create" name="myform">
+   <form method="post" action="${ contextPath}/vipAddress/create" name="myform">
+   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
    <div class="address">
     <div class="addList">
      <label><span class="red">* </span>选择地区:</label>

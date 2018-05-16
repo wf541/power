@@ -13,8 +13,8 @@
 </head>
 <body>
  <div class="hrader" id="header">
-  <a href="/login/" style="color:#FD7306;margin-left:20px;">请登录</a> 
-  <a href="/reg/">注册</a>
+  <a href="${ contextPath}/login" style="color:#FD7306;margin-left:20px;">请登录</a> 
+  <a href="${ contextPath}/reg">注册</a>
   <div class="topNav">
    <a href="index.html" style="color:#FD7306;">首页</a>
    <a href="buy.html">买家</a>
@@ -39,7 +39,7 @@
     <li class="regEqBg2">采购商</li>
     <div class="clears"></div>
    </ul><!--regEq/-->
-   <form action="/reg/" method="post" class="regForm">
+   <form action="${ contextPath}/reg" method="post" class="regForm">
    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="loginBuyList">
      <label for="name">用户名：</label>

@@ -29,6 +29,19 @@ public class Login {
 	public void setEncode(String encode) {
 		this.encode = encode;
 	}
+	
+	
+	public Login(Long id, String userName, String password, String encode) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.password = password;
+		this.encode = encode;
+	}
+	
+	public Login() {
+		super();
+	}
 	@Override
 	public String toString() {
 		return "Login [id=" + id + ", userName=" + userName + ", password=" + password + ", encode=" + encode + "]";

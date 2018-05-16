@@ -93,12 +93,10 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Login login = userDao.findSearch(username);
-		System.out.println("--- loadUserByUsername login: " + login + ", " + username);
 		if (login == null) {
 			throw new UsernameNotFoundException(username);
 		}
 		UserDetailsImpl userDetailsImpl = new UserDetailsImpl(login); 
-		System.out.println("--- loadUserByUsername " + userDetailsImpl);
 		return userDetailsImpl;
 	}
 

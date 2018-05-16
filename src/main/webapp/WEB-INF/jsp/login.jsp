@@ -14,8 +14,8 @@
 <body>
 
 <div class="hrader" id="header">
-  <a href="/login" style="color:#FD7306;margin-left:20px;">请登录</a> 
-  <a href="/reg">注册</a>
+  <a href="${ contextPath}/login" style="color:#FD7306;margin-left:20px;">请登录</a> 
+  <a href="${ contextPath}/reg">注册</a>
   <div class="topNav">
    <a href="index.html" style="color:#FD7306;">首页</a>
    <a href="buy.html">买家</a>
@@ -42,7 +42,7 @@
    <c:if test="${param.error != null}">
 		<h4 style="color: red;">登录失败：用户名或密码错误</h4>
 	</c:if>
-    <form class="login" action="/login" method="post">
+    <form class="login" action="${ contextPath}/login" method="post">
     <!--  	防范CSRF攻击 -->
     <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
      <label>邮箱/用户名/已验证手机</label>

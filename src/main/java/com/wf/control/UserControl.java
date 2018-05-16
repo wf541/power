@@ -65,7 +65,7 @@ public class UserControl {
 		if(flag==null){
 			//对象传参
 			userService.register(reg);
-			return "login";
+			return "redirect:/login";
 		}else{
 			return "reg";
 		}
@@ -105,6 +105,7 @@ public class UserControl {
 					// @AuthenticationPrincipal默认拿到的是principal(UserDetailsImpl)，所以需要.user获得实体User对象（来自dao层）
 					List<Address> addresses = userService.findAddress(login.getId());
 					model.addAttribute("address", addresses);
+					
 							return "‬vipAddress";
 				}
 				
@@ -113,6 +114,9 @@ public class UserControl {
 				public String AddressCreat(@ModelAttribute Address address,
 						@AuthenticationPrincipal(expression = "login") Login login
 						) {
+							address.setLogin(login);
+//							address.setRegId(address.getLogin().getId());
+							System.out.println("login+creat"+address.getLogin().getId());
 							userService.creatAddress(address);
 							return "redirect:/vipAddress";
 				}

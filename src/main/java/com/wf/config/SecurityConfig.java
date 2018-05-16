@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// Fluent API
 		http.authorizeRequests()
 			.antMatchers("/admin/**").access("isFullyAuthenticated() and hasRole('ADMIN')")
-			.antMatchers("/assets/**", "/login","/reg/").permitAll()
+			.antMatchers("/assets/**", "/login","/reg").permitAll()
 			.antMatchers("/**").authenticated()
 			
 			.and()

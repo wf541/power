@@ -33,10 +33,10 @@
 	<update id="updateAddress">
 		update power_reg set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address} where id=#{id}
 	</update>  
-	<!-- 添加地址   -->
+	<!-- 添加地址  外键关联  -->
   <insert id="creatAddress">
   		insert into power_address(id,postCode,area,address,arelname,aphone,reg_id)
-  		value(power_address_req.nextval,#{postCode},#{area},#{address},#{arelname},#{aphone},#{login.id}) 
+  		values(power_address_seq.nextval,#{postCode},#{area},#{address},#{arelname},#{aphone},#{login.id}) 
   </insert> 
   
  
