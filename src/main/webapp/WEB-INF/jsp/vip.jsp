@@ -15,8 +15,8 @@
 <body>
  <div class="hrader" id="header">
   <div class="top">
-   <a href="/login/" style="color:#C94E13;">请登录</a> 
-   <a href="/reg/">注册</a>
+   <a href="/login" style="color:#C94E13;">请登录</a> 
+   <a href="/reg">注册</a>
    <ul class="topNav">
     <li><a href="/order/">我的订单 </a></li>
     <li class="gouwuche"><a href="/car/">购物车</a> <strong style="color:#C94E13;">3</strong></li>
@@ -32,7 +32,7 @@
   <h1 class="logo" style="text-align:left;">
   <a href="index.html"><img src="${ contextPath}/assets/images/logo.png" width="304" height="74" /></a>
   </h1>
-  <form action="/login/vip/${reg.id }" method="post" class="subBox">
+  <form action="/userinfo" method="post" class="subBox">
    <div class="subBox2">
     <input type="text" class="subText" />
     <input type="image" src="${ contextPath}/assets/images/sub.jpg" width="95" height="32" class="subImg" />
@@ -60,7 +60,7 @@
    <li><a href="index.html">首页</a></li>
    <li><a href="buy.html">买家</a></li>
    <li><a href="sell.html">卖家</a></li>
-   <li class="navCur"><a href="/login/vip/">会员中心</a></li>
+   <li class="navCur"><a href="/userinfo">会员中心</a></li>
    <li><a href="xuanshang.html">悬赏榜</a></li>
    <li><a href="luntan.html" class="luntan">论坛</a></li>
    <li><a href="help.html">帮助</a></li>
@@ -78,7 +78,7 @@
     <dt class="vip_2">账户设置</dt>
      <dd class="ddCur"><a href="#">个人信息</a></dd>
      <dd><a href="vipPwd.html">密码修改</a></dd>
-     <dd><a href="/vipAddress/">收货地址</a></dd>
+     <dd><a href="/vipAddress">收货地址</a></dd>
      <dd><a href="/vipXiaofei/">消费记录</a></dd>
     <dt class="vip_3">客户服务</dt>
      <dd><a href="vipQuxiao.html">取消订单/退货</a></dd>
@@ -89,7 +89,7 @@
   <div class="vipRight">
    <h2 class="vipTitle">个人中心</h2>
    
-   <form:form action="/login/vip/${reg.id }" method="post" class="registerform" commandName="vip" enctype="multipart/form-data">
+   <form:form action="" method="post" class="registerform" commandName="vip">
       <table class="grzx" width="705" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="90"><span>*</span>真实姓名：</td>
@@ -137,7 +137,7 @@
         </tr>
         <tr>
           <td>&nbsp;</td>
-          <td><button value="保存资料" type="submit" class="submit"></button></td>
+          <td><button value="" type="submit" class="submit">保存资料</button></td>
         </tr>
       </table>
       </form:form>

@@ -9,28 +9,31 @@ package com.wf.entity;
  */
 public class Address {
 	private Long id;
-	private String relname;
-	private Long phone;
+	private String arelname;
+	private Long aphone;
 	private Long postCode;
 	private String area;
 	private String address;
+	private Long regId;
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getRelname() {
-		return relname;
+	
+	public String getArelname() {
+		return arelname;
 	}
-	public void setRelname(String relname) {
-		this.relname = relname;
+	public void setArelname(String arelname) {
+		this.arelname = arelname;
 	}
-	public Long getPhone() {
-		return phone;
+	public Long getAphone() {
+		return aphone;
 	}
-	public void setPhone(Long phone) {
-		this.phone = phone;
+	public void setAphone(Long aphone) {
+		this.aphone = aphone;
 	}
 	public Long getPostCode() {
 		return postCode;
@@ -50,10 +53,22 @@ public class Address {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	public Long getRegId() {
+		return regId;
+	}
+	public Long setRegId(Long regId) {
+		return this.regId = regId;
+	}
+	
+	public Address() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", relname=" + relname + ", phone=" + phone + ", postCode=" + postCode + ", area="
-				+ area + ", address=" + address + "]";
+		return "Address [id=" + id + ", arelname=" + arelname + ", aphone=" + aphone + ", postCode=" + postCode
+				+ ", area=" + area + ", address=" + address + ", regId=" + regId + "]";
 	}
 	
 	

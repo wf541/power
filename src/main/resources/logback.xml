@@ -27,7 +27,7 @@
     <appender-ref ref="STDOUT" />
   </appender>
 
-  <root level="INFO">
+  <root level="login">
     <appender-ref ref="ASYNCFILE" />
     <appender-ref ref="ASYNCSTDOUT" />
   </root>

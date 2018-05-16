@@ -13,6 +13,7 @@
 <script type="text/javascript" src="${ contextPath}/assets/js/payfor.js"></script>
 </head>
 <body>
+<div>${login.id }</div>
 <div class="hrader" id="header">
   <div class="top">
    <a href="/login/" style="color:#C94E13;">请登录</a> 
@@ -60,7 +61,7 @@
    <li><a href="index.html">首页</a></li>
    <li><a href="buy.html">买家</a></li>
    <li><a href="sell.html">卖家</a></li>
-   <li><a href="/login/vip/${reg.id}">会员中心</a></li>
+   <li><a href="${contextPath}/userinfo">会员中心</a></li>
    <li><a href="xuanshang.html">悬赏榜</a></li>
    <li><a href="luntan.html" class="luntan">论坛</a></li>
    <li><a href="help.html">帮助</a></li>

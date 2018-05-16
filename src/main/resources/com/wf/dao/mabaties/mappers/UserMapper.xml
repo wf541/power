@@ -27,19 +27,22 @@
   		update power_reg set relname=#{relname},sex=#{sex},idencity=#{idencity},infor=#{infor} where id=#{id}
   </insert>
   
-   <!--
-	修改地址
+   
+	
+	<!-- 修改地址 -->
 	<update id="updateAddress">
-		update power_reg set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address} where relname=#{relname}
+		update power_reg set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address} where id=#{id}
 	</update>  
-	添加地址  
-  <update id="creatAddress">
-  		update power_reg set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address}
-  </update>
-  -->
+	<!-- 添加地址   -->
+  <insert id="creatAddress">
+  		insert into power_address(id,postCode,area,address,arelname,aphone,reg_id)
+  		value(power_address_req.nextval,#{postCode},#{area},#{address},#{arelname},#{aphone},#{login.id}) 
+  </insert> 
+  
+ 
   <!-- 显示地址 -->
   <select id="findAddress" resultType="com.wf.entity.Address">
-  	select relname,phone,postCode,area,address from power_address,power_reg where power_address.reg_id=power_reg.id
+  	select arelname,aphone,postCode,area,address from power_address where power_address.reg_id=#{id}
   </select>
   
    

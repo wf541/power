@@ -18,12 +18,14 @@ public interface UserDao {
 
 	Login findSearch(Login login);
 
-	Vip findSearch(Vip vip);
+	Vip findVip(Long id);
 
 	void updateAddress(Address address);
 
-	void creatAddress();
+	void creatAddress(Address address);
 
-	List<Address> findAddress();
+	List<Address> findAddress(Long id);
+
+	Login findSearch(String username);
 
 }

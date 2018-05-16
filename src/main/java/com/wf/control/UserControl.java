@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wf.entity.Address;
 import com.wf.entity.Login;
@@ -34,31 +36,32 @@ public class UserControl {
 	}
 
 
-	@RequestMapping(method = RequestMethod.GET, value = "/login/")
-	public  String loginPhone(@ModelAttribute Reg reg,Model model) {
+	@RequestMapping(method = RequestMethod.GET, value = "/login")
+//	                                        @RequestParam    获取前端传参                             false:不一定要有这个值
+	public  String loginPhone(@ModelAttribute Reg reg,Model model,@RequestParam(required=false) String error) {
 		model.addAttribute("reg", reg);
+		if(error!=null){
+			System.out.println("登录失败");
+		}
 		return "login";
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/reg/")
+	@RequestMapping(method = RequestMethod.GET, value = "/reg")
 	public  String regPhone(@ModelAttribute Reg reg,Model model) {
 		return "reg";
 	}
 	//商品详情页
-			@RequestMapping(method = RequestMethod.GET, value = "/buyinfo/")
-			public String buyPhone(@ModelAttribute Reg reg,Model model) {
-				model.addAttribute("reg", reg);
+			@RequestMapping(method = RequestMethod.GET, value = "/buyinfo")
+			public String buyPhone(@ModelAttribute Reg reg) {
 				return "buyinfo";
 			}
 			
 			
 	//注册
-	@RequestMapping(method = RequestMethod.POST, value = "/reg/")
+	@RequestMapping(method = RequestMethod.POST, value = "/reg")
 	public  String RegPhone(@ModelAttribute Reg reg) {
 		//查看是否存在
-		
 		Reg flag = userService.findSearch(reg);
-		
 		if(flag==null){
 			//对象传参
 			userService.register(reg);
@@ -68,68 +71,58 @@ public class UserControl {
 		}
 	}
 	
-	
-	//登录
-		@RequestMapping(method = RequestMethod.POST, value = "/login/")
-		public  String LoginPhone(@ModelAttribute Login login,Model model) {
-			//查看是否存在   返回对象
-			Login flag = userService.findSearch(login);
-			model.addAttribute("reg", flag);
-			if(flag==null){
-				return "reg";
-			}else{
-				return "buyinfo";
-			}
-		}
-		
 		//vip会员中心--个人信息   找到注入信息
-		@RequestMapping(method = RequestMethod.GET, value = "/login/vip/{id}")
-		public String vipPhone(@ModelAttribute Reg reg,Model model,@PathVariable Long id,@ModelAttribute Vip vip) {
-//						model.addAttribute("reg",reg);
-					Vip flag = userService.findSearch(vip);
-					if(flag!=null)
-						model.addAttribute("vip", flag);
-					System.out.println(flag);
-						return "vip";
-					
+		@RequestMapping(method = RequestMethod.GET, value = "/userinfo")
+		public String vipPhone(
+				@AuthenticationPrincipal(expression = "login") Login login, 
+				Model model) {
+			Vip flag = userService.findVip(login.getId());
+			if(flag!=null)
+				model.addAttribute("vip", flag);
+			return "vip";
 		}
 		
 		
 		//vip--个人信息     登录时获取到id，根据id显示出已有的vip详情，没有则插入数据
-				@RequestMapping(method = RequestMethod.POST, value = "/login/vip/{id}")
-				public  String VipPhone(@ModelAttribute Vip vip,@PathVariable Long id) {
-					vip.setId(id);
+				@RequestMapping(method = RequestMethod.POST, value = "/userinfo")
+				public  String VipPhone(
+						@AuthenticationPrincipal(expression = "login") Login login, 
+						@ModelAttribute Vip vip) {
 					
-					Vip flag = userService.findSearch(vip);
-					if(flag.getRelname()==null)
-						{
-						userService.creatVip(vip);
-						}
-						return "redirect:/login/vip/{id}";
+					vip.setId(login.getId());
+					userService.creatVip(vip);
+						return "redirect:/userinfo";
 						
 					
 				}
 		
-				//vip会员中心--收获地址管理
-				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress/")
-				public String vipAddressPhone(Model model) {
-					List<Address> address = userService.findAddress();
-					model.addAttribute("address", address);
+				//vip会员中心--收获地址管理    根据用户id查看该用户的收货地址
+				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress")
+				public String vipAddressPhone(Model model,
+						@AuthenticationPrincipal(expression = "login") Login login
+						) {
+					
+					// @AuthenticationPrincipal默认拿到的是principal(UserDetailsImpl)，所以需要.user获得实体User对象（来自dao层）
+					List<Address> addresses = userService.findAddress(login.getId());
+					model.addAttribute("address", addresses);
 							return "‬vipAddress";
 				}
 				
 				//vip会员中心--收获地址管理     增加
-				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/create/")
-				public String AddressCreat(@ModelAttribute Address address) {
-							userService.creatAddress();
+				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/create")
+				public String AddressCreat(@ModelAttribute Address address,
+						@AuthenticationPrincipal(expression = "login") Login login
+						) {
+							userService.creatAddress(address);
 							return "redirect:/vipAddress";
 				}
 				
 				//vip会员中心--收获地址管理    修改
-				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/edit/{id}")
-				public String AddressEdit(@ModelAttribute Address address,@PathVariable Long id) {
-					address.setId(id);
-					System.out.println(id);
+				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/edit")
+				public String AddressEdit(@ModelAttribute Address address,
+						@AuthenticationPrincipal(expression = "login") Login login
+						) {
+					address.setId(login.getId());
 							userService.updateAddress(address);
 							return "redirect:/vipAddress";
 				}

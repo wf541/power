@@ -20,12 +20,12 @@ public interface UserService {
 
 	Login findSearch(Login login);
 
-	Vip findSearch(Vip vip);
+	Vip findVip(Long id);
 
-	void creatAddress();
+	void creatAddress(Address address);
 
 	void updateAddress(Address address);
 
-	List<Address> findAddress();
+	List<Address> findAddress(Long id);
 	
 }

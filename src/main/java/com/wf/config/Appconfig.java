@@ -89,9 +89,9 @@ public class Appconfig extends WebMvcConfigurerAdapter{
 	}
 	
 	//密码
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+//	@Bean
+//	public BCryptPasswordEncoder passwordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 }
 

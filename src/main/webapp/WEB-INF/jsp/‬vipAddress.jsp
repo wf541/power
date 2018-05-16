@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
               <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+              <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,7 +15,7 @@
 <body>
 <div class="hrader" id="header">
   <div class="top">
-   <a href="/login/" style="color:#C94E13;">请登录</a> 
+   <a href="/login" style="color:#C94E13;">请登录</a> 
    <a href="/reg/">注册</a>
    <ul class="topNav">
     <li><a href="/order/">我的订单 </a></li>
@@ -59,7 +60,7 @@
    <li><a href="index.html">首页</a></li>
    <li><a href="buy.html">买家</a></li>
    <li><a href="sell.html">卖家</a></li>
-   <li class="navCur"><a href="/login/vip/{id}">会员中心</a></li>
+   <li class="navCur"><a href="/userinfo">会员中心</a></li>
    <li><a href="xuanshang.html">悬赏榜</a></li>
    <li><a href="luntan.html" class="luntan">论坛</a></li>
    <li><a href="help.html">帮助</a></li>
@@ -77,7 +78,7 @@
     <dt class="vip_2">账户设置</dt>
      <dd><a href="vip.html">个人信息</a></dd>
      <dd><a href="vipPwd.html">密码修改</a></dd>
-     <dd class="ddCur"><a href="/vipAddress/">收货地址</a></dd>
+     <dd class="ddCur"><a href="/vipAddress">收货地址</a></dd>
      <dd><a href="/vipXiaofei/">消费记录</a></dd>
     <dt class="vip_3">客户服务</dt>
      <dd><a href="vipQuxiao.html">取消订单/退货</a></dd>
@@ -87,7 +88,7 @@
   </div><!--vipLeft/-->
   <div class="vipRight">
    <h2 class="vipTitle">收货地址</h2>
-   <form method="post" action="/vipAddress/create/" name="myform">
+   <form method="post" action="/vipAddress/create" name="myform">
    <div class="address">
     <div class="addList">
      <label><span class="red">* </span>选择地区:</label>
@@ -115,11 +116,11 @@
     </div>
     <div class="addList">
      <label><span class="red">* </span>收件人:</label>
-     <input type="text" name="relname"/>
+     <input type="text" name="arelname"/>
     </div>
     <div class="addList">
      <label><span class="red">* </span>手机号码:</label>
-     <input type="text" phone="phone"/> 或者固定电话 <input type="text" />
+     <input type="text" phone="phone" name="aphone"/> 或者固定电话 <input type="text" />
     </div>
     <div class="addList2">
      <input name="" value=" 确 认 " type="submit" class="submit" onclick="action1"/>
@@ -137,11 +138,11 @@
     </tr>
     <c:forEach var="address" items="${address }">
     <tr>
-     <td>${address.relname }</td>
+     <td>${address.arelname }</td>
      <td>${address.area }</td>
      <td>${address.address }</td>
      <td>${address.postCode }</td>
-     <td>${address.phone }</td>
+     <td>${address.aphone }</td>
      <td><span class="green upd">[修改]</span> </td>
     </tr>
     </c:forEach>

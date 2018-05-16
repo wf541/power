@@ -12,14 +12,15 @@
 <script type="text/javascript" src="${ contextPath}/assets/js/js.js"></script>
 </head>
 <body>
+
 <div class="hrader" id="header">
-  <a href="/login/" style="color:#FD7306;margin-left:20px;">请登录</a> 
-  <a href="/reg/">注册</a>
+  <a href="/login" style="color:#FD7306;margin-left:20px;">请登录</a> 
+  <a href="/reg">注册</a>
   <div class="topNav">
    <a href="index.html" style="color:#FD7306;">首页</a>
    <a href="buy.html">买家</a>
    <a href="sell.html">卖家</a>
-   <a href="/login/vip/{id}">会员中心</a>
+   <a href="/userinfo">会员中心</a>
    <a href="xuanshang.html">悬赏榜</a>
    <a href="luntan.html" class="luntan">论坛</a>
    <a href="help.html">帮助</a>
@@ -37,12 +38,18 @@
     <img src="${ contextPath}/assets/images/login.jpg" width="567" height="348" />
    </div><!--loginLeft/-->
    <div class="loginRight">
-    <form class="login" action="/login/" method="post">
+   <!--登录失败显示  -->
+   <c:if test="${param.error != null}">
+		<h4 style="color: red;">登录失败：用户名或密码错误</h4>
+	</c:if>
+    <form class="login" action="/login" method="post">
+    <!--  	防范CSRF攻击 -->
+    <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
      <label>邮箱/用户名/已验证手机</label>
-     <!-- name传值方式 -->
-     <input type="text" class="loginName" name="userName"/>
+     <!-- name传值方式  必须用username,password-->
+     <input type="text" class="loginName" name="username"/>
      <label>密码</label>
-     <input type="password" class="loginPwd" name="encode"/>
+     <input type="password" class="loginPwd" name="password"/>
      <div class="jizhu">
       <input type="checkbox" /> 一周内免登陆 <a href="#">忘记密码</a>
      </div><!--jizhu/-->

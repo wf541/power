@@ -8,7 +8,7 @@ public class Vip {
 	private String idencity;
 	private String infor;
 	
-	
+	private Login login;
 	
 	public Long getId() {
 		return id;
@@ -48,6 +48,12 @@ public class Vip {
 	}
 	
 	
+	public Login getLogin() {
+		return login;
+	}
+	public void setLogin(Login login) {
+		this.login = login;
+	}
 	public Vip() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -61,6 +67,7 @@ public class Vip {
 		this.idencity = idencity;
 		this.infor = infor;
 	}
+	
 	@Override
 	public String toString() {
 		return "Vip [id=" + id + ", relname=" + relname + ", sex=" + sex + ", mail=" + mail + ", idencity=" + idencity

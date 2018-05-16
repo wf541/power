@@ -40,6 +40,7 @@
     <div class="clears"></div>
    </ul><!--regEq/-->
    <form action="/reg/" method="post" class="regForm">
+   		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="loginBuyList">
      <label for="name">用户名：</label>
      <input type="text" id="name" name="userName" />

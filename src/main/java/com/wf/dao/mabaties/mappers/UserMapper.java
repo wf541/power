@@ -22,8 +22,8 @@ public interface UserMapper {
 
 	void updateAddress(Address address);
 
-	void creatAddress();
+	void creatAddress(Address address);
 
-	List<Address> findAddress();
+	List<Address> findAddress(Long id);
 	
 }

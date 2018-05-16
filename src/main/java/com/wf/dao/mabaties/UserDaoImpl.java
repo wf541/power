@@ -47,9 +47,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public Vip findSearch(Vip vip) {
+	public Vip findVip(Long id) {
 		// TODO Auto-generated method stub
-		return userMapper.findSearch2(vip.getId());
+		return userMapper.findSearch2(id);
 	}
 
 	@Override
@@ -59,16 +59,22 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void creatAddress() {
+	public void creatAddress(Address address) {
 		// TODO Auto-generated method stub
-		userMapper.creatAddress();
+		userMapper.creatAddress(address);
 	}
 
 	@Override
-	public List<Address> findAddress() {
+	public List<Address> findAddress(Long id) {
 		// TODO Auto-generated method stub
 		
-		return userMapper.findAddress();
+		return userMapper.findAddress(id);
+	}
+
+	@Override
+	public Login findSearch(String username) {
+		// TODO Auto-generated method stub
+		return userMapper.findSearch1(username);
 	}
 
 
