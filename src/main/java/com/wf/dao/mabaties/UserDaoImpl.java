@@ -86,6 +86,30 @@ public class UserDaoImpl implements UserDao {
 		userMapper.changePwd(pwd1,id);
 	}
 
+	@Override
+	public List<Address> findAllAddress() {
+		// TODO Auto-generated method stub
+		return userMapper.findAllAddress();
+	}
+
+	@Override
+	public List<Address> findprovinces() {
+		// TODO Auto-generated method stub
+		return userMapper.findprovinces();
+	}
+
+	@Override
+	public List<Address> findcitys() {
+		// TODO Auto-generated method stub
+		return userMapper.findcitys();
+	}
+
+	@Override
+	public List<Address> findareas() {
+		// TODO Auto-generated method stub
+		return userMapper.findareas();
+	}
+
 
 
 }

@@ -31,23 +31,23 @@
 	
 	<!-- 修改地址 -->
 	<update id="updateAddress">
-		update power_address set phone=#{phone},postCode=#{postCode},area=#{area},address=#{address} where id=#{id}
+		update power_address set aphone=#{aphone},arelname=#{arelname},postCode=#{postCode},area=#{area},province=#{province},city=#{city},address=#{address} where id=#{id}
 	</update>  
 	<!-- 添加地址  外键关联  -->
   <insert id="creatAddress">
-  		insert into power_address(id,postCode,area,address,arelname,aphone,reg_id)
-  		values(power_address_seq.nextval,#{postCode},#{area},#{address},#{arelname},#{aphone},#{login.id}) 
+  		insert into power_address(id,postCode,area,province,city,address,arelname,aphone,reg_id)
+  		values(power_address_seq.nextval,#{postCode},#{area},#{province},#{city},#{address},#{arelname},#{aphone},#{login.id}) 
   </insert> 
   
  
   <!-- 显示地址 -->
   <select id="findAddress" resultType="com.wf.entity.Address">
-  	select arelname,aphone,postCode,area,address from power_address where power_address.reg_id=#{id}
+  	select id,arelname,aphone,postCode,area,province,city,address from power_address where power_address.reg_id=#{id}
   </select>
   
    <!-- 根据id查询 -->
   <select id="findOne" resultType="com.wf.entity.Address">
-  select arelname,aphone,postCode,area,address from power_address where id=#{id}
+  select id,arelname,aphone,postCode,area,province,city,address from power_address where id=#{id}
   </select>
   
   
@@ -56,6 +56,11 @@
   	update power_reg set encode = #{pwd1} where id=#{id}
   </update>
   
+  
+  <!--查省，市，区做集合 -->
+  <select id="findprovinces" resultType="com.wf.entity.Address">
+	  select * from power_address
+  </select>
   
   
 </mapper>

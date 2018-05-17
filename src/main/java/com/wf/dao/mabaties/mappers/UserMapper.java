@@ -31,5 +31,13 @@ public interface UserMapper {
 	Address findOne(Long id);
 
 	void changePwd(@Param("pwd1") String pwd1,@Param("id") Long id);
+
+	List<Address> findAllAddress();
+
+	List<Address> findprovinces();
+
+	List<Address> findcitys();
+
+	List<Address> findareas();
 	
 }

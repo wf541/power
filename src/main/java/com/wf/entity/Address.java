@@ -6,6 +6,8 @@ package com.wf.entity;
        postCode number(25),
        area varchar2(64),
        address varchar2(64)
+       province
+       city
  */
 public class Address {
 	private Long id;
@@ -13,6 +15,9 @@ public class Address {
 	private Long aphone;
 	private Long postCode;
 	private String area;
+	private String province;
+	private String city;
+	
 	private String address;
 	private Long regId;
 	private Login login;
@@ -69,19 +74,35 @@ public class Address {
 		return this.regId = regId;
 	}
 	
+	
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
 	public Address() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Address(Long id, String arelname, Long aphone, Long postCode, String area, String address, Long regId,
-			Login login) {
+	
+	public Address(Long id, String arelname, Long aphone, Long postCode, String area, String province, String city,
+			String address, Long regId, Login login) {
 		super();
 		this.id = id;
 		this.arelname = arelname;
 		this.aphone = aphone;
 		this.postCode = postCode;
 		this.area = area;
+		this.province = province;
+		this.city = city;
 		this.address = address;
 		this.regId = regId;
 		this.login = login;
@@ -89,7 +110,8 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", arelname=" + arelname + ", aphone=" + aphone + ", postCode=" + postCode
-				+ ", area=" + area + ", address=" + address + ", regId=" + regId + ", login=" + login + "]";
+				+ ", area=" + area + ", province=" + province + ", city=" + city + ", address=" + address + ", regId="
+				+ regId + ", login=" + login + "]";
 	}
 	
 	

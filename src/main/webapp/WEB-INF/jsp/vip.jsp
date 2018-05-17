@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
        <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>    
+       <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -77,7 +78,7 @@
      <dd><a href="vipShoucang.html">收藏关注</a></dd>
     <dt class="vip_2">账户设置</dt>
      <dd class="ddCur"><a href="#">个人信息</a></dd>
-     <dd><a href="${ contextPath}/vipPwd/${login.id }">密码修改</a></dd>
+     <dd><a href="${ contextPath}/vipPwd/<sec:authentication property="principal.login.id"/>">密码修改</a></dd>
      <dd><a href="${ contextPath}/vipAddress">收货地址</a></dd>
      <dd><a href="${ contextPath}/vipXiaofei/">消费记录</a></dd>
     <dt class="vip_3">客户服务</dt>

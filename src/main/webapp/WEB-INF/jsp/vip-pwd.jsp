@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-       <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>    
+       <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
+       <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>   
 <c:set var="contextPath" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -84,7 +85,7 @@
   <div class="vipRight">
    <h2 class="vipTitle">密码修改</h2>
    
-   <form action="${contextPath }/vipPwd/${login.id }" class="registerform" method="post">
+   <form action="${contextPath }/vipPwd/<sec:authentication property="principal.login.id"/>" class="registerform" method="post">
    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
       <table class="grzx" width="705" border="0" cellspacing="0" cellpadding="0">
         <tr>

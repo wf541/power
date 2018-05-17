@@ -50,11 +50,6 @@ public class UserControl {
 	public  String regPhone() {
 		return "reg";
 	}
-	//商品详情页
-			@RequestMapping(method = RequestMethod.GET, value = "/buyinfo")
-			public String buyPhone(@ModelAttribute Reg reg) {
-				return "buyinfo";
-			}
 			
 			
 	//注册
@@ -73,6 +68,11 @@ public class UserControl {
 		}
 	}
 	
+	//商品详情页
+	@RequestMapping(method = RequestMethod.GET, value = "/buyinfo")
+	public String buyPhone(@ModelAttribute Reg reg,@AuthenticationPrincipal(expression = "login") Login login) {
+		return "buyinfo";
+	}
 		//vip会员中心--个人信息   找到注入信息
 		@RequestMapping(method = RequestMethod.GET, value = "/userinfo")
 		public String vipPhone(
@@ -88,8 +88,7 @@ public class UserControl {
 		//vip--个人信息     登录时获取到id，根据id显示出已有的vip详情，没有则插入数据
 				@RequestMapping(method = RequestMethod.POST, value = "/userinfo")
 				public  String VipPhone(
-						@AuthenticationPrincipal(expression = "login") Login login, 
-						@ModelAttribute Vip vip) {
+						@AuthenticationPrincipal(expression = "login") Login login, @ModelAttribute Vip vip) {
 					
 					vip.setId(login.getId());
 					userService.creatVip(vip);
@@ -103,50 +102,55 @@ public class UserControl {
 				public String vipAddressPhone(Model model,
 						@AuthenticationPrincipal(expression = "login") Login login
 						) {
-					
-					// @AuthenticationPrincipal默认拿到的是principal(UserDetailsImpl)，所以需要.user获得实体User对象（来自dao层）
 					List<Address> addresses = userService.findAddress(login.getId());
 					model.addAttribute("address", addresses);
 					
 							return "‬vipAddress";
 				}
 				
-				//vip会员中心--收获地址管理     增加
+				//vip会员中心--收获地址管理    判断？ 增加
 				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress")
-				public String AddressCreat(@ModelAttribute Address address,RedirectAttributes redirectAttributes,
+				public String AddressCreat(@ModelAttribute Address address,
 						@AuthenticationPrincipal(expression = "login") Login login
 						) {
-					System.out.println("/vipAddress");
+	
+						
 							address.setLogin(login);
+							
 							userService.creatAddress(address);
-							//redirectAttributes.addFlashAttribute("address", address);
-							return "redirect:/vipAddress";
+					
+					return "redirect:/vipAddress";
+					
 				}
 				
 			
+				//修改
 				
-				//vip会员中心--收获地址管理    修改
+				//vip会员中心--收获地址管理  ：修改
 				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress/{id}")
-				public String AddressEdit(@ModelAttribute Address address,Model model,
-				@PathVariable Long id
+				public String Edit(Model model,@PathVariable Long id,
+						@AuthenticationPrincipal(expression = "login") Login login
 						) {
-						     System.out.println("/vipAddress/{id}");
-							 Address edit = userService.findOne(id);
-							 System.out.println(edit);
-							 model.addAttribute("edit", edit);
-							return "redirect:/vipAddress";
-				}
-				
-				
-				@RequestMapping(method=RequestMethod.POST,value="/address-edit/{id}")//修改收货地址
-				public String viped(@AuthenticationPrincipal(expression="login")Login login,
-						@ModelAttribute Address address,@PathVariable Long id){
-					System.out.println("/address-edit/{id}");
-					address.setId(id);
-					userService.updateAddress(address);
+					Address a= userService.findOne(id);//地址id查找
+					model.addAttribute("a", a);
+//					查询地址集合，用form:select
+					List<Address> provinces = userService.findprovinces();
+					model.addAttribute("provinces", provinces);
 					
-					return "redirect:/vipAddress";
+							return "add-edit";
 				}
+				
+				//vip会员中心--收获地址管理    ：修改
+				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/{id}")
+				public String Edit(@ModelAttribute Address address,@PathVariable Long id,
+						@AuthenticationPrincipal(expression = "login") Login login
+						) {
+						address.setId(id);
+						userService.updateAddress(address);//更新
+					return "redirect:/vipAddress";
+					
+				}
+				
 				
 				//密码修改
 				@RequestMapping(method = RequestMethod.GET, value = "/vipPwd/{id}")

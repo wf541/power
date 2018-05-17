@@ -88,40 +88,40 @@
   </div><!--vipLeft/-->
   <div class="vipRight">
    <h2 class="vipTitle">收货地址</h2>
-   <form method="post" action="/address-edit/{id}" name="myform">
+   <form method="post" action="${ contextPath}/vipAddress" name="myform">
    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
    <div class="address">
     <div class="addList">
      <label><span class="red">* </span>选择地区:</label>
-     <select name="area">
+     <select name="province">
    
       <option >请选择省</option>
       <option value="湖南省">湖南省</option>
      </select>
-     <select name="area">
+     <select name="city">
       <option>请选择市</option>
-      <option value="">长沙市</option>
+      <option value="长沙市">长沙市</option>
      </select>
      <select name="area">
       <option>请选择地区</option>
-      <option>开福区</option>
+      <option value="开福区">开福区</option>
      </select>
     </div>
     <div class="addList">
      <label><span class="red">* </span>详细地址:</label>
-     <input type="text" name="address" value="${edit.address }"/>
+     <input type="text" name="address" value="${a.address }"/>
     </div>
     <div class="addList">
      <label><span class="red">* </span>邮政编码:</label>
-     <input type="text" name="postCode" value="${edit.postCode }"/>
+     <input type="text" name="postCode" value="${a.postCode }"/>
     </div>
     <div class="addList">
      <label><span class="red">* </span>收件人:</label>
-     <input type="text" name="arelname" value="${edit.arelname }"/>
+     <input type="text" name="arelname" value="${a.arelname }"/>
     </div>
     <div class="addList">
      <label><span class="red">* </span>手机号码:</label>
-     <input type="text" phone="phone" name="aphone" value="${edit.aphone }"/> 或者固定电话 <input type="text" />
+     <input type="text" phone="phone" name="aphone" value="${a.aphone }"/> 或者固定电话 <input type="text" />
     </div>
     <div class="addList2">
      <input name="" value=" 确 认 " type="submit" class="submit" onclick="action1"/>
@@ -135,16 +135,18 @@
      <th>街道地址</th>
      <th>邮编</th>
      <th>电话/手机</th>
+     <th></th>
      <th>操作</th>
     </tr>
     <c:forEach var="address" items="${address }">
     <tr>
      <td>${address.arelname }</td>
-     <td>${address.area }</td>
+     <td>${address.province},${address.city},${address.area }</td>
      <td>${address.address }</td>
      <td>${address.postCode }</td>
      <td>${address.aphone }</td>
-     <td><span class="green upd">[修改]</span> </td>
+     <td>${address.id}</td>
+     <td><span class="green upd"><a href="${ contextPath}/vipAddress/${address.id}">[修改]</a></span> </td>
     </tr>
     </c:forEach>
    </table><!--vipAdress/-->

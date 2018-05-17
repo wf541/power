@@ -114,6 +114,29 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 	}
 
 
+	@Override
+	public List<Address> findprovinces() {
+		// TODO Auto-generated method stub
+		return userDao.findprovinces();
+	}
+
+
+	@Override
+	public List<Address> findcitys() {
+		// TODO Auto-generated method stub
+		return userDao.findcitys();
+	}
+
+
+	@Override
+	public List<Address> findareas() {
+		// TODO Auto-generated method stub
+		return userDao.findareas();
+	}
+
+
+
+
 
 }
 

@@ -31,4 +31,12 @@ public interface UserDao {
 
 	void changePwd(String pwd1, Long id);
 
+	List<Address> findAllAddress();
+
+	List<Address> findprovinces();
+
+	List<Address> findcitys();
+
+	List<Address> findareas();
+
 }

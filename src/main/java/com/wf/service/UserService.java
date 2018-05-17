@@ -32,5 +32,17 @@ public interface UserService {
 
 	void changePwd(String pwd1, Long id);
 
+
+
+	List<Address> findprovinces();
+
+
+
+	List<Address> findcitys();
+
+
+
+	List<Address> findareas();
+
 	
 }
