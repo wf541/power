@@ -23,14 +23,15 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void create(Reg reg) {
-		userMapper.create(reg);
+	public int create(Reg reg) {
+		
+		return userMapper.create(reg);
 	}
 
 	@Override
-	public Reg findSearch(Reg reg) {
+	public Reg findReg(String userName) {
 		// TODO Auto-generated method stub
-		Reg test = userMapper.findSearch(reg.getUserName());
+		Reg test = userMapper.findReg(userName);
 		return test;
 	}
 
@@ -40,11 +41,6 @@ public class UserDaoImpl implements UserDao {
 		userMapper.creatVip(vip);		
 	}
 
-	@Override
-	public Login findSearch(Login login) {
-		// TODO Auto-generated method stub
-		return userMapper.findSearch1(login.getUserName());
-	}
 
 	@Override
 	public Vip findVip(Long id) {
@@ -75,6 +71,19 @@ public class UserDaoImpl implements UserDao {
 	public Login findSearch(String username) {
 		// TODO Auto-generated method stub
 		return userMapper.findSearch1(username);
+	}
+
+	@Override
+	public Address findOne(Long id) {
+		// TODO Auto-generated method stub
+		
+		return userMapper.findOne(id);
+	}
+
+	@Override
+	public void changePwd(String pwd1, Long id) {
+		// TODO Auto-generated method stub
+		userMapper.changePwd(pwd1,id);
 	}
 
 

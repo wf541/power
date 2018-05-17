@@ -11,14 +11,12 @@ import com.wf.entity.Vip;
 public interface UserService {
 
 
-	void register(Reg reg);
+	String register(Reg reg);
 
-	Reg findSearch(Reg reg);
 
 
 	void creatVip(Vip vip);
 
-	Login findSearch(Login login);
 
 	Vip findVip(Long id);
 
@@ -27,5 +25,12 @@ public interface UserService {
 	void updateAddress(Address address);
 
 	List<Address> findAddress(Long id);
+
+	Address findOne(Long id);
+
+
+
+	void changePwd(String pwd1, Long id);
+
 	
 }

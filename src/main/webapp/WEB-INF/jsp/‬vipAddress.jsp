@@ -77,7 +77,7 @@
      <dd><a href="vipShoucang.html">收藏关注</a></dd>
     <dt class="vip_2">账户设置</dt>
      <dd><a href="vip.html">个人信息</a></dd>
-     <dd><a href="vipPwd.html">密码修改</a></dd>
+     <dd><a href="${ contextPath}/vipPwd">密码修改</a></dd>
      <dd class="ddCur"><a href="${ contextPath}/vipAddress">收货地址</a></dd>
      <dd><a href="${ contextPath}/vipXiaofei/">消费记录</a></dd>
     <dt class="vip_3">客户服务</dt>
@@ -88,7 +88,7 @@
   </div><!--vipLeft/-->
   <div class="vipRight">
    <h2 class="vipTitle">收货地址</h2>
-   <form method="post" action="${ contextPath}/vipAddress/create" name="myform">
+   <form method="post" action="/address-edit/{id}" name="myform">
    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
    <div class="address">
     <div class="addList">
@@ -96,11 +96,11 @@
      <select name="area">
    
       <option >请选择省</option>
-      <option >湖南省</option>
+      <option value="湖南省">湖南省</option>
      </select>
      <select name="area">
       <option>请选择市</option>
-      <option>长沙市</option>
+      <option value="">长沙市</option>
      </select>
      <select name="area">
       <option>请选择地区</option>
@@ -109,19 +109,19 @@
     </div>
     <div class="addList">
      <label><span class="red">* </span>详细地址:</label>
-     <input type="text" name="address"/>
+     <input type="text" name="address" value="${edit.address }"/>
     </div>
     <div class="addList">
      <label><span class="red">* </span>邮政编码:</label>
-     <input type="text" name="postCode"/>
+     <input type="text" name="postCode" value="${edit.postCode }"/>
     </div>
     <div class="addList">
      <label><span class="red">* </span>收件人:</label>
-     <input type="text" name="arelname"/>
+     <input type="text" name="arelname" value="${edit.arelname }"/>
     </div>
     <div class="addList">
      <label><span class="red">* </span>手机号码:</label>
-     <input type="text" phone="phone" name="aphone"/> 或者固定电话 <input type="text" />
+     <input type="text" phone="phone" name="aphone" value="${edit.aphone }"/> 或者固定电话 <input type="text" />
     </div>
     <div class="addList2">
      <input name="" value=" 确 认 " type="submit" class="submit" onclick="action1"/>

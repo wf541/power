@@ -2,6 +2,7 @@ package com.wf.control;
 
 
 import java.io.Console;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,8 +39,7 @@ public class UserControl {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/login")
 //	                                        @RequestParam    获取前端传参                             false:不一定要有这个值
-	public  String loginPhone(@ModelAttribute Reg reg,Model model,@RequestParam(required=false) String error) {
-		model.addAttribute("reg", reg);
+	public  String loginPhone(@RequestParam(required=false) String error) {
 		if(error!=null){
 			System.out.println("登录失败");
 		}
@@ -47,7 +47,7 @@ public class UserControl {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/reg")
-	public  String regPhone(@ModelAttribute Reg reg,Model model) {
+	public  String regPhone() {
 		return "reg";
 	}
 	//商品详情页
@@ -60,13 +60,15 @@ public class UserControl {
 	//注册
 	@RequestMapping(method = RequestMethod.POST, value = "/reg")
 	public  String RegPhone(@ModelAttribute Reg reg) {
-		//查看是否存在
-		Reg flag = userService.findSearch(reg);
-		if(flag==null){
+		System.out.println("333");
+		//查看是否注册
+		String msg= userService.register(reg);
+		
+		if(msg!=null && msg.equals("success")){
 			//对象传参
-			userService.register(reg);
 			return "redirect:/login";
 		}else{
+			
 			return "reg";
 		}
 	}
@@ -110,27 +112,60 @@ public class UserControl {
 				}
 				
 				//vip会员中心--收获地址管理     增加
-				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/create")
-				public String AddressCreat(@ModelAttribute Address address,
+				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress")
+				public String AddressCreat(@ModelAttribute Address address,RedirectAttributes redirectAttributes,
 						@AuthenticationPrincipal(expression = "login") Login login
 						) {
+					System.out.println("/vipAddress");
 							address.setLogin(login);
-//							address.setRegId(address.getLogin().getId());
-							System.out.println("login+creat"+address.getLogin().getId());
 							userService.creatAddress(address);
+							//redirectAttributes.addFlashAttribute("address", address);
 							return "redirect:/vipAddress";
 				}
+				
+			
 				
 				//vip会员中心--收获地址管理    修改
-				@RequestMapping(method = RequestMethod.POST, value = "/vipAddress/edit")
-				public String AddressEdit(@ModelAttribute Address address,
-						@AuthenticationPrincipal(expression = "login") Login login
+				@RequestMapping(method = RequestMethod.GET, value = "/vipAddress/{id}")
+				public String AddressEdit(@ModelAttribute Address address,Model model,
+				@PathVariable Long id
 						) {
-					address.setId(login.getId());
-							userService.updateAddress(address);
+						     System.out.println("/vipAddress/{id}");
+							 Address edit = userService.findOne(id);
+							 System.out.println(edit);
+							 model.addAttribute("edit", edit);
 							return "redirect:/vipAddress";
 				}
 				
+				
+				@RequestMapping(method=RequestMethod.POST,value="/address-edit/{id}")//修改收货地址
+				public String viped(@AuthenticationPrincipal(expression="login")Login login,
+						@ModelAttribute Address address,@PathVariable Long id){
+					System.out.println("/address-edit/{id}");
+					address.setId(id);
+					userService.updateAddress(address);
+					
+					return "redirect:/vipAddress";
+				}
+				
+				//密码修改
+				@RequestMapping(method = RequestMethod.GET, value = "/vipPwd/{id}")
+				public String Pwd(Model model,@AuthenticationPrincipal(expression="login") Login login) {
+					return "vip-pwd";
+				}
+				
+				
+				@RequestMapping(method = RequestMethod.POST, value = "/vipPwd/{id}")
+				public String PwdChange(@AuthenticationPrincipal(expression="login") Login login,
+						@RequestParam String pwd1,@RequestParam String pwd2) {
+					if(pwd1.equals(pwd2)){
+							userService.changePwd(pwd1,login.getId());
+							return "redirect:/vipAddress/{id}";
+						}else{
+							
+							return "vip-pwd";
+						}
+				}
 				//购物车
 				@RequestMapping(method = RequestMethod.GET, value = "/car/")
 				public String carPhone(Model model) {

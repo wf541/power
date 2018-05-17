@@ -59,7 +59,7 @@
     </div><!--loginBuyList/-->
     <div class="loginBuyList" style="border:#DEDEDE 1px solid;">
      <label for="pwd1">确认密码：</label>
-     <input type="text" id="pwd1" name="password"/>
+     <input type="text" id="pwd1"/>
     </div><!--loginBuyList/-->
     
     <div class="loginBuyyan">

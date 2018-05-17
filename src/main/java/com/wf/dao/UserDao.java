@@ -9,14 +9,13 @@ import com.wf.entity.Vip;
 
 public interface UserDao {
 
-	void create(Reg reg);
+	int create(Reg reg);
 
-	Reg findSearch(Reg reg);
+	Reg findReg(String userName);
 
 
 	void creatVip(Vip vip);
 
-	Login findSearch(Login login);
 
 	Vip findVip(Long id);
 
@@ -27,5 +26,9 @@ public interface UserDao {
 	List<Address> findAddress(Long id);
 
 	Login findSearch(String username);
+
+	Address findOne(Long id);
+
+	void changePwd(String pwd1, Long id);
 
 }

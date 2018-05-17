@@ -55,6 +55,7 @@ $(function(){
 	$(".upd,.add,.vipUp").click(function(){
 		$(".address").stop(true,true).slideDown();
 		})
+                
 	//luntan
 	$(".luntan").click(function(){
 		$(this).attr("href","#");

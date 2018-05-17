@@ -19,33 +19,36 @@ import com.wf.entity.Reg;
 import com.wf.entity.Vip;
 @Service
 public class UserServiceImpl implements UserService,UserDetailsService {
-	
-	private UserDao userDao;
-//	private BCryptPasswordEncoder passwordEncoder;
-	
 	@Autowired
-	public UserServiceImpl(UserDao userDao) {
+	private UserDao userDao;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	
+	public UserServiceImpl(UserDao userDao,BCryptPasswordEncoder passwordEncoder) {
 		this.userDao = userDao;
-//		this.passwordEncoder = passwordEncoder;,BCryptPasswordEncoder passwordEncoder
+		this.passwordEncoder = passwordEncoder;
 	}
 
 
 	@Override
-	public void register(Reg reg) {
-		String userName = reg.getUserName();
-		String password = reg.getPassword();
+	public String register(Reg reg) {
 		//弄成密文注入
-//		reg.setEncode(passwordEncoder.encode(password));
-		reg.setEncode(password);
-		userDao.create(reg);
+		reg.setEncode(passwordEncoder.encode(reg.getPassword()));
+		//判断用户是否存在
+		Reg tem = userDao.findReg(reg.getUserName());
+		if(tem != null){
+			return "The username has already existed";
+		}
+		else{
+			int i = userDao.create(reg);
+			if(i<1)
+				return "error";
+		}
+		return "success";
 	}
 
 
-	@Override
-	public Reg findSearch(Reg reg) {
-		Reg test = userDao.findSearch(reg);
-		return test;
-	}
 
 
 	@Override
@@ -53,12 +56,6 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		userDao.creatVip(vip);		
 	}
 
-
-	@Override
-	public Login findSearch(Login login) {
-		// TODO Auto-generated method stub
-		return userDao.findSearch(login);
-	}
 
 
 	@Override
@@ -99,6 +96,24 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		UserDetailsImpl userDetailsImpl = new UserDetailsImpl(login); 
 		return userDetailsImpl;
 	}
+
+
+	@Override
+	public Address findOne(Long id) {
+		// TODO Auto-generated method stub
+		
+		return userDao.findOne(id);
+	}
+
+
+	@Override
+	public void changePwd(String pwd1, Long id) {
+		// TODO Auto-generated method stub
+		pwd1 = passwordEncoder.encode(pwd1);
+		userDao.changePwd(pwd1,id);
+	}
+
+
 
 }
 
