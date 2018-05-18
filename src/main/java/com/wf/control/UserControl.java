@@ -92,8 +92,10 @@ public class UserControl {
 	@RequestMapping(method = RequestMethod.GET, value = "/car")
 	public String carPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login) {
 		List<Address> addresses = userService.findAddress(login.getId());
-		System.out.println(addresses);
 		model.addAttribute("addresses", addresses);
+		
+		List<Commodity> commodities= userService.findCommodity();
+		model.addAttribute("commodities", commodities);
 		return "car";
 	}
 	

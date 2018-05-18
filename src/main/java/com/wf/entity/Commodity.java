@@ -5,7 +5,8 @@ package com.wf.entity;
        name varchar2(64),
         describe varchar2(64),
        price number(7,2),
-       stock number(7)
+       stock number(7),
+       counts number(25)
  */
 public class Commodity {
 	private Long id;
@@ -13,6 +14,7 @@ public class Commodity {
 	private String describe;
 	private double price;
 	private Long stock;
+	private Long counts;
 	
 	public Long getId() {
 		return id;
@@ -45,22 +47,32 @@ public class Commodity {
 	public void setStock(Long stock) {
 		this.stock = stock;
 	}
+	
+	
+	public Long getCounts() {
+		return counts;
+	}
+	public void setCounts(Long counts) {
+		this.counts = counts;
+	}
 	@Override
 	public String toString() {
-		return "BuyInfo [id=" + id + ", name=" + name + ", describe=" + describe + ", price=" + price + ", stock="
-				+ stock + "]";
+		return "Commodity [id=" + id + ", name=" + name + ", describe=" + describe + ", price=" + price + ", stock="
+				+ stock + ", counts=" + counts + "]";
 	}
 	public Commodity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Commodity(Long id, String name, String describe, double price, Long stock) {
+	public Commodity(Long id, String name, String describe, double price, Long stock, Long counts) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.describe = describe;
 		this.price = price;
 		this.stock = stock;
+		this.counts = counts;
 	}
+	
 	
 }

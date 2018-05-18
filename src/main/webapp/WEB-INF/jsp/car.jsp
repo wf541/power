@@ -80,7 +80,7 @@
       ${addr.province },${addr.city},${addr.area},${addr.address},${addr.postCode},${addr.aphone}
      </td>
      <td>
-      <span class="green upd">[修改]</span> | <span class="green add">[添加]</span> 
+      <span class="green upd"><a href="${ contextPath}/vipAddress/${addr.id}">[修改]</a></span> | <span class="green add">[添加]</span> 
      </td>
     </tr>
     </c:forEach>
@@ -126,6 +126,16 @@
      <th width="130">数量</th>
      <th width="130">总金额</th>
      <th width="105">操作</th>
+    </tr>
+    <tr>
+    <c:forEach items="${commodities }" var="commo">
+    	<td></td>
+    	<td>${commo.name},${commo.describe}</td>
+		<td>${commo.price}</td>
+		<td>${commo.counts}</td>
+		<td>${commo.counts * commo.price}</td>
+		<td><a href="#" class="green">收藏</a><br /><a href="#" class="green">删除</a></td>
+    </c:forEach>
     </tr>
     <tr>
      <td><input type="checkbox" /></td>
