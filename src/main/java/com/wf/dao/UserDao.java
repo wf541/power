@@ -42,4 +42,6 @@ public interface UserDao {
 
 	List<Commodity> findCommodity();
 
+	Commodity findDetails(Long id);
+
 }

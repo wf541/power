@@ -143,6 +143,13 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 	}
 
 
+	@Override
+	public Commodity findDetails(Long id) {
+		// TODO Auto-generated method stub
+		return userDao.findDetails(id);
+	}
+
+
 
 
 

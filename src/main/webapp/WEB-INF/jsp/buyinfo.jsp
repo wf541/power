@@ -87,7 +87,7 @@
     </ul><!--buyimgsmall/-->
    </div><!--buyDtlLeft/-->
    <div class="buyDtlRight">
-    <h3>联想 A808T 黄金斗士</h3>
+    <h3>联想 A808T 黄金斗士${goodDetails.name}</h3>
     <h4>【赠送精品蓝牙耳机+超大容量移动电源】5.0英寸高清大屏 真八核1.7GHz 1300万像素主摄像头</h4>
     <h5>价格：<span>￥</span><strong id="price_item_1">1999.00</strong></h5>
     <table class="buyTable">
@@ -146,8 +146,8 @@
      </tr>
     </table><!--buyTable/-->
     <div class="goumai">
-     <a href="/car/" class="buy-gou">立即购买</a>
-     <a href="#" class="buy-mai">加入购物车</a>
+     <a href="${contextPath }/car" class="buy-gou">立即购买</a>
+     <a href="${contextPath }/car" class="buy-mai" >加入购物车</a>
     </div><!--goumai/-->
    </div><!--buyDtlRight/-->
    <div class="clears"></div>

@@ -117,6 +117,12 @@ public class UserDaoImpl implements UserDao {
 		return userMapper.findCommodity();
 	}
 
+	@Override
+	public Commodity findDetails(Long id) {
+		// TODO Auto-generated method stub
+		return userMapper.findDetails(id);
+	}
+
 
 
 }

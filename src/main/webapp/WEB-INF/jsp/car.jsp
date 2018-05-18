@@ -71,17 +71,19 @@
    <div class="carimg src=""><img src=" ${ contextPath}/assets/images/car1.jpg" width="951" height="27" /></div>
    <h4 class="orderTitle">收货地址</h4>
    <table class="ord">
+    <c:forEach items="${addresses }" var="addr">
     <tr>
-     <td width="30%">
-      <input type="radio" /> 张大炮
+     <td width="30%" >
+      <input type="radio" /> ${addr.arelname }
      </td>
-     <td width="50%">
-      上海,上海市,普陀区,曹杨路1040弄中友大厦一号楼19楼	,200000,13020129519
+     <td width="50%" >
+      ${addr.province },${addr.city},${addr.area},${addr.address},${addr.postCode},${addr.aphone}
      </td>
      <td>
       <span class="green upd">[修改]</span> | <span class="green add">[添加]</span> 
      </td>
     </tr>
+    </c:forEach>
    </table><!--ord/-->
    <div class="address">
     <div class="addList">

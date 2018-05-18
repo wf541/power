@@ -42,5 +42,7 @@ public interface UserMapper {
 	List<Address> findareas();
 
 	List<Commodity> findCommodity();
+
+	Commodity findDetails(Long id);
 	
 }

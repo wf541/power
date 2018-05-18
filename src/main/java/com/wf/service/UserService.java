@@ -49,5 +49,9 @@ public interface UserService {
 
 	List<Commodity> findCommodity();
 
+
+
+	Commodity findDetails(Long id);
+
 	
 }

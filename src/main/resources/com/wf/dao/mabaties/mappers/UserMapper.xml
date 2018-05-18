@@ -62,8 +62,13 @@
 	  select * from power_address
   </select>
   
-  <!--查找商品  -->
+  <!--查找商品 集合 -->
   <select id="findCommodity" resultType="com.wf.entity.Commodity">
   		select * from power_commoditys
   </select>
+  
+  <!--根据id查找相应商品详情  -->
+	<select id="findDetails" resultType="com.wf.entity.Commodity">
+		select * from power_commoditys where id=#{id}
+	</select>
 </mapper>

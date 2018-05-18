@@ -69,25 +69,41 @@ public class UserControl {
 		}
 	}
 	
-	//商品详情页
-	@RequestMapping(method = RequestMethod.GET, value = "/buyinfo")
-	public String buyPhone(@ModelAttribute Reg reg,@AuthenticationPrincipal(expression = "login") Login login) {
-		
-		return "buyinfo";
-	}
 
 	//商品列表页
 	@RequestMapping(method = RequestMethod.GET, value = "/prolist")
 	public String prolistPhone(@ModelAttribute Reg reg,
 			@AuthenticationPrincipal(expression = "login") Login login,Model model) {
 		List<Commodity> commodity = userService.findCommodity();
-		System.out.println("p2:"+commodity);
 		
 		model.addAttribute("prolists", commodity);
 		return "prolist";
 	}
+	//商品详情页
+	@RequestMapping(method = RequestMethod.GET, value = "/buyinfo")
+	public String buyPhone(@ModelAttribute Reg reg,@AuthenticationPrincipal(expression = "login") Login login,
+			Model model,@ModelAttribute Commodity commodity) {
+		/*Commodity goodDetails = userService.findDetails(commodity.getId());
+		model.addAttribute("goodDetails", goodDetails);*/
+		return "buyinfo";
+	}
 	
+	//购物车
+	@RequestMapping(method = RequestMethod.GET, value = "/car")
+	public String carPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login) {
+		List<Address> addresses = userService.findAddress(login.getId());
+		System.out.println(addresses);
+		model.addAttribute("addresses", addresses);
+		return "car";
+	}
 	
+	//购物车
+		@RequestMapping(method = RequestMethod.POST, value = "/car")
+		public String car(Model model) {
+			
+			return "car";
+		}
+		
 		
 		//vip会员中心--个人信息   找到注入信息
 		@RequestMapping(method = RequestMethod.GET, value = "/userinfo")
@@ -187,11 +203,6 @@ public class UserControl {
 						}
 				}
 				
-		//购物车
-		@RequestMapping(method = RequestMethod.GET, value = "/car/")
-		public String carPhone(Model model) {
-					return "car";
-		}
 				
 				
 	   //订单确认页
