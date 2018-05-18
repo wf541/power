@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.wf.dao.UserDao;
 import com.wf.entity.Address;
+import com.wf.entity.Commodity;
 import com.wf.entity.Login;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
@@ -132,6 +133,13 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 	public List<Address> findareas() {
 		// TODO Auto-generated method stub
 		return userDao.findareas();
+	}
+
+
+	@Override
+	public List<Commodity> findCommodity() {
+		// TODO Auto-generated method stub
+		return userDao.findCommodity();
 	}
 
 

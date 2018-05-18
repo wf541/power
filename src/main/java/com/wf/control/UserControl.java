@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wf.entity.Address;
+import com.wf.entity.Commodity;
 import com.wf.entity.Login;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
@@ -71,8 +72,23 @@ public class UserControl {
 	//商品详情页
 	@RequestMapping(method = RequestMethod.GET, value = "/buyinfo")
 	public String buyPhone(@ModelAttribute Reg reg,@AuthenticationPrincipal(expression = "login") Login login) {
+		
 		return "buyinfo";
 	}
+
+	//商品列表页
+	@RequestMapping(method = RequestMethod.GET, value = "/prolist")
+	public String prolistPhone(@ModelAttribute Reg reg,
+			@AuthenticationPrincipal(expression = "login") Login login,Model model) {
+		List<Commodity> commodity = userService.findCommodity();
+		System.out.println("p2:"+commodity);
+		
+		model.addAttribute("prolists", commodity);
+		return "prolist";
+	}
+	
+	
+		
 		//vip会员中心--个人信息   找到注入信息
 		@RequestMapping(method = RequestMethod.GET, value = "/userinfo")
 		public String vipPhone(
@@ -170,11 +186,12 @@ public class UserControl {
 							return "vip-pwd";
 						}
 				}
-				//购物车
-				@RequestMapping(method = RequestMethod.GET, value = "/car/")
-				public String carPhone(Model model) {
+				
+		//购物车
+		@RequestMapping(method = RequestMethod.GET, value = "/car/")
+		public String carPhone(Model model) {
 					return "car";
-				}
+		}
 				
 				
 	   //订单确认页

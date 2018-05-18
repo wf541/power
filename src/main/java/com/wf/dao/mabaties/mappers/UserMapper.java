@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.wf.entity.Address;
+import com.wf.entity.Commodity;
 import com.wf.entity.Login;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
@@ -39,5 +40,7 @@ public interface UserMapper {
 	List<Address> findcitys();
 
 	List<Address> findareas();
+
+	List<Commodity> findCommodity();
 	
 }
