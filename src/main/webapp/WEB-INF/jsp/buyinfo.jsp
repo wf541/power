@@ -47,10 +47,10 @@
   </form><!--subBox/-->
   <div class="ding-gou">
    <div class="ding">
-    <a href="/order/"><img src="${ contextPath}/assets/images/dingdan.jpg" width="106" height="32" /></a>
+    <a href="${ contextPath}/order"><img src="${ contextPath}/assets/images/dingdan.jpg" width="106" height="32" /></a>
    </div><!--ding/-->
    <div class="gou">
-    <a href="/car/"><img src="${ contextPath}/assets/images/gouwuche.jpg" width="126" height="32" /></a>
+    <a href="${ contextPath}/car"><img src="${ contextPath}/assets/images/gouwuche.jpg" width="126" height="32" /></a>
    </div><!--gou/-->
    <div class="clears"></div>
   </div><!--ding-gou/-->

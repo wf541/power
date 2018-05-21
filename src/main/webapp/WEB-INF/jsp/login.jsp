@@ -20,7 +20,7 @@
    <a href="index.html" style="color:#FD7306;">首页</a>
    <a href="buy.html">买家</a>
    <a href="sell.html">卖家</a>
-   <a href="/userinfo">会员中心</a>
+   <a href="${ contextPath}/userinfo">会员中心</a>
    <a href="xuanshang.html">悬赏榜</a>
    <a href="luntan.html" class="luntan">论坛</a>
    <a href="help.html">帮助</a>

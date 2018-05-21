@@ -14,11 +14,11 @@
 <body>
 <div class="hrader" id="header">
   <div class="top">
-   <a href="/login/" style="color:#C94E13;">请登录</a> 
-   <a href="/reg/">注册</a>
+   <a href="${ contextPath}/login" style="color:#C94E13;">请登录</a> 
+   <a href="${ contextPath}/reg">注册</a>
    <ul class="topNav">
-    <li><a href="/order/">我的订单 </a></li>
-    <li class="gouwuche"><a href="/car/">购物车</a> <strong style="color:#C94E13;">3</strong></li>
+    <li><a href="${ contextPath}/order">我的订单 </a></li>
+    <li class="gouwuche"><a href="${ contextPath}/car">购物车</a> <strong style="color:#C94E13;">3</strong></li>
     <li class="shoucangjia"><a href="shoucang.html">收藏夹</a></li>
     <li class="kefus"><a href="#">联系客服</a></li>
 <li><a href="#" class="lan">中文</a></li>
@@ -31,7 +31,7 @@
   <h1 class="logo" style="text-align:left;">
   <a href="index.html"><img src=" ${ contextPath}/assets/images/logo.png" width="304" height="74" /></a>
   </h1>
-  <form action="/car/" method="post" class="subBox">
+  <form action="${ contextPath}/car" method="post" class="subBox">
    <div class="subBox2">
     <input type="text" class="subText" />
     <input type="image" src="${ contextPath}/assets/images/sub.jpg" width="95" height="32" class="subimg src="" />
@@ -59,7 +59,7 @@
    <li><a href="index.html">首页</a></li>
    <li><a href="buy.html">买家</a></li>
    <li><a href="sell.html">卖家</a></li>
-   <li><a href="/login/vip/{id}">会员中心</a></li>
+   <li><a href="${ contextPath}/userinfo">会员中心</a></li>
    <li><a href="xuanshang.html">悬赏榜</a></li>
    <li><a href="luntan.html" class="luntan">论坛</a></li>
    <li class="navCur"><a href="help.html">帮助</a></li>
@@ -129,7 +129,7 @@
     </tr>
     <tr>
     <c:forEach items="${commodities }" var="commo">
-    	<td></td>
+    	<td><input type="checkbox" /></td>
     	<td>${commo.name},${commo.describe}</td>
 		<td>${commo.price}</td>
 		<td>${commo.counts}</td>
@@ -202,7 +202,7 @@
    </div><!--zongji/-->
    <div class="jiesuan">
     <a href="index.html" class="jie_1">继续购物&gt;&gt;</a>
-    <a href="/order/" class="jie_2">立即结算&gt;&gt;</a>
+    <a href="${ contextPath}/order" class="jie_2">立即结算&gt;&gt;</a>
     <div class="clears"></div>
    </div><!--jiesuan/-->
    <div class="clears"></div>

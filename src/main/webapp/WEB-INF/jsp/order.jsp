@@ -14,11 +14,11 @@
 <body>
 <div class="hrader" id="header">
   <div class="top">
-   <a href="/login/" style="color:#C94E13;">请登录</a> 
-   <a href="/reg/">注册</a>
+   <a href="${ contextPath}/login" style="color:#C94E13;">请登录</a> 
+   <a href="${ contextPath}/reg">注册</a>
    <ul class="topNav">
-    <li><a href="/order/">我的订单 </a></li>
-    <li class="gouwuche"><a href="/car/">购物车</a> <strong style="color:#C94E13;">3</strong></li>
+    <li><a href="${ contextPath}/order">我的订单 </a></li>
+    <li class="gouwuche"><a href="${ contextPath}/car">购物车</a> <strong style="color:#C94E13;">3</strong></li>
     <li class="shoucangjia"><a href="shoucang.html">收藏夹</a></li>
     <li class="kefus"><a href="#">联系客服</a></li>
 <li><a href="#" class="lan">中文</a></li>
@@ -46,10 +46,10 @@
   </form><!--subBox/-->
   <div class="ding-gou">
    <div class="ding">
-    <a href="order.html"><img src="${ contextPath}/assets/images/dingdan.jpg" width="106" height="32" /></a>
+    <a href="${ contextPath}/order"><img src="${ contextPath}/assets/images/dingdan.jpg" width="106" height="32" /></a>
    </div><!--ding/-->
    <div class="gou">
-    <a href="car.html"><img src="${ contextPath}/assets/images/gouwuche.jpg" width="126" height="32" /></a>
+    <a href="${ contextPath}/car"><img src="${ contextPath}/assets/images/gouwuche.jpg" width="126" height="32" /></a>
    </div><!--gou/-->
    <div class="clears"></div>
   </div><!--ding-gou/-->
@@ -59,7 +59,7 @@
    <li><a href="index.html">首页</a></li>
    <li><a href="buy.html">买家</a></li>
    <li><a href="sell.html">卖家</a></li>
-   <li><a href="/login/vip/{id}">会员中心</a></li>
+   <li><a href="${ contextPath}/userinfo">会员中心</a></li>
    <li><a href="xuanshang.html">悬赏榜</a></li>
    <li><a href="luntan.html" class="luntan">论坛</a></li>
    <li class="navCur"><a href="help.html">帮助</a></li>
@@ -138,6 +138,14 @@
      <th width="135">总金额</th>
      <th>操作</th>
     </tr>
+     <c:forEach items="${commodities }" var="commo">
+    	<td><input type="checkbox" /></td>
+    	<td>${commo.name},${commo.describe}</td>
+		<td>${commo.price}</td>
+		<td>${commo.counts}</td>
+		<td>${commo.counts * commo.price}</td>
+		<td><a href="#" class="green">收藏</a><br /><a href="#" class="green">删除</a></td>
+    </c:forEach>
     <tr>
      <td><input type="checkbox" /></td>
      <td>

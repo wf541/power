@@ -107,6 +107,15 @@ public class UserControl {
 		}
 		
 		
+	//订单确认页
+		@RequestMapping(method = RequestMethod.GET, value = "/order")
+		public String orderPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login) {
+			List<Commodity> commodities= userService.findCommodity();
+			model.addAttribute("commodities", commodities);
+			return "order";
+		}
+		
+		
 		//vip会员中心--个人信息   找到注入信息
 		@RequestMapping(method = RequestMethod.GET, value = "/userinfo")
 		public String vipPhone(
@@ -207,11 +216,6 @@ public class UserControl {
 				
 				
 				
-	   //订单确认页
-		@RequestMapping(method = RequestMethod.GET, value = "/order/")
-		public String orderPhone(Model model) {
-					return "order";
-		}
 		
 		
 		 //订单成功创建页
