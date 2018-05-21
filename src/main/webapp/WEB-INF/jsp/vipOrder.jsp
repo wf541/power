@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
        <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>    
        <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"></c:set>
@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>会员中心--个人信息</title>
+<title>会员中心-订单列表</title>
 <link type="text/css" href="${ contextPath}/assets/css/css.css" rel="stylesheet" />
 <script type="text/javascript" src="${ contextPath}/assets/js/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="${ contextPath}/assets/js/js.js"></script>
@@ -33,7 +33,7 @@
   <h1 class="logo" style="text-align:left;">
   <a href="index.html"><img src="${ contextPath}/assets/images/logo.png" width="304" height="74" /></a>
   </h1>
-  <form action="${ contextPath}/userinfo" method="post" class="subBox">
+  <form action="#" method="get" class="subBox">
    <div class="subBox2">
     <input type="text" class="subText" />
     <input type="image" src="${ contextPath}/assets/images/sub.jpg" width="95" height="32" class="subImg" />
@@ -74,10 +74,10 @@
    <h3 class="vipName">测试webqin</h3>
    <dl class="vipNav">
     <dt class="vip_1 vipCur">买家中心</dt>
-     <dd><a href="${ contextPath}/vipOrder">我的订单</a></dd>
+     <dd class="ddCur"><a href="${ contextPath}/vipOrder">我的订单</a></dd>
      <dd><a href="vipShoucang.html">收藏关注</a></dd>
     <dt class="vip_2">账户设置</dt>
-     <dd class="ddCur"><a href="#">个人信息</a></dd>
+     <dd><a href="vip.html">个人信息</a></dd>
      <dd><a href="${ contextPath}/vipPwd/<sec:authentication property="principal.login.id"/>">密码修改</a></dd>
      <dd><a href="${ contextPath}/vipAddress">收货地址</a></dd>
      <dd><a href="${ contextPath}/vipXiaofei">消费记录</a></dd>
@@ -88,60 +88,64 @@
    </dl><!--vipNav/-->
   </div><!--vipLeft/-->
   <div class="vipRight">
-   <h2 class="vipTitle">个人中心</h2>
+   <h2 class="vipTitle">我的订单</h2>
    
-   <form:form action="" method="post" class="registerform" commandName="vip">
-      <table class="grzx" width="705" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td width="90"><span>*</span>真实姓名：</td>
-          <td width="430"><form:input path="relname" type="text" class="text inputxt"/></td>
-          <td rowspan="8" valign="top"><div id="tx"><img src="${ contextPath}/assets/images/vipImg.jpg" /></div>
-            <span class="file"><input name="" type="file" class="file1" /></span></td>
-        </tr>
-        <!-- <tr>
-          <td><span>*</span>所在城市：</td>
-          <td><select name="">
-              <option>省</option>
-              <option>上海</option>
-            </select>
-            <select name="">
-              <option>市</option>
-              <option>上海</option>
-            </select>
-            <select name="">
-              <option>区</option>
-              <option>宝山</option>
-            </select></td>
-        </tr> -->
-        <tr>
-          <td>&nbsp;性别：</td>
-          <td>
-          <form:radiobutton path="sex" value="0" id="person" class="pr1"/>男　
-          <form:radiobutton path="sex" value="1" id="company" class="pr1"/>女
-            </td>
-        </tr>
-        <tr>
-          <td>&nbsp;EMAIL:</td>
-          <td><form:input type="text" class="text1" datatype="e" path="mail"/></td>
-        </tr>
-        <tr>
-          <td>&nbsp;身份证:</td>
-          <td><form:input path="idencity" type="text" class="text1 inputxt" datatype="idcard" nullmsg="请填写身份证号码！" errormsg="您填写的身份证号码不对！必须位数字且不低于18位" /></td>
-        </tr>
-        <tr>
-          <td>&nbsp;&nbsp;类别：</td>
-          <td>艺术家</td>
-        </tr>
-        <tr>
-          <td>&nbsp;个人简介：</td>
-          <td><textarea tip="请在这里输入您的简介。" altercss="gray" class="gray" name="infor"  datatype="*" value="">请在这里输入您的简介。${vip.infor }</textarea></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td><button value="" type="submit" class="submit">保存资料</button></td>
-        </tr>
-      </table>
-      </form:form>
+   <h2 class="oredrName">
+    我的订单 <span style="margin-left:40px;">待发货 <span class="red">10</span> </span>
+    <span>待收货 <span class="red">15</span></span>
+    </h2>
+    <table class="vipOrder">
+     <c:forEach items="${orderList }" var="orderList">
+     	<tr>
+    	<td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
+    	<td>${orderList.arelname}</td>
+		<td><%-- ${orderList.commodity.counts * orderList.commodity.price} --%>${orderList.commodity}<br />支付宝支付</td>
+		<td>2014年6月23日11:32:17</td>
+      	<td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
+     	 <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
+     	 </tr>
+    </c:forEach>
+     <tr>
+      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
+      <td>张益达</td>
+      <td>￥16.9<br />支付宝支付</td>
+      <td>2014年6月23日11:32:17</td>
+      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
+      <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
+     </tr>
+     <tr>
+      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
+      <td>张益达</td>
+      <td>￥16.9<br />支付宝支付</td>
+      <td>2014年6月23日11:32:17</td>
+      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
+      <td><a href="${ contextPath}vipXiaofei">查看</a></td>
+     </tr>
+     <tr>
+      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
+      <td>张益达</td>
+      <td>￥16.9<br />支付宝支付</td>
+      <td>2014年6月23日11:32:17</td>
+      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
+      <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
+     </tr>
+     <tr>
+      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
+      <td>张益达</td>
+      <td>￥16.9<br />支付宝支付</td>
+      <td>2014年6月23日11:32:17</td>
+      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
+      <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
+     </tr>
+     <tr>
+      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
+      <td>张益达</td>
+      <td>￥16.9<br />支付宝支付</td>
+      <td>2014年6月23日11:32:17</td>
+      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
+      <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
+     </tr>
+    </table><!--vipOrder/-->
   </div><!--vipRight/-->
   <div class="clears"></div>
  </div><!--vipBox/-->
@@ -208,6 +212,5 @@
   <br />
   <span>&copy; 2014 Unqezi 使用前必读 沪ICP备 12007626号-1</span>
  </div><!--footer/-->
-
 </body>
 </html>

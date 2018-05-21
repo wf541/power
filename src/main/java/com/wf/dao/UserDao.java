@@ -44,4 +44,6 @@ public interface UserDao {
 
 	Commodity findDetails(Long id);
 
+	List<Address> findVipOrder(Long id);
+
 }

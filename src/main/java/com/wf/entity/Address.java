@@ -1,4 +1,7 @@
 package com.wf.entity;
+
+import java.util.List;
+
 /*
  *  id number(7) primary key,
         relname varchar2(64),
@@ -21,6 +24,9 @@ public class Address {
 	private String address;
 	private Long regId;
 	private Login login;
+	
+//	对多
+	private List<Commodity> commodity;
 	
 	public Login getLogin() {
 		return login;
@@ -87,14 +93,24 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	
+	
+	public List<Commodity> getCommodity() {
+		return commodity;
+	}
+	public void setCommodity(List<Commodity> commodity) {
+		this.commodity = commodity;
+	}
 	public Address() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
+	
 	public Address(Long id, String arelname, Long aphone, Long postCode, String area, String province, String city,
-			String address, Long regId, Login login) {
+			String address, Long regId, Login login, List<Commodity> commodity) {
 		super();
 		this.id = id;
 		this.arelname = arelname;
@@ -106,12 +122,13 @@ public class Address {
 		this.address = address;
 		this.regId = regId;
 		this.login = login;
+		this.commodity = commodity;
 	}
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", arelname=" + arelname + ", aphone=" + aphone + ", postCode=" + postCode
 				+ ", area=" + area + ", province=" + province + ", city=" + city + ", address=" + address + ", regId="
-				+ regId + ", login=" + login + "]";
+				+ regId + ", login=" + login + ", commodity=" + commodity + "]";
 	}
 	
 	

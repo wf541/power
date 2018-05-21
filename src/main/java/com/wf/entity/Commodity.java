@@ -55,16 +55,12 @@ public class Commodity {
 	public void setCounts(Long counts) {
 		this.counts = counts;
 	}
-	@Override
-	public String toString() {
-		return "Commodity [id=" + id + ", name=" + name + ", describe=" + describe + ", price=" + price + ", stock="
-				+ stock + ", counts=" + counts + "]";
-	}
+	
 	public Commodity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Commodity(Long id, String name, String describe, double price, Long stock, Long counts) {
+	/*public Commodity(Long id, String name, String describe, double price, Long stock, Long counts) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -72,7 +68,16 @@ public class Commodity {
 		this.price = price;
 		this.stock = stock;
 		this.counts = counts;
+	}*/
+	public Commodity(double price, Long counts) {
+		
+		this.price = price;
+
+		this.counts = counts;
+		
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "price*counts";
+	}
 }

@@ -123,6 +123,12 @@ public class UserDaoImpl implements UserDao {
 		return userMapper.findDetails(id);
 	}
 
+	@Override
+	public List<Address> findVipOrder(Long id) {
+		// TODO Auto-generated method stub
+		return userMapper.findVipOrder(id);
+	}
+
 
 
 }

@@ -114,6 +114,15 @@ public class UserControl {
 			model.addAttribute("commodities", commodities);
 			return "order";
 		}
+		//vip会员中心--订单列表
+		@RequestMapping(method = RequestMethod.GET, value = "/vipOrder")
+		public String vipOrderPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login) {
+			
+			List<Address> orderList= userService.findVipOrder(login.getId());
+			model.addAttribute("orderList", orderList);
+			
+			return "vipOrder";
+		}		
 		
 		
 		//vip会员中心--个人信息   找到注入信息
@@ -219,7 +228,7 @@ public class UserControl {
 		
 		
 		 //订单成功创建页
-		@RequestMapping(method = RequestMethod.GET, value = "/success/")
+		@RequestMapping(method = RequestMethod.GET, value = "/success")
 		public String successPhone(Model model) {
 					return "success";
 		}
@@ -228,11 +237,10 @@ public class UserControl {
 				
 				
 		//vip会员中心--订单详情
-				@RequestMapping(method = RequestMethod.GET, value = "/vipXiaofei/")
+				@RequestMapping(method = RequestMethod.GET, value = "/vipXiaofei")
 				public String vipXiaofeiPhone(Model model) {
 							return "vipXiaofei";
 				}
-				
 				
 		
 }

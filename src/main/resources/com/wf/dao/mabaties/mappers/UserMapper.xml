@@ -71,4 +71,21 @@
 	<select id="findDetails" resultType="com.wf.entity.Commodity">
 		select * from power_commoditys where id=#{id}
 	</select>
+	
+	<!--订单列表 vip -->
+	<select id="findVipOrder" resultMap="AddressMap">
+	select pa.arelname,pc.price,pc.counts
+ from power_address pa inner join power_reg pr on pa.reg_id=pr.id 
+	left join power_commoditys pc on pc.id=pa.commodity_id
+  where pa.reg_id = #{id}
+	</select>
+	<resultMap type="com.wf.entity.Address" id="AddressMap">
+		<id property="id" column="pa_id"></id>
+		<result property="arelname" column="arelname"/>
+	<collection property="commodity" ofType="com.wf.entity.Commodity">
+		<id property="id" column="pc_id"></id>
+		<result property="price" column="price"/>
+		<result property="counts" column="counts"/>
+	</collection>
+	</resultMap>
 </mapper>

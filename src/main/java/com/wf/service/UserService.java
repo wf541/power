@@ -53,5 +53,9 @@ public interface UserService {
 
 	Commodity findDetails(Long id);
 
+
+
+	List<Address> findVipOrder(Long id);
+
 	
 }

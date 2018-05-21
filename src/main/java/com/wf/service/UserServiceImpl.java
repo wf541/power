@@ -150,6 +150,13 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 	}
 
 
+	@Override
+	public List<Address> findVipOrder(Long id) {
+		// TODO Auto-generated method stub
+		return userDao.findVipOrder(id);
+	}
+
+
 
 
 

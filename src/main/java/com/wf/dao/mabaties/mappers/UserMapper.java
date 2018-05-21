@@ -44,5 +44,7 @@ public interface UserMapper {
 	List<Commodity> findCommodity();
 
 	Commodity findDetails(Long id);
+
+	List<Address> findVipOrder(Long id);
 	
 }
