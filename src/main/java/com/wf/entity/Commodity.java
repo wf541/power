@@ -78,6 +78,7 @@ public class Commodity {
 	}
 	@Override
 	public String toString() {
-		return "price*counts";
+		double pc = this.price*this.counts;
+		return "￥"+pc;
 	}
 }
