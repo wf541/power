@@ -74,7 +74,7 @@
     <c:forEach items="${addresses }" var="addr">
     <tr>
      <td width="30%" >
-      <input type="radio" /> ${addr.arelname }
+      <input type="radio" name="address"/> ${addr.arelname }
      </td>
      <td width="50%" >
       ${addr.province },${addr.city},${addr.area},${addr.address},${addr.postCode},${addr.aphone}
@@ -128,16 +128,8 @@
      <th width="105">操作</th>
     </tr>
     <tr>
-    <c:forEach items="${commodities }" var="commo">
-    	<td><input type="checkbox" /></td>
-    	<td>${commo.name},${commo.describe}</td>
-		<td>${commo.price}</td>
-		<td>${commo.counts}</td>
-		<td>${commo.counts * commo.price}</td>
-		<td><a href="#" class="green">收藏</a><br /><a href="#" class="green">删除</a></td>
-    </c:forEach>
-    </tr>
-    <tr>
+    <c:forEach items="${car}" var="car">
+		 <tr>
      <td><input type="checkbox" /></td>
      <td colspan="5" style="text-align:left;color:#930; font-weight:bold;">
       <img src=" ${ contextPath}/assets/images/dianpu.gif" width="20" height="15" style="position:relative;top:2px;" />
@@ -149,48 +141,25 @@
      <td>
       <dl>
        <dt><a href="proinfo.html"><img src=" ${ contextPath}/assets/images/phone.png" width="85" height="85" /></a></dt>
-       <dd>全球最大的中文搜索引擎、致力于让网民更便捷<br /><span class="red">有货：</span>从上海出发</dd>
+       <dd>${car.commodity.name},${car.commodity.describe}<br /><span class="red">有货：</span>从上海出发</dd>
        <div class="clears"></div>
       </dl>
      </td>
-     <td><strong class="red">￥70.20</strong></td>
+     <td><strong class="red">￥${car.commodity.price}</strong></td>
      <td>
      <div class="jia_jian">
       <img src=" ${ contextPath}/assets/images/jian.jpg" width="21" height="25" class="jian" />
-      <input type="text" class="shuliang" value="1" />
+      <input type="text" class="shuliang" value="${car.commodity.counts }" />
       <img src=" ${ contextPath}/assets/images/jia.jpg" width="21" height="25" class="jia" />
      </div>
      </td>
-     <td><strong class="red">￥70.20</strong></td>
-     <td><a href="#" class="green">收藏</a><br /><a href="#" class="green">删除</a></td>
+     <td><strong class="red">￥${car.commodity.counts * car.commodity.price}</strong></td>
+     <td><a href="#" class="green">收藏</a><br /><a href="${contextPath}/del/${car.id}" class="green" >删除</a></td>
     </tr>
-    <tr>
-     <td><input type="checkbox" /></td>
-     <td colspan="5" style="text-align:left;color:#930; font-weight:bold;">
-      <img src=" ${ contextPath}/assets/images/dianpu.gif" width="20" height="15" style="position:relative;top:2px;" />
-      店铺：unique VIP店铺 北京分店
-     </td>
+    </c:forEach>
     </tr>
-    <tr>
-     <td><input type="checkbox" /></td>
-     <td>
-      <dl>
-       <dt><a href="proinfo.html"><img src=" ${ contextPath}/assets/images/phone.png" width="85" height="85" /></a></dt>
-       <dd>全球最大的中文搜索引擎、致力于让网民更便捷<br /><span class="red">有货：</span>从上海出发</dd>
-       <div class="clears"></div>
-      </dl>
-     </td>
-     <td><strong class="red">￥70.20</strong></td>
-     <td>
-     <div class="jia_jian">
-      <img src=" ${ contextPath}/assets/images/jian.jpg" width="21" height="25" class="jian" />
-      <input type="text" class="shuliang" value="1" />
-      <img src=" ${ contextPath}/assets/images/jia.jpg" width="21" height="25" class="jia" />
-     </div>
-     </td>
-     <td><strong class="red">￥70.20</strong></td>
-     <td><a href="#" class="green">收藏</a><br /><a href="#" class="green">删除</a></td>
-    </tr>
+   
+    
     
     <tr>
      <td colspan="6"><div class="shanchu"><img src=" ${ contextPath}/assets/images/lajio.jpg" /> 全部删除</div></td>
@@ -202,7 +171,7 @@
    </div><!--zongji/-->
    <div class="jiesuan">
     <a href="index.html" class="jie_1">继续购物&gt;&gt;</a>
-    <a href="${ contextPath}/order" class="jie_2">立即结算&gt;&gt;</a>
+    <a href="${ contextPath}/vipOrder" class="jie_2">立即结算&gt;&gt;</a>
     <div class="clears"></div>
    </div><!--jiesuan/-->
    <div class="clears"></div>

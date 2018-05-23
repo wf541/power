@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wf.entity.Address;
+import com.wf.entity.Car;
 import com.wf.entity.Commodity;
 import com.wf.entity.Login;
+import com.wf.entity.Order;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
 import com.wf.service.UserService;
@@ -94,11 +96,24 @@ public class UserControl {
 		List<Address> addresses = userService.findAddress(login.getId());
 		model.addAttribute("addresses", addresses);
 		
-		List<Commodity> commodities= userService.findCommodity();
-		model.addAttribute("commodities", commodities);
+		/*List<Commodity> commodities= userService.findCommodity();
+		model.addAttribute("commodities", commodities);*/
+		
+		List<Car> car =userService.findAllCar(login.getId());
+		model.addAttribute("car", car);
 		return "car";
 	}
 	
+	@RequestMapping(method=RequestMethod.GET,value="/del/{id}")
+	public String carDel(@PathVariable Long id){
+		userService.del(id);
+		return "redirect:/car";
+	}
+	@RequestMapping(method=RequestMethod.GET,value="/add/{id}")
+	public String carInsert(@PathVariable Long id,@AuthenticationPrincipal(expression = "login") Login login){
+		userService.addCar(id,login.getId());
+		return "redirect:/car";
+	}
 	//购物车
 		@RequestMapping(method = RequestMethod.POST, value = "/car")
 		public String car(Model model) {
@@ -107,22 +122,24 @@ public class UserControl {
 		}
 		
 		
-	//订单确认页
-		@RequestMapping(method = RequestMethod.GET, value = "/order")
-		public String orderPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login) {
-			List<Commodity> commodities= userService.findCommodity();
-			model.addAttribute("commodities", commodities);
-			return "order";
-		}
-		//vip会员中心--订单列表
+		
+		//vip会员中心--订单列表   通过用户id，收货地址id
 		@RequestMapping(method = RequestMethod.GET, value = "/vipOrder")
 		public String vipOrderPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login) {
 			
-			List<Address> orderList= userService.findVipOrder(login.getId());
+			List<Order> orderList= userService.findVipOrder(login.getId());
 			model.addAttribute("orderList", orderList);
-			
+			System.out.println(orderList);
 			return "vipOrder";
 		}		
+		//vip会员中心--订单详情
+		@RequestMapping(method = RequestMethod.GET, value = "/vipXiaofei/{id}")
+		public String vipXiaofeiPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login,
+				@PathVariable Long id) {
+			Order order = userService.findXiaofei(id);
+			model.addAttribute("order", order);
+			return "vipXiaofei";
+		}
 		
 		
 		//vip会员中心--个人信息   找到注入信息
@@ -236,11 +253,13 @@ public class UserControl {
 		
 				
 				
-		//vip会员中心--订单详情
-				@RequestMapping(method = RequestMethod.GET, value = "/vipXiaofei")
-				public String vipXiaofeiPhone(Model model) {
-							return "vipXiaofei";
-				}
+		//订单确认页
+		@RequestMapping(method = RequestMethod.GET, value = "/order")
+		public String orderPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login) {
+			List<Commodity> commodities= userService.findCommodity();
+			model.addAttribute("commodities", commodities);
+			return "order";
+		}
 				
 		
 }

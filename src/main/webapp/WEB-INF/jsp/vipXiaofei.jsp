@@ -76,9 +76,9 @@
      <dd><a href="vipShoucang.html">收藏关注</a></dd>
     <dt class="vip_2">账户设置</dt>
      <dd><a href="vip.html">个人信息</a></dd>
-     <dd><a href="vipPwd.html">密码修改</a></dd>
-     <dd><a href="/vipAddress/">收货地址</a></dd>
-     <dd class="ddCur"><a href="/vipXiaofei/">消费记录</a></dd>
+     <dd><a href="${ contextPath}/vipPwd/<sec:authentication property="principal.login.id"/>">密码修改</a></dd>
+     <dd><a href="${ contextPath}/vipAddress">收货地址</a></dd>
+     <dd class="ddCur"><a href="${ contextPath}/vipXiaofei/${addresses.id}">消费记录</a></dd>
     <dt class="vip_3">客户服务</dt>
      <dd><a href="vipQuxiao.html">取消订单/退货</a></dd>
      
@@ -88,6 +88,7 @@
   <div class="vipRight">
    <h2 class="vipTitle">订单详情</h2>
    
+   <form method="get" action="">
    <table class="orderDeatils">
     <tr>
      <th>订单编号</th>
@@ -95,16 +96,17 @@
     </tr>
     <tr>
      <th>商品名称</th>
-     <td>妙捷 一次性纸杯</td>
+     <td><input name="" value="${order.commodity.name}"></td>
     </tr>
     <tr>
      <th>订单价钱</th>
-     <td>￥185.80</td>
+     <td>￥<input name="" value="${order.commodity.price*order.commodity.counts }"></td>
     </tr>
     <tr>
      <th>订单信息</th>
      <td> 
-张益达，13572607270，， 陕西省 汉中市 勉县 勉县东方眼科医院，724200</td>
+     <input name="" value="${order.address.arelname },${order.address.aphone },${order.address.province },${order.address.city },${order.address.area },${order.address.address },${order.address.postCode }">
+	 </td>
     </tr>
     <tr>
      <th>商家</th>
@@ -119,6 +121,7 @@
      <td>成功</td>
     </tr>
    </table> 
+   </form>
   </div><!--vipRight/-->
   <div class="clears"></div>
  </div><!--vipBox/-->

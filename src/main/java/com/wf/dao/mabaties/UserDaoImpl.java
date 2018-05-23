@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.wf.dao.UserDao;
 import com.wf.dao.mabaties.mappers.UserMapper;
 import com.wf.entity.Address;
+import com.wf.entity.Car;
 import com.wf.entity.Commodity;
 import com.wf.entity.Login;
+import com.wf.entity.Order;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
 
@@ -124,9 +126,31 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<Address> findVipOrder(Long id) {
+	public List<Order> findVipOrder(Long id) {
 		// TODO Auto-generated method stub
 		return userMapper.findVipOrder(id);
+	}
+
+	@Override
+	public Order findXiaofei(Long id) {
+		// TODO Auto-generated method stub
+		return userMapper.findXiaofei(id);
+	}
+
+	@Override
+	public void del(Long id) {
+          userMapper.del(id);		
+	}
+
+	@Override
+	public void addCar(Long id, Long userId) {
+		userMapper.addCar(id,  userId);
+	}
+
+	@Override
+	public List<Car> findAllCar(Long userid) {
+		// TODO Auto-generated method stub
+		return userMapper.findAllCar(userid);
 	}
 
 

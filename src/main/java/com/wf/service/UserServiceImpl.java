@@ -14,8 +14,10 @@ import org.springframework.stereotype.Service;
 
 import com.wf.dao.UserDao;
 import com.wf.entity.Address;
+import com.wf.entity.Car;
 import com.wf.entity.Commodity;
 import com.wf.entity.Login;
+import com.wf.entity.Order;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
 @Service
@@ -151,9 +153,36 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 
 
 	@Override
-	public List<Address> findVipOrder(Long id) {
+	public List<Order> findVipOrder(Long id) {
 		// TODO Auto-generated method stub
 		return userDao.findVipOrder(id);
+	}
+
+
+	@Override
+	public Order findXiaofei(Long id) {
+		// TODO Auto-generated method stub
+		return userDao.findXiaofei(id);
+	}
+
+
+	@Override
+	public void del(Long id) {
+          userDao.del(id);		
+	}
+
+
+	@Override
+	public void addCar(Long id, Long userId) {
+		// TODO Auto-generated method stub
+		userDao.addCar(id,userId);
+	}
+
+
+	@Override
+	public List<Car> findAllCar(Long userid) {
+		// TODO Auto-generated method stub
+		return userDao.findAllCar(userid);
 	}
 
 

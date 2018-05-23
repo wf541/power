@@ -496,7 +496,7 @@
       <span class="pad">上海有货:${prolist.stock}</span>
      </div><!--xiaoliang/-->
      <div class="jiaru-shoucang">
-      <span class="jiaruCar">加入购物车</span>
+      <span class="jiaruCar"><a href="${contextPath }/add/${prolist.id}">加入购物车</a></span>
       <span class="shoucangCar"><a href="quanjing/index.html">选用此模型</a></span>
       <div class="clears"></div>
      </div><!--jiaru-shoucang/-->

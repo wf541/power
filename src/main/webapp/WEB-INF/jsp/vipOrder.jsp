@@ -80,7 +80,7 @@
      <dd><a href="vip.html">个人信息</a></dd>
      <dd><a href="${ contextPath}/vipPwd/<sec:authentication property="principal.login.id"/>">密码修改</a></dd>
      <dd><a href="${ contextPath}/vipAddress">收货地址</a></dd>
-     <dd><a href="${ contextPath}/vipXiaofei">消费记录</a></dd>
+     <dd><a href="${ contextPath}/vipXiaofei/${addresses.id}">${addresses.id}消费记录</a></dd>
     <dt class="vip_3">客户服务</dt>
      <dd><a href="vipQuxiao.html">取消订单/退货</a></dd>
      
@@ -98,53 +98,13 @@
      <c:forEach items="${orderList }" var="orderList">
      	<tr>
     	<td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
-    	<td>${orderList.arelname}</td>
-		<td><%-- ${orderList.commodity.counts * orderList.commodity.price} --%>${orderList.commodity}<br />支付宝支付</td>
+    	<td>${orderList.reg.userName}</td>
+		<td>${orderList.commodity.price*orderList.commodity.counts}<br />支付宝支付</td>
 		<td>2014年6月23日11:32:17</td>
       	<td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
-     	 <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
+     	 <td><a href="${ contextPath}/vipXiaofei/${orderList.id}">${orderList.id}查看</a></td>
      	 </tr>
     </c:forEach>
-     <tr>
-      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
-      <td>张益达</td>
-      <td>￥16.9<br />支付宝支付</td>
-      <td>2014年6月23日11:32:17</td>
-      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
-      <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
-     </tr>
-     <tr>
-      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
-      <td>张益达</td>
-      <td>￥16.9<br />支付宝支付</td>
-      <td>2014年6月23日11:32:17</td>
-      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
-      <td><a href="${ contextPath}vipXiaofei">查看</a></td>
-     </tr>
-     <tr>
-      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
-      <td>张益达</td>
-      <td>￥16.9<br />支付宝支付</td>
-      <td>2014年6月23日11:32:17</td>
-      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
-      <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
-     </tr>
-     <tr>
-      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
-      <td>张益达</td>
-      <td>￥16.9<br />支付宝支付</td>
-      <td>2014年6月23日11:32:17</td>
-      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
-      <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
-     </tr>
-     <tr>
-      <td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
-      <td>张益达</td>
-      <td>￥16.9<br />支付宝支付</td>
-      <td>2014年6月23日11:32:17</td>
-      <td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
-      <td><a href="${ contextPath}/vipXiaofei">查看</a></td>
-     </tr>
     </table><!--vipOrder/-->
   </div><!--vipRight/-->
   <div class="clears"></div>

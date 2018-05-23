@@ -5,8 +5,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.wf.entity.Address;
+import com.wf.entity.Car;
 import com.wf.entity.Commodity;
 import com.wf.entity.Login;
+import com.wf.entity.Order;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
 
@@ -45,6 +47,14 @@ public interface UserMapper {
 
 	Commodity findDetails(Long id);
 
-	List<Address> findVipOrder(Long id);
+	List<Order> findVipOrder(Long id);
+
+	Order findXiaofei(Long id);
+
+	void del(Long id);
+
+	void addCar(@Param("commodityId") Long id,@Param("regId") Long userId);
+
+	List<Car> findAllCar(Long userid);
 	
 }

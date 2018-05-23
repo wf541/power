@@ -4,8 +4,10 @@ package com.wf.service;
 import java.util.List;
 
 import com.wf.entity.Address;
+import com.wf.entity.Car;
 import com.wf.entity.Commodity;
 import com.wf.entity.Login;
+import com.wf.entity.Order;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
 
@@ -55,7 +57,23 @@ public interface UserService {
 
 
 
-	List<Address> findVipOrder(Long id);
+	List<Order> findVipOrder(Long id);
+
+
+
+	Order findXiaofei(Long id);
+
+
+
+	void del(Long id);
+
+
+
+	void addCar(Long id, Long userId);
+
+
+
+	List<Car> findAllCar(Long userid);
 
 	
 }

@@ -60,7 +60,7 @@ public class Commodity {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	/*public Commodity(Long id, String name, String describe, double price, Long stock, Long counts) {
+	public Commodity(Long id, String name, String describe, double price, Long stock, Long counts) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -68,17 +68,23 @@ public class Commodity {
 		this.price = price;
 		this.stock = stock;
 		this.counts = counts;
-	}*/
-	public Commodity(double price, Long counts) {
+	}
+	public Commodity(double price, Long counts, String name) {
 		
 		this.price = price;
-
+		this.name= name;
 		this.counts = counts;
 		
 	}
-	@Override
+/*	@Override
 	public String toString() {
 		double pc = this.price*this.counts;
 		return "￥"+pc;
+	}*/
+	@Override
+	public String toString() {
+		return "Commodity [id=" + id + ", name=" + name + ", describe=" + describe + ", price=" + price + ", stock="
+				+ stock + ", counts=" + counts + "]";
 	}
+	
 }
