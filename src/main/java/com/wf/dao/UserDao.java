@@ -56,4 +56,10 @@ public interface UserDao {
 
 	List<Car> findAllCar(Long userid);
 
+	void addCount(Long id);
+
+	Car findOneCar(Long id);
+
+	void jianCount(Long id);
+
 }

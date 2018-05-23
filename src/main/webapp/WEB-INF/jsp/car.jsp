@@ -10,7 +10,11 @@
 <link type="text/css" href="${ contextPath}/assets/css/css.css" rel="stylesheet" />
 <script type="text/javascript" src="${ contextPath}/assets/js/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="${ contextPath}/assets/js/js.js"></script>
+<script type="text/javascript" src="${ contextPath}/assets/js/payfor.js"></script>
+<script type="text/javascript" src="${ contextPath}/assets/js/jiajian.js"></script>
 </head>
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <body>
 <div class="hrader" id="header">
   <div class="top">
@@ -85,39 +89,7 @@
     </tr>
     </c:forEach>
    </table><!--ord/-->
-   <div class="address">
-    <div class="addList">
-     <label><span class="red">* </span>选择地区:</label>
-     <select>
-      <option>请选择省</option>
-     </select>
-     <select>
-      <option>请选择市</option>
-     </select>
-     <select>
-      <option>请选择地区</option>
-     </select>
-    </div><!--addList-->
-    <div class="addList">
-     <label><span class="red">* </span>详细地址:</label>
-     <input type="text" />
-    </div><!--addList-->
-    <div class="addList">
-     <label><span class="red">* </span>邮政编码:</label>
-     <input type="text" />
-    </div><!--addList-->
-    <div class="addList">
-     <label><span class="red">* </span>收件人:</label>
-     <input type="text" />
-    </div><!--addList-->
-    <div class="addList">
-     <label><span class="red">* </span>手机号码:</label>
-     <input type="text" /> 或者固定电话 <input type="text" />
-    </div><!--addList--> 
-    <div class="addList2">
-     <input type="image" ${ contextPath}/assets/images/queren.jpg" width="100" height="32" />
-    </div><!--addList2/-->
-   </div><!--address/-->
+  
    <table class="orderList">
     <tr>
      <th width="20"></th>
@@ -148,12 +120,21 @@
      <td><strong class="red">￥${car.commodity.price}</strong></td>
      <td>
      <div class="jia_jian">
-      <img src=" ${ contextPath}/assets/images/jian.jpg" width="21" height="25" class="jian" />
-      <input type="text" class="shuliang" value="${car.commodity.counts }" />
-      <img src=" ${ contextPath}/assets/images/jia.jpg" width="21" height="25" class="jia" />
+     	<!-- <div class="p_number">
+     	<div class="f_l add_chose">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>
+			<input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />
+			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>
+		</div>
+     	</div> -->
+			 <img src="${contextPath}/assets/images/jian.jpg" width="21" height="25" class="jian" name="${car.id}" />
+   			<input type="text" class="shuliang" value="${car.counts }" name="${car.id}"/>
+	      	<img src="${contextPath}/assets/images/jia.jpg" width="21" height="25" class="jia" name="${car.id}" />
      </div>
      </td>
-     <td><strong class="red">￥${car.commodity.counts * car.commodity.price}</strong></td>
+     <td class="${car.id }">
+			总价：<strong class="red" name="${car.id }">￥${car.commodity.price*car.commodity.counts}</strong>
+		</td>
      <td><a href="#" class="green">收藏</a><br /><a href="${contextPath}/del/${car.id}" class="green" >删除</a></td>
     </tr>
     </c:forEach>
@@ -167,7 +148,7 @@
    </table><!--orderList/-->
    <div class="zongji">
     <strong>所需运费：</strong>￥0.00 &nbsp;&nbsp;
-    <strong>总计(不含运费)：</strong><strong class="red">￥70.42</strong>
+    <strong>总计(不含运费)：</strong><strong class="red" name="all">￥70.42</strong>
    </div><!--zongji/-->
    <div class="jiesuan">
     <a href="index.html" class="jie_1">继续购物&gt;&gt;</a>

@@ -153,6 +153,24 @@ public class UserDaoImpl implements UserDao {
 		return userMapper.findAllCar(userid);
 	}
 
+	@Override
+	public void addCount(Long id) {
+		// TODO Auto-generated method stub
+		userMapper.addCount(id);
+	}
+
+	@Override
+	public Car findOneCar(Long id) {
+		// TODO Auto-generated method stub
+		return userMapper.findOneCar(id);
+	}
+
+	@Override
+	public void jianCount(Long id) {
+		// TODO Auto-generated method stub
+		userMapper.jianCount(id);
+	}
+
 
 
 }

@@ -22,6 +22,7 @@ public class Reg {
 	private String userName;
 	
 	private String mail;
+	
 	private Long phone;
 	private String password;
 	private String encode;

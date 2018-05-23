@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.wf.dao.UserDao;
 import com.wf.entity.Address;
@@ -21,6 +22,7 @@ import com.wf.entity.Order;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
 @Service
+@Transactional
 public class UserServiceImpl implements UserService,UserDetailsService {
 	@Autowired
 	private UserDao userDao;
@@ -33,7 +35,7 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		this.passwordEncoder = passwordEncoder;
 	}
 
-
+//注册
 	@Override
 	public String register(Reg reg) {
 		//弄成密文注入
@@ -53,43 +55,34 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 
 
 
-
+//Vip
 	@Override
 	public void creatVip(Vip vip) {
 		userDao.creatVip(vip);		
 	}
 
 
-
 	@Override
 	public Vip findVip(Long id) {
-		// TODO Auto-generated method stub
 		return userDao.findVip(id);
 	}
 
-
 	@Override
 	public void creatAddress(Address address) {
-		// TODO Auto-generated method stub
 		userDao.creatAddress(address);
 	}
 
-
 	@Override
 	public void updateAddress(Address address) {
-		// TODO Auto-generated method stub
 		userDao.updateAddress(address);
 	}
 
-
 	@Override
 	public List<Address> findAddress(Long id) {
-		// TODO Auto-generated method stub
-		
 		return userDao.findAddress(id);
 	}
 
-
+//登录有关
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Login login = userDao.findSearch(username);
@@ -99,73 +92,56 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		UserDetailsImpl userDetailsImpl = new UserDetailsImpl(login); 
 		return userDetailsImpl;
 	}
-
-
+//地址，密码
 	@Override
 	public Address findOne(Long id) {
-		// TODO Auto-generated method stub
-		
 		return userDao.findOne(id);
 	}
 
-
 	@Override
 	public void changePwd(String pwd1, Long id) {
-		// TODO Auto-generated method stub
 		pwd1 = passwordEncoder.encode(pwd1);
 		userDao.changePwd(pwd1,id);
 	}
 
-
 	@Override
 	public List<Address> findprovinces() {
-		// TODO Auto-generated method stub
 		return userDao.findprovinces();
 	}
 
-
 	@Override
 	public List<Address> findcitys() {
-		// TODO Auto-generated method stub
 		return userDao.findcitys();
 	}
 
-
 	@Override
 	public List<Address> findareas() {
-		// TODO Auto-generated method stub
 		return userDao.findareas();
 	}
 
-
+//商品
 	@Override
 	public List<Commodity> findCommodity() {
-		// TODO Auto-generated method stub
 		return userDao.findCommodity();
 	}
 
 
 	@Override
 	public Commodity findDetails(Long id) {
-		// TODO Auto-generated method stub
 		return userDao.findDetails(id);
 	}
-
-
+//订单
 	@Override
 	public List<Order> findVipOrder(Long id) {
-		// TODO Auto-generated method stub
 		return userDao.findVipOrder(id);
 	}
 
-
 	@Override
 	public Order findXiaofei(Long id) {
-		// TODO Auto-generated method stub
 		return userDao.findXiaofei(id);
 	}
 
-
+//购物车
 	@Override
 	public void del(Long id) {
           userDao.del(id);		
@@ -174,23 +150,34 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 
 	@Override
 	public void addCar(Long id, Long userId) {
-		// TODO Auto-generated method stub
 		userDao.addCar(id,userId);
 	}
 
-
 	@Override
 	public List<Car> findAllCar(Long userid) {
-		// TODO Auto-generated method stub
 		return userDao.findAllCar(userid);
 	}
 
+	@Override
+	public void addCount(Long id) {
+		// TODO Auto-generated method stub
+		userDao.addCount(id);
+	}
 
+	@Override
+	public Car findOneCar(Long id) {
+		// TODO Auto-generated method stub
+		return userDao.findOneCar(id);
+	}
 
-
+	@Override
+	public void jianCount(Long id) {
+		// TODO Auto-generated method stub
+		userDao.jianCount(id);
+	}
 
 }
-
+//登录有关
 class UserDetailsImpl extends org.springframework.security.core.userdetails.User {
 
 	private static final long serialVersionUID = 1L;

@@ -14,9 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wf.entity.Address;
@@ -116,9 +118,17 @@ public class UserControl {
 	}
 	//购物车
 		@RequestMapping(method = RequestMethod.POST, value = "/car")
-		public String car(Model model) {
-			
-			return "car";
+		@ResponseBody
+		public Car car(Model model,@AuthenticationPrincipal(expression = "login") Login login,@RequestBody Car car) {
+			userService.addCount(car.getId());
+			return userService.findOneCar(car.getId());
+		}
+		
+		@RequestMapping(method = RequestMethod.POST, value = "/jiancar")
+		@ResponseBody
+		public Car carA(Model model,@AuthenticationPrincipal(expression = "login") Login login,@RequestBody Car car) {
+			userService.jianCount(car.getId());
+			return userService.findOneCar(car.getId());
 		}
 		
 		

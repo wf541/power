@@ -56,5 +56,11 @@ public interface UserMapper {
 	void addCar(@Param("commodityId") Long id,@Param("regId") Long userId);
 
 	List<Car> findAllCar(Long userid);
+
+	void addCount(Long id);
+
+	Car findOneCar(Long id);
+
+	void jianCount(Long id);
 	
 }
