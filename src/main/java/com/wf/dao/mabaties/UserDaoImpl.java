@@ -171,6 +171,18 @@ public class UserDaoImpl implements UserDao {
 		userMapper.jianCount(id);
 	}
 
+	@Override
+	public void createOrder(Long addressId, List<Long> orderId) {
+		// TODO Auto-generated method stub
+		userMapper.createOrder(addressId,orderId);
+	}
+
+	@Override
+	public void delCom(List<Long> commodityId) {
+		// TODO Auto-generated method stub
+		userMapper.delCom(commodityId);
+	}
+
 
 
 }

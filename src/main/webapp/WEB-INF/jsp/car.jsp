@@ -70,6 +70,7 @@
    <div class="clears"></div>
   </ul><!--nav/-->
  </div><!--navBox/-->
+ <form action="${contextPath }/vipOrder" method="post"></form>
  <div class="car">
   <div class="cont">
    <div class="carimg src=""><img src=" ${ contextPath}/assets/images/car1.jpg" width="951" height="27" /></div>
@@ -78,7 +79,7 @@
     <c:forEach items="${addresses }" var="addr">
     <tr>
      <td width="30%" >
-      <input type="radio" name="address"/> ${addr.arelname }
+      <input type="radio" name="addressId" value="${addr.id }"/> ${addr.arelname }
      </td>
      <td width="50%" >
       ${addr.province },${addr.city},${addr.area},${addr.address},${addr.postCode},${addr.aphone}
@@ -102,7 +103,7 @@
     <tr>
     <c:forEach items="${car}" var="car">
 		 <tr>
-     <td><input type="checkbox" /></td>
+     <td><input type="checkbox" name="commodityId" value="${car.commodity.id}"/></td>
      <td colspan="5" style="text-align:left;color:#930; font-weight:bold;">
       <img src=" ${ contextPath}/assets/images/dianpu.gif" width="20" height="15" style="position:relative;top:2px;" />
       店铺：unique VIP店铺 上海分店
@@ -120,20 +121,13 @@
      <td><strong class="red">￥${car.commodity.price}</strong></td>
      <td>
      <div class="jia_jian">
-     	<!-- <div class="p_number">
-     	<div class="f_l add_chose">
-			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>
-			<input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />
-			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>
-		</div>
-     	</div> -->
 			 <img src="${contextPath}/assets/images/jian.jpg" width="21" height="25" class="jian" name="${car.id}" />
    			<input type="text" class="shuliang" value="${car.counts }" name="${car.id}"/>
 	      	<img src="${contextPath}/assets/images/jia.jpg" width="21" height="25" class="jia" name="${car.id}" />
      </div>
      </td>
      <td class="${car.id }">
-			总价：<strong class="red" name="${car.id }">￥${car.commodity.price*car.commodity.counts}</strong>
+			总价：<strong class="red" name="${car.id }">￥${car.commodity.price*car.counts}</strong>
 		</td>
      <td><a href="#" class="green">收藏</a><br /><a href="${contextPath}/del/${car.id}" class="green" >删除</a></td>
     </tr>
@@ -158,6 +152,7 @@
    <div class="clears"></div>
   </div><!--cont/-->
  </div><!--car/-->
+ </form>
  <div class="footBox">
   <div class="footers">
    <div class="footersLeft">

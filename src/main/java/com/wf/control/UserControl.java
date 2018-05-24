@@ -116,7 +116,7 @@ public class UserControl {
 		userService.addCar(id,login.getId());
 		return "redirect:/car";
 	}
-	//购物车
+	//购物车加减
 		@RequestMapping(method = RequestMethod.POST, value = "/car")
 		@ResponseBody
 		public Car car(Model model,@AuthenticationPrincipal(expression = "login") Login login,@RequestBody Car car) {
@@ -133,7 +133,7 @@ public class UserControl {
 		
 		
 		
-		//vip会员中心--订单列表   通过用户id，收货地址id
+		//vip会员中心--订单列表   通过用户id，收货地址id,显示订单
 		@RequestMapping(method = RequestMethod.GET, value = "/vipOrder")
 		public String vipOrderPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login) {
 			
@@ -141,13 +141,30 @@ public class UserControl {
 			model.addAttribute("orderList", orderList);
 			System.out.println(orderList);
 			return "vipOrder";
-		}		
+		}	
+//		提交订单，创建，清空
+//		id,order_id,address_id
+		@RequestMapping(method = RequestMethod.POST, value = "/vipOrder")
+		public String vipOrder(Model model,
+				@RequestParam List<Long> orderId,
+				@RequestParam Long addressId,
+				@AuthenticationPrincipal(expression = "login") Login login) {
+			
+			userService.createOrder(addressId,orderId);
+			
+			
+//			userService.delCom(commodityId);
+			return "redirect:/vipOrder";
+		}	
+		
+		
 		//vip会员中心--订单详情
 		@RequestMapping(method = RequestMethod.GET, value = "/vipXiaofei/{id}")
 		public String vipXiaofeiPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login,
 				@PathVariable Long id) {
 			Order order = userService.findXiaofei(id);
 			model.addAttribute("order", order);
+			System.out.println("详情："+order);
 			return "vipXiaofei";
 		}
 		

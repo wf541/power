@@ -176,6 +176,18 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		userDao.jianCount(id);
 	}
 
+	@Override
+	public void createOrder(Long addressId, List<Long> orderId) {
+		// TODO Auto-generated method stub
+		userDao.createOrder(addressId,orderId);
+	}
+
+	@Override
+	public void delCom(List<Long> commodityId) {
+		// TODO Auto-generated method stub
+		userDao.delCom(commodityId);
+	}
+
 }
 //登录有关
 class UserDetailsImpl extends org.springframework.security.core.userdetails.User {

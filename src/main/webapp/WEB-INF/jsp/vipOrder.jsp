@@ -99,7 +99,7 @@
      	<tr>
     	<td><a href="proinfo.html"><img src="${ contextPath}/assets/images/phone.png" width="60" height="55"></a></td>
     	<td>${orderList.reg.userName}</td>
-		<td>${orderList.commodity.price*orderList.commodity.counts}<br />支付宝支付</td>
+		<td>${orderList.commodity.price*orderList.car.counts}<br />支付宝支付</td>
 		<td>2014年6月23日11:32:17</td>
       	<td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
      	 <td><a href="${ contextPath}/vipXiaofei/${orderList.id}">${orderList.id}查看</a></td>

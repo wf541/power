@@ -62,5 +62,10 @@ public interface UserMapper {
 	Car findOneCar(Long id);
 
 	void jianCount(Long id);
+
+
+	void delCom(List<Long> commodityId);
+
+	void createOrder(@Param("addressId") Long addressId,@Param("orderId") List<Long> orderId);
 	
 }

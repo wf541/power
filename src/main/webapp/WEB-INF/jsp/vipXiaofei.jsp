@@ -100,7 +100,7 @@
     </tr>
     <tr>
      <th>订单价钱</th>
-     <td>￥<input name="" value="${order.commodity.price*order.commodity.counts }"></td>
+     <td>￥<input name="" value="${order.commodity.price*order.car.counts }"></td>
     </tr>
     <tr>
      <th>订单信息</th>

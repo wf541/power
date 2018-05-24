@@ -62,4 +62,9 @@ public interface UserDao {
 
 	void jianCount(Long id);
 
+
+	void delCom(List<Long> commodityId);
+
+	void createOrder(Long addressId, List<Long> orderId);
+
 }
