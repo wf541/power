@@ -70,7 +70,8 @@
    <div class="clears"></div>
   </ul><!--nav/-->
  </div><!--navBox/-->
- <form action="${contextPath }/vipOrder" method="post"></form>
+ <form action="${contextPath}/vipOrder" method="post">
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
  <div class="car">
   <div class="cont">
    <div class="carimg src=""><img src=" ${ contextPath}/assets/images/car1.jpg" width="951" height="27" /></div>
@@ -102,15 +103,8 @@
     </tr>
     <tr>
     <c:forEach items="${car}" var="car">
-		 <tr>
-     <td><input type="checkbox" name="commodityId" value="${car.commodity.id}"/></td>
-     <td colspan="5" style="text-align:left;color:#930; font-weight:bold;">
-      <img src=" ${ contextPath}/assets/images/dianpu.gif" width="20" height="15" style="position:relative;top:2px;" />
-      店铺：unique VIP店铺 上海分店
-     </td>
-    </tr>
     <tr>
-     <td><input type="checkbox" /></td>
+     <td><input type="checkbox" name="carId" value="${car.id}"/></td>
      <td>
       <dl>
        <dt><a href="proinfo.html"><img src=" ${ contextPath}/assets/images/phone.png" width="85" height="85" /></a></dt>
@@ -146,7 +140,8 @@
    </div><!--zongji/-->
    <div class="jiesuan">
     <a href="index.html" class="jie_1">继续购物&gt;&gt;</a>
-    <a href="${ contextPath}/vipOrder" class="jie_2">立即结算&gt;&gt;</a>
+    <%-- <a href="${ contextPath}/vipOrder" class="jie_2">立即结算&gt;&gt;</a> --%>
+    <button type = "submit"  class="jie_2">立即结算&gt;&gt;</button>
     <div class="clears"></div>
    </div><!--jiesuan/-->
    <div class="clears"></div>

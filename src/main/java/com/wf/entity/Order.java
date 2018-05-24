@@ -11,6 +11,7 @@ public class Order {
 	private Long id;
 	private String state;
 	
+	
 	private Long regId;
 	private Long addressId;
 	
@@ -46,6 +47,7 @@ public class Order {
 	public void setAddressId(Long addressId) {
 		this.addressId = addressId;
 	}
+	
 	
 	
 	
@@ -85,6 +87,8 @@ public class Order {
 	}
 	
 
+	
+	
 	
 	public Order(Long id, String state, Long regId, Long addressId, Reg reg, Address address, Car car,
 			Commodity commodity) {

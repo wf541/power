@@ -40,85 +40,16 @@ public class UserDaoImpl implements UserDao {
 
 
 	@Override
-	public void creatVip(Vip vip) {
-		userMapper.creatVip(vip);		
-	}
-
-
-	@Override
-	public Vip findVip(Long id) {
-		// TODO Auto-generated method stub
-		return userMapper.findSearch2(id);
-	}
-
-	@Override
-	public void updateAddress(Address address) {
-		// TODO Auto-generated method stub
-		userMapper.updateAddress(address);
-	}
-
-	@Override
-	public void creatAddress(Address address) {
-		// TODO Auto-generated method stub
-		userMapper.creatAddress(address);
-	}
-
-	@Override
-	public List<Address> findAddress(Long id) {
-		// TODO Auto-generated method stub
-		
-		return userMapper.findAddress(id);
-	}
-
-	@Override
 	public Login findSearch(String username) {
 		// TODO Auto-generated method stub
 		return userMapper.findSearch1(username);
 	}
 
 	@Override
-	public Address findOne(Long id) {
-		// TODO Auto-generated method stub
-		
-		return userMapper.findOne(id);
-	}
-
-	@Override
-	public void changePwd(String pwd1, Long id) {
-		// TODO Auto-generated method stub
-		userMapper.changePwd(pwd1,id);
-	}
-
-	@Override
-	public List<Address> findAllAddress() {
-		// TODO Auto-generated method stub
-		return userMapper.findAllAddress();
-	}
-
-	@Override
-	public List<Address> findprovinces() {
-		// TODO Auto-generated method stub
-		return userMapper.findprovinces();
-	}
-
-	@Override
-	public List<Address> findcitys() {
-		// TODO Auto-generated method stub
-		return userMapper.findcitys();
-	}
-
-	@Override
-	public List<Address> findareas() {
-		// TODO Auto-generated method stub
-		return userMapper.findareas();
-	}
-
-	@Override
 	public List<Commodity> findCommodity() {
-		// TODO Auto-generated method stub
 		return userMapper.findCommodity();
 	}
-
+	
 	@Override
 	public Commodity findDetails(Long id) {
 		// TODO Auto-generated method stub
@@ -126,63 +57,10 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<Order> findVipOrder(Long id) {
-		// TODO Auto-generated method stub
-		return userMapper.findVipOrder(id);
-	}
-
-	@Override
-	public Order findXiaofei(Long id) {
-		// TODO Auto-generated method stub
-		return userMapper.findXiaofei(id);
-	}
-
-	@Override
-	public void del(Long id) {
-          userMapper.del(id);		
-	}
-
-	@Override
-	public void addCar(Long id, Long userId) {
-		userMapper.addCar(id,  userId);
-	}
-
-	@Override
-	public List<Car> findAllCar(Long userid) {
-		// TODO Auto-generated method stub
-		return userMapper.findAllCar(userid);
-	}
-
-	@Override
-	public void addCount(Long id) {
-		// TODO Auto-generated method stub
-		userMapper.addCount(id);
-	}
-
-	@Override
-	public Car findOneCar(Long id) {
-		// TODO Auto-generated method stub
-		return userMapper.findOneCar(id);
-	}
-
-	@Override
-	public void jianCount(Long id) {
-		// TODO Auto-generated method stub
-		userMapper.jianCount(id);
-	}
-
-	@Override
-	public void createOrder(Long addressId, List<Long> orderId) {
-		// TODO Auto-generated method stub
-		userMapper.createOrder(addressId,orderId);
-	}
-
-	@Override
 	public void delCom(List<Long> commodityId) {
 		// TODO Auto-generated method stub
 		userMapper.delCom(commodityId);
 	}
-
 
 
 }

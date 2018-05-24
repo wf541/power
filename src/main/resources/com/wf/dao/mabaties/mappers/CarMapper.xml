@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wf.dao.mabaties.mappers.CarMapper">
+<!-- 购物车 -->
+    <delete id="del">
+    	delete from power_car where id=#{id}
+    </delete>	
+	
+	<!--加入购物车  -->
+	<insert id="addCar">
+		insert into power_car(id,reg_id,commodity_id,counts)
+       values(power_car_seq.nextval,#{regId},#{commodityId},1)
+	</insert>
+	
+	<!-- 查找加入购物车 -->
+	<select id="findAllCar" resultMap="carMapper">
+	select car.id carId,car.counts carcounts,pc.id comId,pr.id regId,pc.name,pc.describe,pc.price,pc.counts,pa.postcode,pa.area,pa.address,pa.arelname,pa.aphone,pa.city,
+pa.province from power_car car inner join power_reg pr on car.reg_id=pr.id
+inner join power_commoditys pc on car.commodity_id=pc.id
+inner join power_address pa on pa.reg_id = pr.id
+where car.reg_id=#{userid}
+	</select>
+	<resultMap type="com.wf.entity.Car" id="carMapper">
+		<id property="id" column="carId"></id>
+		<result property="counts" column="carcounts"/>
+	<!-- <association property="address" javaType="com.wf.entity.Address">
+  		<id property="id" column="addressId"></id>
+		<result property="arelname" column="arelname"/>
+		<result property="aphone" column="aphone"/>
+		<result property="postCode" column="postCode"/>
+		<result property="area" column="area"/>
+		<result property="province" column="province"/>
+		<result property="city" column="city"/>
+		<result property="address" column="address"/>
+  	</association> -->
+	<association property="commodity" javaType="com.wf.entity.Commodity">
+		<id property="id" column="comId"></id>
+		<result property="price" column="price"/>
+		<result property="counts" column="counts"/>
+		<result property="name" column="name"/>
+		<result property="describe" column="describe"/>
+	</association>
+	</resultMap>
+	
+	<!-- 更新加减 -->
+	<update id="addCount">
+	update  power_car set counts=counts+1 where id=#{id}
+	</update>
+	
+	<update id="jianCount">
+	update  power_car set counts=counts-1 where id=#{id}
+	</update>
+	<!--返回单个查找的购物车  -->
+	<select id="findOneCar" resultMap="carMapper">
+	select car.id carId,car.counts carcounts,pc.id comId,pr.id regId,pc.name,pc.describe,pc.price,pc.counts,pa.postcode,pa.area,pa.address,pa.arelname,pa.aphone,pa.city,
+pa.province from power_car car inner join power_reg pr on car.reg_id=pr.id
+inner join power_commoditys pc on car.commodity_id=pc.id
+inner join power_address pa on pa.reg_id = pr.id
+where car.id=#{id}
+	</select>
+</mapper>

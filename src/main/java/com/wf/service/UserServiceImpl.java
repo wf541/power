@@ -53,34 +53,7 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		return "success";
 	}
 
-
-
-//Vip
-	@Override
-	public void creatVip(Vip vip) {
-		userDao.creatVip(vip);		
-	}
-
-
-	@Override
-	public Vip findVip(Long id) {
-		return userDao.findVip(id);
-	}
-
-	@Override
-	public void creatAddress(Address address) {
-		userDao.creatAddress(address);
-	}
-
-	@Override
-	public void updateAddress(Address address) {
-		userDao.updateAddress(address);
-	}
-
-	@Override
-	public List<Address> findAddress(Long id) {
-		return userDao.findAddress(id);
-	}
+	
 
 //登录有关
 	@Override
@@ -92,95 +65,19 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		UserDetailsImpl userDetailsImpl = new UserDetailsImpl(login); 
 		return userDetailsImpl;
 	}
-//地址，密码
-	@Override
-	public Address findOne(Long id) {
-		return userDao.findOne(id);
-	}
-
-	@Override
-	public void changePwd(String pwd1, Long id) {
-		pwd1 = passwordEncoder.encode(pwd1);
-		userDao.changePwd(pwd1,id);
-	}
-
-	@Override
-	public List<Address> findprovinces() {
-		return userDao.findprovinces();
-	}
-
-	@Override
-	public List<Address> findcitys() {
-		return userDao.findcitys();
-	}
-
-	@Override
-	public List<Address> findareas() {
-		return userDao.findareas();
-	}
-
-//商品
+//商品列表
 	@Override
 	public List<Commodity> findCommodity() {
 		return userDao.findCommodity();
 	}
-
-
 	@Override
 	public Commodity findDetails(Long id) {
 		return userDao.findDetails(id);
 	}
-//订单
-	@Override
-	public List<Order> findVipOrder(Long id) {
-		return userDao.findVipOrder(id);
-	}
 
-	@Override
-	public Order findXiaofei(Long id) {
-		return userDao.findXiaofei(id);
-	}
 
 //购物车
-	@Override
-	public void del(Long id) {
-          userDao.del(id);		
-	}
 
-
-	@Override
-	public void addCar(Long id, Long userId) {
-		userDao.addCar(id,userId);
-	}
-
-	@Override
-	public List<Car> findAllCar(Long userid) {
-		return userDao.findAllCar(userid);
-	}
-
-	@Override
-	public void addCount(Long id) {
-		// TODO Auto-generated method stub
-		userDao.addCount(id);
-	}
-
-	@Override
-	public Car findOneCar(Long id) {
-		// TODO Auto-generated method stub
-		return userDao.findOneCar(id);
-	}
-
-	@Override
-	public void jianCount(Long id) {
-		// TODO Auto-generated method stub
-		userDao.jianCount(id);
-	}
-
-	@Override
-	public void createOrder(Long addressId, List<Long> orderId) {
-		// TODO Auto-generated method stub
-		userDao.createOrder(addressId,orderId);
-	}
 
 	@Override
 	public void delCom(List<Long> commodityId) {
@@ -188,7 +85,7 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		userDao.delCom(commodityId);
 	}
 
-}
+}	
 //登录有关
 class UserDetailsImpl extends org.springframework.security.core.userdetails.User {
 

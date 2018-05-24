@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wf.dao.mabaties.mappers.VipMapper">
+
+<!--  vip插入数据  -->
+  <insert id="creatVip">
+  		update power_reg set relname=#{relname},sex=#{sex},idencity=#{idencity},infor=#{infor} where id=#{id}
+  </insert>
+  
+   <select id="findSearch2" resultType="com.wf.entity.Vip">
+  	select id,relname,sex,idencity,mail,infor from power_reg where id=#{id}
+  </select>
+  
+  <!-- 修改地址 -->
+	<update id="updateAddress">
+		update power_address set aphone=#{aphone},arelname=#{arelname},postCode=#{postCode},area=#{area},province=#{province},city=#{city},address=#{address} where id=#{id}
+	</update>  
+	<!-- 添加地址  外键关联  -->
+  <insert id="creatAddress">
+  		insert into power_address(id,postCode,area,province,city,address,arelname,aphone,reg_id)
+  		values(power_address_seq.nextval,#{postCode},#{area},#{province},#{city},#{address},#{arelname},#{aphone},#{login.id}) 
+  </insert> 
+  
+ 
+  <!-- 显示地址 -->
+  <select id="findAddress" resultType="com.wf.entity.Address">
+  	select id,arelname,aphone,postCode,area,province,city,address from power_address where power_address.reg_id=#{id}
+  </select>
+  
+  <!-- 根据id查询 -->
+  <select id="findOne" resultType="com.wf.entity.Address">
+  select id,arelname,aphone,postCode,area,province,city,address from power_address where id=#{id}
+  </select>
+  
+  
+  <!-- 修改密码 -->
+  <update id="changePwd">
+  	update power_reg set encode = #{pwd1} where id=#{id}
+  </update>
+  
+  
+  <!--查省，市，区做集合 -->
+  <select id="findprovinces" resultType="com.wf.entity.Address">
+	  select * from power_address
+  </select>
+  
+  
+  
+  
+  <!-- 提交订单 -->
+	<insert id="createOrders" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+	 	insert into power_order(id,reg_id,address_id)
+       values(power_order_seq.nextval,#{regId},#{addressId})
+	</insert>
+	
+	<insert id="createOrder">
+	 	insert into power_order_middel(id,order_id,commodity_id)
+       values(power_order_seq.nextval,#{orderId},#{commodityId})
+	</insert>
+	
+	<!-- 根据购物车id返回商品id -->
+	<select id="searchCarId" resultType="com.wf.entity.Car">
+		select commodity_id,counts from power_car where power_car.id in
+		 <foreach item="id" index="index" collection="carId"
+      open="(" separator="," close=")">
+        #{id}
+  </foreach>
+
+	</select>
+	
+		<!--订单列表 vip -->
+	<select id="findVipOrder" resultMap="OrderMap">
+	  select pc.price,pcar.counts,pom.id pom_id,porder.id orderId,pcar.id carId,pc.id commodityId,addr.arelname,addr.id addrId
+ from power_order_middel pom
+ inner join power_order porder on pom.order_id = porder.id
+  inner join power_address addr on porder.address_id = addr.id
+ inner join power_commoditys pc on pom.commodity_id = pc.id
+ inner join power_car pcar on  pc.id=pcar.commodity_id
+ where porder.reg_id=#{id}
+	</select>
+	<resultMap type="com.wf.entity.OrderItem" id="OrderMap">
+		<result property="counts" column="counts"/>
+	<association property="order" javaType="com.wf.entity.Order">
+  		<id property="id" column="addrId"></id>
+  	</association>
+	<association property="address" javaType="com.wf.entity.Address">
+  		<id property="id" column="addrId"></id>
+  		<result property="arelname" column="arelname"/>
+  	</association>
+  	<association property="car" javaType="com.wf.entity.Car">
+  		<id property="id" column="carId"></id>
+  		<result property="counts" column="counts"/>
+  	</association>
+	<association property="commodity" javaType="com.wf.entity.Commodity">
+		<id property="id" column="commodityId"></id>
+		<result property="price" column="price"/>
+		<result property="name" column="name"/>
+		<result property="describe" column="describe"/>
+	</association>
+	</resultMap>
+	
+	<!-- 订单详情vip -->
+	<select id="findXiaofei" resultMap="AddressOrderMap">
+	select pa.id addressId,pc.id commodityId,pom.id pomId,pom.order_id orderId,pc.name,pc.price,pcar.id carId,pcar.counts,pc.describe,pa.aphone,pa.arelname,pa.postCode,pa.area,pa.province,pa.city,pa.address 
+	from power_order_middel pom inner join power_commoditys pc on pom.commodity_id = pc.id
+  inner join power_address pa on pa.commodity_id=pc.id
+  inner join power_car pcar on  pc.id=pcar.commodity_id 
+	where pom.order_id = #{id}
+	</select>
+	<resultMap type="com.wf.entity.Order" id="AddressOrderMap">
+		<id property="id" column="orderId"></id>
+	<association property="car" javaType="com.wf.entity.Car">
+  		<id property="id" column="carId"></id>
+  		<result property="counts" column="counts"/>
+  	</association>
+	<association property="address" javaType="com.wf.entity.Address">
+  		<id property="id" column="addressId"></id>
+		<result property="arelname" column="arelname"/>
+		<result property="aphone" column="aphone"/>
+		<result property="postCode" column="postCode"/>
+		<result property="area" column="area"/>
+		<result property="province" column="province"/>
+		<result property="city" column="city"/>
+		<result property="address" column="address"/>
+  	</association>
+	<collection property="commodity" ofType="com.wf.entity.Commodity">
+		<id property="id" column="commodityId"></id>
+		<result property="price" column="price"/>
+		<result property="name" column="name"/>
+		<result property="describe" column="describe"/>
+	</collection>
+	</resultMap>
+	
+	
+	
+	
+	
+</mapper>
