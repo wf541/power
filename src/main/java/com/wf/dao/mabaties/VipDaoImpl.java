@@ -30,7 +30,7 @@ public class VipDaoImpl implements VipDao {
 	}
 
 	@Override
-	public Order findXiaofei(Long id) {
+	public OrderItem findXiaofei(Long id) {
 		return vipMapper.findXiaofei(id);
 	}
 
@@ -96,6 +96,11 @@ public class VipDaoImpl implements VipDao {
 	@Override
 	public void changePwd(String pwd1, Long id) {
 		vipMapper.changePwd(pwd1,id);
+	}
+
+	@Override
+	public void delCom(List<Long> carId) {
+		vipMapper.delCom(carId);
 	}
 
 	

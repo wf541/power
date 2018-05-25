@@ -34,6 +34,7 @@
   <a href="index.html"><img src="${ contextPath}/assets/images/logo.png" width="304" height="74" /></a>
   </h1>
   <form action="#" method="get" class="subBox">
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
    <div class="subBox2">
     <input type="text" class="subText" />
     <input type="image" src="${ contextPath}/assets/images/sub.jpg" width="95" height="32" class="subImg" />
@@ -102,7 +103,7 @@
 		<td>${orderLists.commodity.price*orderLists.counts}<br />支付宝支付</td>
 		<td>2014年6月23日11:32:17</td>
       	<td><a href="${ contextPath}/success"><strong>等待付款</strong></a></td>
-     	 <td><a href="${ contextPath}/vipXiaofei/${orderLists.orderId}">${orderLists.orderId}查看</a></td>
+     	 <td><a href="${ contextPath}/vipXiaofei/${orderLists.order.id}">${orderLists.address.id}查看${orderLists.order.id }</a></td>
      	 </tr>
     </c:forEach>
     </table><!--vipOrder/-->

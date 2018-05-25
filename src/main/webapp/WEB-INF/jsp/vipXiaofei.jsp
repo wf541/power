@@ -88,7 +88,6 @@
   <div class="vipRight">
    <h2 class="vipTitle">订单详情</h2>
    
-   <form method="get" action="">
    <table class="orderDeatils">
     <tr>
      <th>订单编号</th>
@@ -96,16 +95,16 @@
     </tr>
     <tr>
      <th>商品名称</th>
-     <td><input name="" value="${order.commodity.name}"></td>
+     <td>${order.commodity.name}</td>
     </tr>
     <tr>
      <th>订单价钱</th>
-     <td>￥<input name="" value="${order.commodity.price*order.car.counts }"></td>
+     <td>￥${order.commodity.price*order.counts }</td>
     </tr>
     <tr>
      <th>订单信息</th>
      <td> 
-     <input name="" value="${order.address.arelname },${order.address.aphone },${order.address.province },${order.address.city },${order.address.area },${order.address.address },${order.address.postCode }">
+     ${order.address.arelname },${order.address.aphone },${order.address.province },${order.address.city },${order.address.area },${order.address.address },${order.address.postCode }
 	 </td>
     </tr>
     <tr>
@@ -121,7 +120,6 @@
      <td>成功</td>
     </tr>
    </table> 
-   </form>
   </div><!--vipRight/-->
   <div class="clears"></div>
  </div><!--vipBox/-->

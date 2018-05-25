@@ -56,8 +56,8 @@
 	</insert>
 	
 	<insert id="createOrder">
-	 	insert into power_order_middel(id,order_id,commodity_id)
-       values(power_order_seq.nextval,#{orderId},#{commodityId})
+	 	insert into power_order_middel(id,order_id,commodity_id,counts)
+       values(power_order_seq.nextval,#{orderId},#{commodityId},#{counts})
 	</insert>
 	
 	<!-- 根据购物车id返回商品id -->
@@ -72,26 +72,21 @@
 	
 		<!--订单列表 vip -->
 	<select id="findVipOrder" resultMap="OrderMap">
-	  select pc.price,pcar.counts,pom.id pom_id,porder.id orderId,pcar.id carId,pc.id commodityId,addr.arelname,addr.id addrId
+	   select pc.price,pom.id pom_id,porder.id orderId,pc.id commodityId,addr.arelname,addr.id addrId,pom.counts
  from power_order_middel pom
  inner join power_order porder on pom.order_id = porder.id
   inner join power_address addr on porder.address_id = addr.id
  inner join power_commoditys pc on pom.commodity_id = pc.id
- inner join power_car pcar on  pc.id=pcar.commodity_id
  where porder.reg_id=#{id}
 	</select>
 	<resultMap type="com.wf.entity.OrderItem" id="OrderMap">
 		<result property="counts" column="counts"/>
 	<association property="order" javaType="com.wf.entity.Order">
-  		<id property="id" column="addrId"></id>
+  		<id property="id" column="orderId"></id>
   	</association>
 	<association property="address" javaType="com.wf.entity.Address">
   		<id property="id" column="addrId"></id>
   		<result property="arelname" column="arelname"/>
-  	</association>
-  	<association property="car" javaType="com.wf.entity.Car">
-  		<id property="id" column="carId"></id>
-  		<result property="counts" column="counts"/>
   	</association>
 	<association property="commodity" javaType="com.wf.entity.Commodity">
 		<id property="id" column="commodityId"></id>
@@ -103,17 +98,17 @@
 	
 	<!-- 订单详情vip -->
 	<select id="findXiaofei" resultMap="AddressOrderMap">
-	select pa.id addressId,pc.id commodityId,pom.id pomId,pom.order_id orderId,pc.name,pc.price,pcar.id carId,pcar.counts,pc.describe,pa.aphone,pa.arelname,pa.postCode,pa.area,pa.province,pa.city,pa.address 
-	from power_order_middel pom inner join power_commoditys pc on pom.commodity_id = pc.id
-  inner join power_address pa on pa.commodity_id=pc.id
-  inner join power_car pcar on  pc.id=pcar.commodity_id 
-	where pom.order_id = #{id}
+	select pa.id addressId,pc.id commodityId,pom.id pomId,pom.order_id orderId,pom.counts,pc.name,pc.price,pom.counts,pc.describe,pa.aphone,pa.arelname,pa.postCode,pa.area,pa.province,pa.city,pa.address 
+	from power_order porder inner join  power_order_middel pom on porder.id = pom.order_id
+  inner join power_commoditys pc on pom.commodity_id = pc.id
+  inner join power_address pa on pa.id=porder.address_id
+	where porder.id = #{id}
 	</select>
-	<resultMap type="com.wf.entity.Order" id="AddressOrderMap">
+	<resultMap type="com.wf.entity.OrderItem" id="AddressOrderMap">
 		<id property="id" column="orderId"></id>
-	<association property="car" javaType="com.wf.entity.Car">
-  		<id property="id" column="carId"></id>
-  		<result property="counts" column="counts"/>
+		<result property="counts" column="counts"/>
+	<association property="order" javaType="com.wf.entity.Order">
+  		<id property="id" column="orderId"></id>
   	</association>
 	<association property="address" javaType="com.wf.entity.Address">
   		<id property="id" column="addressId"></id>
@@ -125,12 +120,12 @@
 		<result property="city" column="city"/>
 		<result property="address" column="address"/>
   	</association>
-	<collection property="commodity" ofType="com.wf.entity.Commodity">
+	<association property="commodity" javaType="com.wf.entity.Commodity">
 		<id property="id" column="commodityId"></id>
 		<result property="price" column="price"/>
 		<result property="name" column="name"/>
 		<result property="describe" column="describe"/>
-	</collection>
+	</association>
 	</resultMap>
 	
 	

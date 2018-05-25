@@ -37,11 +37,13 @@ public interface VipMapper {
 	
 	List<OrderItem> findVipOrder(Long id);
 
-	Order findXiaofei(Long id);
+	OrderItem findXiaofei(Long id);
 
 	List<Car> searchCarId(@Param("carId") List<Long> carId);
 
 	void createOrder(OrderItem orderItem);
+
+	void delCom(@Param("carId") List<Long> carId);
 
 
 }

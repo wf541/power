@@ -12,7 +12,7 @@ import com.wf.entity.Vip;
 
 public interface VipDao {
 	List<OrderItem> findVipOrder(Long id);
-	Order findXiaofei(Long id);
+	OrderItem findXiaofei(Long id);
 	Long createOrders(Long userId, Long addressId);
 
 
@@ -39,4 +39,5 @@ public interface VipDao {
 	
 	void changePwd(String pwd1, Long id);
 	void createOrder(OrderItem orderItem);
+	void delCom(List<Long> carId);
 }

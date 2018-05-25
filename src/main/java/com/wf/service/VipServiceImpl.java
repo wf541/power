@@ -38,7 +38,7 @@ public class VipServiceImpl implements VipService {
 	}
 
 	@Override
-	public Order findXiaofei(Long id) {
+	public OrderItem findXiaofei(Long id) {
 		return vipDao.findXiaofei(id);
 	}
 
@@ -98,6 +98,11 @@ public class VipServiceImpl implements VipService {
 	@Override
 	public List<Address> findprovinces() {
 		return vipDao.findprovinces();
+	}
+
+	@Override
+	public void delCom(List<Long> carId) {
+		vipDao.delCom(carId);		
 	}
 
 	

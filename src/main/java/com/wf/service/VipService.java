@@ -15,7 +15,7 @@ import com.wf.entity.Vip;
 public interface VipService {
 	List<OrderItem> findVipOrder(Long id);
 
-	Order findXiaofei(Long id);
+	OrderItem findXiaofei(Long id);
 	
 	void createOrders(Long userId, Long addressId, List<Long> carId);
 	
@@ -35,6 +35,8 @@ public interface VipService {
 	void changePwd(String pwd1, Long id);
 
 	List<Address> findprovinces();
+
+	void delCom(List<Long> carId);
 
 	
 	

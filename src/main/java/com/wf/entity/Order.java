@@ -86,9 +86,6 @@ public class Order {
 		super();
 	}
 	
-
-	
-	
 	
 	public Order(Long id, String state, Long regId, Long addressId, Reg reg, Address address, Car car,
 			Commodity commodity) {

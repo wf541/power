@@ -50,7 +50,7 @@ public class VipControl {
 					@RequestParam Long addressId,
 					@AuthenticationPrincipal(expression = "login") Login login) {
 				vipService.createOrders(login.getId(),addressId, carId);
-//				userService.delCom(commodityId);
+//				vipService.delCom(carId);
 				return "redirect:/vipOrder";
 			}	
 			
@@ -59,7 +59,7 @@ public class VipControl {
 			@RequestMapping(method = RequestMethod.GET, value = "/vipXiaofei/{id}")
 			public String vipXiaofeiPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login,
 					@PathVariable Long id) {
-				Order order = vipService.findXiaofei(id);
+				OrderItem order = vipService.findXiaofei(id);
 				model.addAttribute("order", order);
 				return "vipXiaofei";
 			}
