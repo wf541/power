@@ -128,8 +128,10 @@
 	</association>
 	</resultMap>
 	
-	
-	
+	<!-- 删除购物车里以订的订单项 -->
+	<delete id="delCom">
+		delete from power_car where id = #{carId}
+	</delete>
 	
 	
 </mapper>

@@ -98,9 +98,10 @@ public class VipDaoImpl implements VipDao {
 		vipMapper.changePwd(pwd1,id);
 	}
 
+
 	@Override
-	public void delCom(List<Long> carId) {
-		vipMapper.delCom(carId);
+	public void delCom(Long carIde) {
+		vipMapper.delCom(carIde);
 	}
 
 	

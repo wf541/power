@@ -50,7 +50,7 @@ public class VipControl {
 					@RequestParam Long addressId,
 					@AuthenticationPrincipal(expression = "login") Login login) {
 				vipService.createOrders(login.getId(),addressId, carId);
-//				vipService.delCom(carId);
+				vipService.delCom(carId);
 				return "redirect:/vipOrder";
 			}	
 			

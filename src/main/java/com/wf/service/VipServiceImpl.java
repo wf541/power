@@ -102,7 +102,10 @@ public class VipServiceImpl implements VipService {
 
 	@Override
 	public void delCom(List<Long> carId) {
-		vipDao.delCom(carId);		
+	for(Long carIde:carId){
+		
+		vipDao.delCom(carIde);		
+	}
 	}
 
 	

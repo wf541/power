@@ -39,5 +39,5 @@ public interface VipDao {
 	
 	void changePwd(String pwd1, Long id);
 	void createOrder(OrderItem orderItem);
-	void delCom(List<Long> carId);
+	void delCom(Long carIde);
 }

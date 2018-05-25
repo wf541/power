@@ -43,7 +43,8 @@ public interface VipMapper {
 
 	void createOrder(OrderItem orderItem);
 
-	void delCom(@Param("carId") List<Long> carId);
+
+	void delCom(@Param("carId") Long carIde);
 
 
 }
