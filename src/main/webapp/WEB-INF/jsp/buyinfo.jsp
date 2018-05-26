@@ -15,6 +15,8 @@
 <body>
 <div class="hrader" id="header">
   <div class="top">
+  <%@ include file="header.jspf" %>
+  <%@ include file="header.jspf" %>
    <a href="${ contextPath}/login" style="color:#C94E13;">请登录</a> 
    <a href="${ contextPath}/reg">注册</a>
    <ul class="topNav">

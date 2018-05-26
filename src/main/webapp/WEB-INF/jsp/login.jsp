@@ -42,6 +42,9 @@
    <c:if test="${param.error != null}">
 		<h4 style="color: red;">登录失败：用户名或密码错误</h4>
 	</c:if>
+	<c:if test="${param.logout != null}">
+		<h4 style="color: blue;">已退出系统</h4>
+	</c:if>	
     <form class="login" action="${ contextPath}/login" method="post">
     <!--  	防范CSRF攻击 -->
     <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
@@ -51,7 +54,7 @@
      <label>密码</label>
      <input type="password" class="loginPwd" name="password"/>
      <div class="jizhu">
-      <input type="checkbox" /> 一周内免登陆 <a href="#">忘记密码</a>
+      <input type="checkbox" id="remember-me" name="remember-me"/> 一周内免登陆 <a href="#">忘记密码</a>
      </div><!--jizhu/-->
      <div class="loginSub">
       <input type="submit" value=" 登 录 " />
