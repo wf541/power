@@ -37,9 +37,9 @@ public class AlipayControl {
 				env.getProperty("alipay.alipayPublicKey")), "UTF-8");
 	}
 //订单页
-	@RequestMapping(value = "/alipay/order", method = RequestMethod.GET)
+	@RequestMapping(value = "/alipay/success", method = RequestMethod.GET)
 	public String order() {
-		return "order";
+		return "success";
 	}
 	
 	

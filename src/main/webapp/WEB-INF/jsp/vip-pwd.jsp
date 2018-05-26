@@ -78,7 +78,7 @@
     <li class="buy-nav3"><a href="vip-prolist.html">产品列表</a></li>
     <li class="buy-nav4"><a href="vip-dingzhi.html">定制服务</a></li>
     <li class="buy-nav5"><a href="vip-pingjia.html">评价留言</a></li>
-    <li class="buy-nav6 buy-navCur"><a href="vip-pwd.html">修改密码</a></li>
+    <li class="buy-nav6 buy-navCur"><a href="${ contextPath}/vipPwd/<sec:authentication property="principal.login.id"/>">修改密码</a></li>
     <li class="buy-nav7"><a href="vip-shou.html">售后管理</a></li>
    </ul><!--buy-nav/-->
   </div><!--vipLeft/-->

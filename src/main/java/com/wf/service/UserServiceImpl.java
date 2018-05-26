@@ -21,6 +21,9 @@ import com.wf.entity.Login;
 import com.wf.entity.Order;
 import com.wf.entity.Reg;
 import com.wf.entity.Vip;
+
+
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService,UserDetailsService {
@@ -47,6 +50,7 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		}
 		else{
 			int i = userDao.create(reg);
+			 
 			if(i<1)
 				return "error";
 		}

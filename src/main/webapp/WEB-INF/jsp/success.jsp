@@ -73,7 +73,11 @@
     <h3>下单成功</h3>
     <div class="zhifu">
      您选择的支付方式是 <strong class="red">支付宝</strong><br />
-     <a href="https://www.alipay.com/" target="_blank"><img src="${ contextPath}/assets/images/zhifu.png" width="133" height="41" /></a>
+     <form method="post" action="/alipay/pay">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<button type="submit">支付</button>
+     <%-- <a href="https://www.alipay.com/" target="_blank"><img src="${ contextPath}/assets/images/zhifu.png" width="133" height="41" /></a> --%>
+	</form>
     </div><!--zhifu/-->
    </div><!--chenggong/-->
   </div><!--cont/-->

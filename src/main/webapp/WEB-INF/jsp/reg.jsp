@@ -11,6 +11,7 @@
 <link type="text/css" href="${ contextPath}/assets/css/css.css" rel="stylesheet" />
 <script type="text/javascript" src="${ contextPath}/assets/js/jquery.js"></script>
 <script type="text/javascript" src="${ contextPath}/assets/js/js.js"></script>
+<script type="text/javascript" src="${ contextPath}/assets/js/validator.js"></script>
 </head>
 <body>
  <div class="hrader" id="header">
@@ -40,7 +41,7 @@
     <li class="regEqBg2">采购商</li>
     <div class="clears"></div>
    </ul><!--regEq/-->
-   <form action="${ contextPath}/reg" method="post" class="regForm">
+   <form action="${ contextPath}/reg" method="post" class="regForm" id="register" onsubmit="return checkForm()">
    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="loginBuyList">
      <label for="name">用户名：</label>
@@ -48,11 +49,13 @@
     </div><!--loginBuyList/-->
     <div class="loginBuyList">
      <label for="email">邮箱：</label>
-     <input type="text" id="email" name="mail"/>
+     <input type="text" id="email" name="mail" onblur="checkEmail()"/>
+      <span id="emailspan"></span>
     </div><!--loginBuyList/-->
     <div class="loginBuyList">
      <label for="tel">手机号码：</label>
-     <input type="text" id="tel" name="phone"/>
+     <input type="text" id="tel" name="phone" onblur="checkPhone()"/>
+     <span id="phonespan"></span>
     </div><!--loginBuyList/-->
     <div class="loginBuyList">
      <label for="pwd">设置密码：</label>
@@ -79,6 +82,12 @@
      <input type="submit" value=" 注 册 " />
     </div><!--regSub/-->
    </form><!--/-->
+   
+   
+   
+   
+   
+   
    
    <form action="/reg/" method="post" class="regForm">
     <div class="loginBuyList">

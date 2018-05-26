@@ -78,7 +78,7 @@
      <dd><a href="vipShoucang.html">收藏关注</a></dd>
     <dt class="vip_2">账户设置</dt>
      <dd><a href="vip.html">个人信息</a></dd>
-     <dd><a href="${ contextPath}/vipPwd">密码修改</a></dd>
+     <dd><a href="${ contextPath}/vipPwd/<sec:authentication property="principal.login.id"/>">密码修改</a></dd>
      <dd class="ddCur"><a href="${ contextPath}/vipAddress">收货地址</a></dd>
      <dd><a href="${ contextPath}/vipXiaofei/${addresses.id}">消费记录${addresses.id}</a></dd>
     <dt class="vip_3">客户服务</dt>

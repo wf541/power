@@ -1,29 +1,16 @@
 package com.wf.control;
 
 
-import java.io.Console;
-import java.lang.ProcessBuilder.Redirect;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.apache.ibatis.annotations.Param;
-import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.wf.entity.Address;
 import com.wf.entity.Car;
 import com.wf.entity.Commodity;
@@ -62,12 +49,10 @@ public class UserControl {
 			
 	//注册
 	@RequestMapping(method = RequestMethod.POST, value = "/reg")
-	public  String RegPhone(@Valid @ModelAttribute Reg reg, 
-			BindingResult bindingResult,Model model,String pwd1) {
+	public  String RegPhone(@ModelAttribute Reg reg, 
+			Model model,String pwd1) {
 
-		if(bindingResult.hasErrors()){
-			return "reg";
-		}else if(!reg.getPassword().equals(pwd1)){
+		if(!reg.getPassword().equals(pwd1)){
 			model.addAttribute("error","密码不一致");
 			return "reg";
 		}
