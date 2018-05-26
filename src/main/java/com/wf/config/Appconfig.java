@@ -1,7 +1,11 @@
 package com.wf.config;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.sql.DataSource;
 
+import org.apache.commons.io.FileUtils;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -24,9 +28,12 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+
 @Configuration //相当于把该类作为spring的xml配置文件中的<beans>，作用为：配置spring容器(应用上下文)
 @ComponentScan(basePackages = {"com"})
-@PropertySource("classpath:jdbc.properties")
+@PropertySource({"classpath:jdbc.properties","classpath:alipay.properties"})
 @EnableWebMvc//启用MVC
 @EnableTransactionManagement // 启用spring-tx支持   加事务帮忙回滚
 @MapperScan("com.wf.dao.mabaties.mappers")	
@@ -93,5 +100,19 @@ public class Appconfig extends WebMvcConfigurerAdapter{
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+//	支付
+	@Bean
+		public AlipayClient alipayClient(Environment env) throws IOException {
+			// https://docs.open.alipay.com/270/105899/
+			return new DefaultAlipayClient(
+					env.getProperty("alipay.gateway"),
+					env.getProperty("alipay.appId"),
+					FileUtils.readFileToString(new File(env.getProperty("alipay.appPrivateKey")), "UTF-8"),
+					"json", "UTF-8",
+					FileUtils.readFileToString(new File(env.getProperty("alipay.alipayPublicKey")), "UTF-8"),
+					"RSA2"
+					);
+		}
 }
 

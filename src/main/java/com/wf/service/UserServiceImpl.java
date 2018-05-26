@@ -65,15 +65,7 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		UserDetailsImpl userDetailsImpl = new UserDetailsImpl(login); 
 		return userDetailsImpl;
 	}
-//商品列表
-	@Override
-	public List<Commodity> findCommodity() {
-		return userDao.findCommodity();
-	}
-	@Override
-	public Commodity findDetails(Long id) {
-		return userDao.findDetails(id);
-	}
+
 
 
 //购物车

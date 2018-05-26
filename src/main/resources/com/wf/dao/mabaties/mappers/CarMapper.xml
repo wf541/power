@@ -16,25 +16,13 @@
 	
 	<!-- 查找加入购物车 -->
 	<select id="findAllCar" resultMap="carMapper">
-	select car.id carId,car.counts carcounts,pc.id comId,pr.id regId,pc.name,pc.describe,pc.price,pc.counts,pa.postcode,pa.area,pa.address,pa.arelname,pa.aphone,pa.city,
-pa.province from power_car car inner join power_reg pr on car.reg_id=pr.id
+	select car.id carId,car.counts carcounts,pc.id comId,pr.id regId,pc.name,pc.describe,pc.price,pc.counts from power_car car inner join power_reg pr on car.reg_id=pr.id
 inner join power_commoditys pc on car.commodity_id=pc.id
-inner join power_address pa on pa.reg_id = pr.id
 where car.reg_id=#{userid}
 	</select>
 	<resultMap type="com.wf.entity.Car" id="carMapper">
 		<id property="id" column="carId"></id>
 		<result property="counts" column="carcounts"/>
-	<!-- <association property="address" javaType="com.wf.entity.Address">
-  		<id property="id" column="addressId"></id>
-		<result property="arelname" column="arelname"/>
-		<result property="aphone" column="aphone"/>
-		<result property="postCode" column="postCode"/>
-		<result property="area" column="area"/>
-		<result property="province" column="province"/>
-		<result property="city" column="city"/>
-		<result property="address" column="address"/>
-  	</association> -->
 	<association property="commodity" javaType="com.wf.entity.Commodity">
 		<id property="id" column="comId"></id>
 		<result property="price" column="price"/>
@@ -43,7 +31,6 @@ where car.reg_id=#{userid}
 		<result property="describe" column="describe"/>
 	</association>
 	</resultMap>
-	
 	<!-- 更新加减 -->
 	<update id="addCount">
 	update  power_car set counts=counts+1 where id=#{id}
@@ -60,4 +47,10 @@ inner join power_commoditys pc on car.commodity_id=pc.id
 inner join power_address pa on pa.reg_id = pr.id
 where car.id=#{id}
 	</select>
+	
+	
+	 <!--查找商品 集合 -->
+  <select id="findCommodity" resultType="com.wf.entity.Commodity">
+  		select * from power_commoditys
+  </select>
 </mapper>

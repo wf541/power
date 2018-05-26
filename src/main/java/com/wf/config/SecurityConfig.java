@@ -20,10 +20,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		// 忽略对支付宝异步通知的CSRF token检查
+				http.csrf().ignoringAntMatchers("/alipay/cb/async");
 		// Fluent API
 		http.authorizeRequests()
 			.antMatchers("/admin/**").access("isFullyAuthenticated() and hasRole('ADMIN')")
-			.antMatchers("/assets/**", "/login","/reg").permitAll()
+			.antMatchers("/assets/**", "/login","/reg","/alipay/**").permitAll()
 			.antMatchers("/**").authenticated()
 			
 			.and()

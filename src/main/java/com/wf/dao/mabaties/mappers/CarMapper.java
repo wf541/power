@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.wf.entity.Car;
+import com.wf.entity.Commodity;
 
 public interface CarMapper {
 	void del(Long id);
@@ -18,4 +19,7 @@ public interface CarMapper {
 	Car findOneCar(Long id);
 
 	void jianCount(Long id);
+	
+	
+	List<Commodity> findCommodity();
 }

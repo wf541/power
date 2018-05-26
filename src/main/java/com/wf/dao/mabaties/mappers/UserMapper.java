@@ -20,8 +20,8 @@ public interface UserMapper {
 	Reg findReg(String userName);
 	
 	Login findSearch1(String userName);
-	List<Commodity> findCommodity();
-	Commodity findDetails(Long id);
+	
+	
 
 
 	void delCom(List<Long> commodityId);

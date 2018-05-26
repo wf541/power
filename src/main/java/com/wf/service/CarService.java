@@ -3,6 +3,7 @@ package com.wf.service;
 import java.util.List;
 
 import com.wf.entity.Car;
+import com.wf.entity.Commodity;
 
 public interface CarService {
 	void del(Long id);
@@ -16,4 +17,6 @@ public interface CarService {
 	Car findOneCar(Long id);
 
 	void jianCount(Long id);
+	
+	List<Commodity> findCommodity();
 }

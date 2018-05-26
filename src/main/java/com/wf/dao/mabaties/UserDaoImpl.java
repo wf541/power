@@ -45,16 +45,9 @@ public class UserDaoImpl implements UserDao {
 		return userMapper.findSearch1(username);
 	}
 
-	@Override
-	public List<Commodity> findCommodity() {
-		return userMapper.findCommodity();
-	}
 	
-	@Override
-	public Commodity findDetails(Long id) {
-		// TODO Auto-generated method stub
-		return userMapper.findDetails(id);
-	}
+	
+	
 
 	@Override
 	public void delCom(List<Long> commodityId) {

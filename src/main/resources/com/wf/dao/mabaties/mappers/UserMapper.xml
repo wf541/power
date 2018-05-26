@@ -17,21 +17,5 @@
   <select id="findSearch1" resultType="com.wf.entity.Login">
   	select id,user_name,encode from power_reg where user_name=#{userName}
   </select>
-  <!--查找商品 集合 -->
-  <select id="findCommodity" resultType="com.wf.entity.Commodity">
-  		select * from power_commoditys
-  </select>
-  
-  <!--根据id查找相应商品详情  -->
-	<select id="findDetails" resultType="com.wf.entity.Commodity">
-		select * from power_commoditys where id=#{id}
-	</select>
-	
-
-	
-	
-	
-	
-	
-	<!--清空购物车  -->
+ 
 </mapper>

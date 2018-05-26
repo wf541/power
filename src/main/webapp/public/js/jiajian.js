@@ -51,4 +51,25 @@ $(function(){
 			}
 		});
 	});
+	
 });
+$(document).ready(function(){
+	
+//	结算提示
+	$('#jiesuan').submit(function(){
+		if ($('input[name=addressId]:checked', this).val() && 
+				$('input[name=carId]:checked', this).val()) {
+			return true;
+		} else if ($('input[name=addressId]:checked', this).val()) {
+			alert('请选择要购买的商品');
+			return false;
+		} else if ($('input[name=carId]:checked', this).val()) {
+			alert('请选择收货地址');
+			return false;
+		} else {
+			alert('请选择收货地址和商品');
+			return false;
+		}
+	})
+});
+

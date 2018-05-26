@@ -14,10 +14,10 @@ public interface UserService {
 
 	String register(Reg reg);
 
-	Commodity findDetails(Long id);
+	
 
 	void delCom(List<Long> commodityId);
-	List<Commodity> findCommodity();
+
 	
 
 }

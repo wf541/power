@@ -6,6 +6,7 @@ import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.apache.ibatis.annotations.Param;
 import org.omg.CORBA.Request;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,55 +55,44 @@ public class UserControl {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/reg")
-	public  String regPhone() {
+	public  String regPhone(@ModelAttribute Reg reg) {
 		return "reg";
 	}
 			
 			
 	//注册
 	@RequestMapping(method = RequestMethod.POST, value = "/reg")
-	public  String RegPhone(@ModelAttribute Reg reg) {
-		System.out.println("333");
-		//查看是否注册
-		String msg= userService.register(reg);
-		
-		if(msg!=null && msg.equals("success")){
-			//对象传参
-			return "redirect:/login";
-		}else{
-			
+	public  String RegPhone(@Valid @ModelAttribute Reg reg, 
+			BindingResult bindingResult,Model model,String pwd1) {
+
+		if(bindingResult.hasErrors()){
 			return "reg";
+		}else if(!reg.getPassword().equals(pwd1)){
+			model.addAttribute("error","密码不一致");
+			return "reg";
+		}
+		else{
+			//查看是否注册
+			String msg= userService.register(reg);
+			
+			if(msg!=null && msg.equals("success")){
+				//对象传参
+				return "redirect:/login";
+			}else{
+				
+				return "reg";
+			}
+			
 		}
 	}
 	
 
-	//商品列表页
-	@RequestMapping(method = RequestMethod.GET, value = "/prolist")
-	public String prolistPhone(@ModelAttribute Reg reg,
-			@AuthenticationPrincipal(expression = "login") Login login,Model model) {
-		List<Commodity> commodity = userService.findCommodity();
-		
-		model.addAttribute("prolists", commodity);
-		return "prolist";
-	}
-	//商品详情页
-	@RequestMapping(method = RequestMethod.GET, value = "/buyinfo")
-	public String buyPhone(@ModelAttribute Reg reg,@AuthenticationPrincipal(expression = "login") Login login,
-			Model model,@ModelAttribute Commodity commodity) {
-		/*Commodity goodDetails = userService.findDetails(commodity.getId());
-		model.addAttribute("goodDetails", goodDetails);*/
-		return "buyinfo";
-	}
+	
+	
 	
 	
 		
 		
-		//订单确认页
-		@RequestMapping(method = RequestMethod.GET, value = "/order")
-		public String orderPhone(Model model,@AuthenticationPrincipal(expression = "login") Login login) {
-			List<Commodity> commodities= userService.findCommodity();
-			model.addAttribute("commodities", commodities);
-			return "order";
-		}
+		
 		
 }

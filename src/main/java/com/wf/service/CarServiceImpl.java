@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.wf.dao.CarDao;
 import com.wf.entity.Car;
+import com.wf.entity.Commodity;
 @Service
 @Transactional
 public class CarServiceImpl implements CarService {
@@ -46,6 +47,11 @@ public class CarServiceImpl implements CarService {
 	@Override
 	public void jianCount(Long id) {
 		carDao.jianCount(id);
+	}
+
+	@Override
+	public List<Commodity> findCommodity() {
+		return carDao.findCommodity();
 	}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.wf.dao.CarDao;
 import com.wf.dao.mabaties.mappers.CarMapper;
 import com.wf.entity.Car;
+import com.wf.entity.Commodity;
 @Repository
 public class CarDaoImpl implements CarDao {
 private CarMapper carMapper;
@@ -48,4 +49,10 @@ private CarMapper carMapper;
 		carMapper.jianCount(id);
 	}
 
+	
+	
+	@Override
+	public List<Commodity> findCommodity() {
+		return carMapper.findCommodity();
+	}
 }

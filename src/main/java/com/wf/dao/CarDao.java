@@ -3,6 +3,7 @@ package com.wf.dao;
 import java.util.List;
 
 import com.wf.entity.Car;
+import com.wf.entity.Commodity;
 
 public interface CarDao {
 	void del(Long id);
@@ -17,4 +18,6 @@ public interface CarDao {
 
 	void jianCount(Long id);
 
+	
+	List<Commodity> findCommodity();
 }

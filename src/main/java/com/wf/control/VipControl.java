@@ -156,7 +156,7 @@ public class VipControl {
 							@RequestParam String pwd1,@RequestParam String pwd2) {
 						if(pwd1.equals(pwd2)){
 							vipService.changePwd(pwd1,login.getId());
-								return "redirect:/vipAddress/{id}";
+								return "redirect:/vipAddress";
 							}else{
 								
 								return "vip-pwd";
