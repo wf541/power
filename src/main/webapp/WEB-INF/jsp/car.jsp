@@ -137,7 +137,7 @@
    </table><!--orderList/-->
    <div class="zongji">
     <strong>所需运费：</strong>￥0.00 &nbsp;&nbsp;
-    <strong>总计(不含运费)：</strong><strong class="red" name="all">￥70.42</strong>
+    <strong>总计(不含运费)：</strong><strong class="red" name="all">￥0</strong>
    </div><!--zongji/-->
    <div class="jiesuan">
     <a href="index.html" class="jie_1">继续购物&gt;&gt;</a>
