@@ -7,6 +7,7 @@ $(function(){
 	headers[header] = token;
 	$(".jian").click(function(){
 		var id1 = $(this).attr("name");
+		if ($(".shuliang").val() >1 ) {
 		$.ajax({
 			url:"/jiancar",
 			headers:headers,
@@ -23,14 +24,18 @@ $(function(){
 //					console.log($("."+id1+"").val());
 					
 					$(".shuliang[name='"+id1+"']").val(carStr.counts);
-					$("strong.red[name='"+id1+"']")[0].innerHTML="￥"+(carStr.commodity.price * carStr.counts);
-					$("strong.red[name='all']")[0].innerHTML="￥"+(parseInt(($("strong.red[name='all']")[0].innerHTML).substr(1))-carStr.commodity.price);
+					$("strong.red[name='"+id1+"']")[0].innerHTML="￥"+(carStr.commodity.price)*(carStr.counts);
+					$("strong.red[name='all']")[0].innerHTML="￥"+(parseInt(($("strong.red[name='all']")[0].innerHTML).substr(1))-(parseFloat((carStr.commodity.price).toFixed(2))));
 				}
 			},
 			error:function(){
 				alert("aaa")
 			}
 		});
+		return false;
+		}else{
+			return true;
+		}
 	});
 	
 	

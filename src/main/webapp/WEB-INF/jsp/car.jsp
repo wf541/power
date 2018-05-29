@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+       <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>    
 <c:set var="contextPath" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -122,10 +123,13 @@
      </div>
      </td>
      <td class="${car.id }">
-			总价：<strong class="red" name="${car.id }">￥${car.commodity.price*car.counts}</strong>
+			总价：<strong class="red" name="${car.id }">￥
+			${car.commodity.price*car.counts}
+			</strong>
 		</td>
      <td><a href="#" class="green">收藏</a><br /><a href="${contextPath}/del/${car.id}" class="green" >删除</a></td>
     </tr>
+    <c:set var="totalPrice" value="${totalPrice+ car.commodity.price*car.counts}"></c:set>
     </c:forEach>
     </tr>
     <tr>
@@ -137,7 +141,7 @@
    </table><!--orderList/-->
    <div class="zongji">
     <strong>所需运费：</strong>￥0.00 &nbsp;&nbsp;
-    <strong>总计(不含运费)：</strong><strong class="red" name="all">￥0</strong>
+    <strong>总计(不含运费)：</strong><strong class="red" name="all">￥${totalPrice}</strong>
    </div><!--zongji/-->
    <div class="jiesuan">
     <a href="index.html" class="jie_1">继续购物&gt;&gt;</a>
