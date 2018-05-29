@@ -24,8 +24,9 @@ $(function(){
 //					console.log($("."+id1+"").val());
 					
 					$(".shuliang[name='"+id1+"']").val(carStr.counts);
-					$("strong.red[name='"+id1+"']")[0].innerHTML="￥"+(carStr.commodity.price)*(carStr.counts);
-					$("strong.red[name='all']")[0].innerHTML="￥"+(parseInt(($("strong.red[name='all']")[0].innerHTML).substr(1))-(parseFloat((carStr.commodity.price).toFixed(2))));
+					$("strong.red[name='"+id1+"']")[0].innerHTML="￥"+((carStr.commodity.price)*(carStr.counts)).toFixed(2);
+					$("strong.red[name='all']")[0].innerHTML="￥"+(parseInt(($("strong.red[name='all']")[0].innerHTML).substr(1))-carStr.commodity.price).toFixed(2);
+					console.log($("strong.red[name='all']")[0].innerHTML);
 				}
 			},
 			error:function(){
@@ -51,8 +52,9 @@ $(function(){
 			success:function(carStr){
 				console.log(carStr);
 				$(".shuliang[name='"+id1+"']").val(carStr.counts);
-				$("strong.red[name='"+id1+"']")[0].innerHTML="￥"+(carStr.commodity.price * carStr.counts);
-				$("strong.red[name='all']")[0].innerHTML="￥"+(parseInt(($("strong.red[name='all']")[0].innerHTML).substr(1))+carStr.commodity.price);
+				$("strong.red[name='"+id1+"']")[0].innerHTML="￥"+(carStr.commodity.price * carStr.counts).toFixed(2);
+				$("strong.red[name='all']")[0].innerHTML="￥"+(parseInt(($("strong.red[name='all']")[0].innerHTML).substr(1))+carStr.commodity.price).toFixed(2);
+				console.log($("strong.red[name='all']")[0].innerHTML);
 			}
 		});
 	});
